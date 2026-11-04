@@ -1,0 +1,21 @@
+{
+  "nom": "Proxiconseil Patrimoine",
+  "adresse": "https://proxiconseil-maquette.vercel.app",
+  "siteActuel": "proxiconseil-patrimoine.fr",
+  "version": 1,
+  "langues": ["fr"],
+  "navigation": ["accueil", "accompagnement", "qui-suis-je", "immobilier", "contact"],
+  "actionEntete": { "page": "contact", "ancre": "rendez-vous" },
+  "couleurs": { "fond": "#f4f1ea", "texte": "#0e2a30", "voile": "#08262b", "ouverture": "#f4f1ea", "menu": "#08262b", "theme": "#f4f1ea" },
+  "contact": {
+    "telephone": "06 63 47 91 22",
+    "telephoneLien": "+33663479122",
+    "email": "n.rabouan@proxiconseil-patrimoine.fr",
+    "adresse": "28 route du Calvaire, 72190 Saint-Pavace",
+    "linkedin": "https://www.linkedin.com/in/nicolas-rabouan-7a981812a/",
+    "facebook": "https://www.facebook.com/profile.php?id=100094350663130"
+  },
+  "polices": ["/assets/polices/fraunces.woff2", "/assets/polices/manrope.woff2"],
+  "imagePartage": "portrait-1280.webp",
+  "curseur": true
+}

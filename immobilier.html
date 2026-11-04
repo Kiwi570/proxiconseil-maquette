@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fr" data-v="1" data-curseur>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Immobilier : Proxiconseil Patrimoine</title>
+<meta name="description" content="Investir dans l’immobilier : ce que l’on examine, les risques, et les résidences commercialisées et livrées par Stellium Immobilier.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://proxiconseil-maquette.vercel.app/immobilier">
+<style>:root{--fond:#f4f1ea;--texte:#0e2a30;--voile-fond:#08262b;--ouverture-fond:#f4f1ea;--menu-fond:#08262b}:root { --entete-h: 72px; --barres-h: 0px; } html { background: var(--fond); color: var(--texte); scrollbar-gutter: stable; } body { margin: 0; background: var(--fond); } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime] { opacity: 0; } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime].vu { opacity: 1; } [data-voile] { position: fixed; inset: 0; z-index: 900; background: var(--voile-fond); transform: translateY(100%); visibility: hidden; pointer-events: none; } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) [data-voile] { transform: none; visibility: visible; } html.calme [data-voile], html.secours [data-voile] { visibility: hidden !important; } .ouverture-panneau { position: fixed; inset: 0; z-index: 850; display: none; place-content: center; justify-items: center; background: var(--ouverture-fond, var(--voile-fond)); color: var(--fond); text-align: center; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouverture-panneau { display: grid; } html.defilement-bloque, html.defilement-bloque body, html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie), html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) body, html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours), html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) body { overflow: hidden; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) { background-color: var(--ouverture-fond, var(--voile-fond)); } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) { background-color: var(--voile-fond); }</style>
+<script>(function () {
+var d = document.documentElement, ss = null, ls = null;
+try { ss = window.sessionStorage; ls = window.localStorage; } catch (e) {}
+d.classList.add('js');
+var calme = false;
+try { calme = !!ls && ls.getItem('socle:calme') === 'oui'; } catch (e) {}
+if (!calme && window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) calme = true;
+if (calme) d.classList.add('calme');
+var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+var type = nav ? nav.type : 'navigate';
+var depart = null;
+try { depart = JSON.parse(ss.getItem('socle:depart') || 'null'); ss.removeItem('socle:depart'); } catch (e) {}
+if (depart && !(Date.now() - depart.t < 15000)) depart = null;
+var retourSection = false;
+try { retourSection = !!ss.getItem('socle:calme-retour'); } catch (e) {}
+var mode = type === 'back_forward' || retourSection ? 'retour' : type === 'reload' ? 'intro' : depart ? 'voile' : 'intro';
+d.setAttribute('data-arrivee', mode);
+if (mode === 'voile' && depart.couleur) d.style.setProperty('--voile-fond', depart.couleur);
+if (type === 'reload' && 'scrollRestoration' in history) {
+if (!retourSection) history.scrollRestoration = 'manual';
+}
+try {
+var choisie = ls && ls.getItem('socle:langue');
+var langue = (d.lang || '').slice(0, 2);
+if (choisie && choisie !== langue && type === 'navigate' && !depart) {
+var alt = document.querySelector('link[rel="alternate"][hreflang="' + choisie + '"]');
+if (alt) location.replace(new URL(alt.href).pathname + location.search + location.hash);
+}
+} catch (e) {}
+setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('secours'); }, 2000);
+})();</script>
+<link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/polices/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/socle.css?v=1">
+<link rel="stylesheet" href="/assets/css/site.css?v=1">
+<link rel="modulepreload" href="/assets/js/site.js?v=1">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=1">
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/SplitText.min.js" defer></script>
+<script type="module" src="/assets/js/site.js?v=1"></script>
+<meta name="theme-color" content="#f4f1ea">
+<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Proxiconseil Patrimoine">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Immobilier : Proxiconseil Patrimoine">
+<meta property="og:description" content="Investir dans l’immobilier : ce que l’on examine, les risques, et les résidences commercialisées et livrées par Stellium Immobilier.">
+<meta property="og:url" content="https://proxiconseil-maquette.vercel.app/immobilier">
+<meta property="og:image" content="https://proxiconseil-maquette.vercel.app/assets/partage/immobilier-fr.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Investir dans la pierre avec Proxiconseil Patrimoine">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FinancialService","name":"Proxiconseil Patrimoine","legalName":"SARL Proxiconseil Patrimoine","slogan":"Le patrimoine accessible à tous","url":"https://proxiconseil-maquette.vercel.app/","logo":"https://proxiconseil-maquette.vercel.app/assets/images/logo-complet.png","telephone":"+33663479122","email":"n.rabouan@proxiconseil-patrimoine.fr","address":{"@type":"PostalAddress","streetAddress":"28 route du Calvaire","postalCode":"72190","addressLocality":"Saint-Pavace","addressCountry":"FR"},"areaServed":"Le Mans","employee":{"@type":"Person","name":"Nicolas Rabouan","jobTitle":"Conseiller en investissements financiers"},"identifier":[{"@type":"PropertyValue","propertyID":"ORIAS","value":"22007088"},{"@type":"PropertyValue","propertyID":"RCS Le Mans","value":"920 596 368"}],"sameAs":["https://www.linkedin.com/in/nicolas-rabouan-7a981812a/","https://www.facebook.com/profile.php?id=100094350663130"],"description":"Conseil en gestion de patrimoine au Mans : épargne et trésorerie d'entreprise, immobilier, retraite, fiscalité à titre privé et professionnel, transmission."}</script>
+</head>
+<body id="haut">
+<div data-voile aria-hidden="true"><div class="voile-contenu"><img src="/assets/images/repere-clair.svg" alt="" width="40" height="74"><span data-voile-libelle>Immobilier</span></div></div>
+<div class="ouverture-panneau" data-ouverture aria-hidden="true">
+  <div class="ouverture-scene">
+    <span class="ouverture-onde"></span><span class="ouverture-onde"></span><span class="ouverture-onde"></span>
+    <svg class="repere ouverture-repere" viewBox="0 0 128 236" aria-hidden="true" focusable="false"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg>
+  </div>
+  <img class="ouverture-nom" src="/assets/images/logo-texte.webp" alt="" width="547" height="201">
+</div>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header data-entete>
+  <div class="entete-rangee">
+    <a class="entete-logo" href="/" data-libelle="Accueil">
+      <img src="/assets/images/logo-complet.webp" alt="" width="720" height="252"><span class="visuellement-cache">Proxiconseil Patrimoine</span>
+    </a>
+    <nav data-nav aria-label="Navigation principale">
+      <ul><li><a href="/accompagnement" data-libelle="Accompagnement">Accompagnement</a></li><li><a href="/qui-suis-je" data-libelle="Qui suis-je ?">Qui suis-je ?</a></li><li><a href="/immobilier" data-libelle="Immobilier" aria-current="page">Immobilier</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div class="entete-actions">
+      <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Prendre rendez-vous</a>
+      <button type="button" data-menu-bouton aria-controls="menu" aria-expanded="false" data-libelle-ouvrir="Menu" data-libelle-fermer="Fermer"><span data-libelle-bouton>Menu</span></button>
+    </div>
+  </div>
+</header>
+<div id="menu" data-menu role="dialog" aria-modal="true" aria-label="Menu">
+  <ul><li style="--i:0"><a href="/" class="menu-lien" data-libelle="Accueil">Accueil</a></li><li style="--i:1"><a href="/accompagnement" class="menu-lien" data-libelle="Accompagnement">Accompagnement</a></li><li style="--i:2"><a href="/qui-suis-je" class="menu-lien" data-libelle="Qui suis-je ?">Qui suis-je ?</a></li><li style="--i:3"><a href="/immobilier" class="menu-lien" data-libelle="Immobilier" aria-current="page">Immobilier</a></li><li style="--i:4"><a href="/contact" class="menu-lien" data-libelle="Contact">Contact</a></li></ul>
+  <p><a class="bouton" href="tel:+33663479122">Appeler 06 63 47 91 22</a></p>
+  <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
+</div>
+<main id="contenu" tabindex="-1" data-page="immobilier">
+<section class="imm-tete" id="debut">
+  <div class="conteneur imm-tete-texte">
+    <p class="surtitre" data-anime="gsap">Immobilier</p>
+    <h1 class="imm-titre"><span class="ligne-masque"><span class="imm-ligne" data-anime="gsap">Investir</span></span><span class="ligne-masque"><span class="imm-ligne" data-anime="gsap"><em>dans la pierre</em></span></span></h1>
+    <div class="imm-tete-cote">
+      <p data-anime="gsap">Investir dans l’immobilier fait partie des projets que nous étudions ensemble. Nicolas Rabouan est habilité par Stellium Immobilier, titulaire de la carte de transaction immobilière.</p>
+      <p class="imm-actions" data-anime="gsap"><a href="/contact?sujet=immobilier#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Parler d’un projet immobilier</a> <span class="imm-info" data-info-cle>Carte T n° CPI 3101 2015 000 001 813 · Stellium Immobilier</span></p>
+    </div>
+  </div>
+  <div class="imm-bandeau" data-effet="plan-masse">
+    <figure class="media imm-media" data-grok style="--cadrage:45% 55%">
+  <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/grok/immobilier-facade-mobile-480.webp 480w, /assets/images/grok/immobilier-facade-mobile-640.webp 640w, /assets/images/grok/immobilier-facade-mobile-960.webp 960w" sizes="100vw">
+    <img src="/assets/images/grok/immobilier-facade-1280.webp" srcset="/assets/images/grok/immobilier-facade-640.webp 640w, /assets/images/grok/immobilier-facade-1280.webp 1280w, /assets/images/grok/immobilier-facade-1752.webp 1752w" sizes="100vw" alt="Façade d’une résidence contemporaine générique avec balcons et jardin" width="1280" height="720" fetchpriority="high" loading="eager" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+    <div class="imm-plan"><svg class="plan-masse" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <g class="plan-traits" fill="none" stroke="currentColor" stroke-width="1.6" vector-effect="non-scaling-stroke">
+    <path d="M90 300 H430 V150 H300 V90 H90 Z"/><path d="M520 320 H760 V120 H520 Z"/><path d="M850 290 H1110 V170 H980 V110 H850 Z"/>
+    <path d="M110 300 V320 M430 300 V320 M110 314 H430" stroke-dasharray="4 4"/><path d="M520 340 V356 M760 340 V356 M520 350 H760" stroke-dasharray="4 4"/>
+    <path d="M40 370 C 300 350, 520 395, 760 372 S 1100 345, 1170 372"/><path d="M40 392 C 300 372, 520 417, 760 394 S 1100 367, 1170 394"/>
+    <path d="M540 140 L740 300 M560 140 L740 284 M520 160 L700 320 M520 180 L680 320" stroke-width="1"/>
+    <circle cx="470" cy="80" r="16"/><circle cx="800" cy="70" r="22"/><circle cx="1150" cy="120" r="18"/><circle cx="60" cy="110" r="20"/>
+    <path d="M300 90 L350 40 M1110 170 L1150 140"/>
+  </g>
+</svg><p class="plan-cartouche" aria-hidden="true"><span>Plan de masse</span><span>Schéma illustratif</span></p></div>
+  </div>
+</section>
+<section class="couches conteneur" id="couches">
+  <div class="couches-tete">
+    <h2 data-anime="lignes">Un investissement, couche par couche</h2>
+    <p data-anime>Ce que l’on examine ensemble avant d’investir dans un bien. <span class="a-valider">à valider par Nicolas Rabouan</span></p>
+  </div>
+  <div class="eclatee" data-effet="vue-eclatee" data-visuel>
+    <svg class="eclatee-dessin" viewBox="0 0 480 440" aria-hidden="true"><g class="couche couche--sol" data-i="0"><path class="couche-cote" d="M60 300 L60 326 L240 376 L240 350 Z M240 350 L240 376 L420 326 L420 300 Z"/><path class="couche-dessus" d="M60 300 L240 250 L420 300 L240 350 Z"/></g><g class="couche couche--rdc" data-i="1"><path class="couche-cote" d="M60 248 L60 274 L240 324 L240 298 Z M240 298 L240 324 L420 274 L420 248 Z"/><path class="couche-dessus" d="M60 248 L240 198 L420 248 L240 298 Z"/></g><g class="couche couche--etage1" data-i="2"><path class="couche-cote" d="M60 196 L60 222 L240 272 L240 246 Z M240 246 L240 272 L420 222 L420 196 Z"/><path class="couche-dessus" d="M60 196 L240 146 L420 196 L240 246 Z"/></g><g class="couche couche--etage2" data-i="3"><path class="couche-cote" d="M60 144 L60 170 L240 220 L240 194 Z M240 194 L240 220 L420 170 L420 144 Z"/><path class="couche-dessus" d="M60 144 L240 94 L420 144 L240 194 Z"/></g><g class="couche couche--toit" data-i="4"><path class="couche-cote" d="M60 92 L60 118 L240 168 L240 142 Z M240 142 L240 168 L420 118 L420 92 Z"/><path class="couche-dessus" d="M60 92 L240 42 L420 92 L240 142 Z"/></g></svg>
+    <ol class="eclatee-legendes">
+      <li class="legende legende--toit"><h3>La revente</h3><p>La liquidité du bien et les conditions de sortie, à anticiper dès l’achat.</p></li><li class="legende legende--etage2"><h3>La fiscalité</h3><p>Le cadre fiscal de l’investissement, au regard de votre imposition.</p></li><li class="legende legende--etage1"><h3>La gestion</h3><p>La location, l’entretien et les charges du bien.</p></li><li class="legende legende--rdc"><h3>Le bien</h3><p>La construction, le promoteur et la qualité du programme.</p></li><li class="legende legende--sol"><h3>L’emplacement</h3><p>La ville, le quartier et la demande locative.</p></li>
+    </ol>
+  </div>
+  <p class="couches-risque" data-anime>Un investissement immobilier comporte des risques : perte en capital, vacance locative, liquidité réduite, évolution de la fiscalité.</p>
+</section>
+<section class="mosaique conteneur" id="residences">
+  <div class="mosaique-tete">
+    <h2 data-anime="lignes">Résidences commercialisées et livrées par Stellium Immobilier</h2>
+    <p data-anime>Photos reprises du site actuel.</p>
+  </div>
+  <div class="mosaique-grille">
+    <figure class="mosaique-carte" id="residence-1" data-survol="incline">
+      <figure class="media mosaique-media" data-anime="rideau" style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/residence-1-640.webp" srcset="/assets/images/residence-1-480.webp 480w, /assets/images/residence-1-640.webp 640w" sizes="(max-width: 760px) 90vw, 30vw" alt="Résidence contemporaine aux façades blanches autour d’un jardin intérieur" width="640" height="800" loading="lazy" decoding="async">
+  </picture>
+</figure>
+      <figcaption>Nom et ville à compléter</figcaption>
+    </figure><figure class="mosaique-carte" id="residence-2" data-survol="incline">
+      <figure class="media mosaique-media" data-anime="rideau" style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/residence-2-640.webp" srcset="/assets/images/residence-2-480.webp 480w, /assets/images/residence-2-640.webp 640w" sizes="(max-width: 760px) 90vw, 30vw" alt="Résidence moderne à balcons vitrés au bord d’une ligne de tramway" width="640" height="800" loading="lazy" decoding="async">
+  </picture>
+</figure>
+      <figcaption>Nom et ville à compléter</figcaption>
+    </figure><figure class="mosaique-carte" id="residence-3" data-survol="incline">
+      <figure class="media mosaique-media" data-anime="rideau" style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/residence-3-640.webp" srcset="/assets/images/residence-3-480.webp 480w, /assets/images/residence-3-640.webp 640w" sizes="(max-width: 760px) 90vw, 30vw" alt="Immeuble de style classique aux façades crème et balcons en fer forgé" width="640" height="800" loading="lazy" decoding="async">
+  </picture>
+</figure>
+      <figcaption>Nom et ville à compléter</figcaption>
+    </figure><figure class="mosaique-carte" id="residence-4" data-survol="incline">
+      <figure class="media mosaique-media" data-anime="rideau" style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/residence-4-640.webp" srcset="/assets/images/residence-4-480.webp 480w, /assets/images/residence-4-640.webp 640w" sizes="(max-width: 760px) 90vw, 30vw" alt="Petite résidence crème aux balcons et volets bleus" width="640" height="800" loading="lazy" decoding="async">
+  </picture>
+</figure>
+      <figcaption>Nom et ville à compléter</figcaption>
+    </figure><figure class="mosaique-carte" id="residence-5" data-survol="incline">
+      <figure class="media mosaique-media" data-anime="rideau" style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/residence-5-640.webp" srcset="/assets/images/residence-5-480.webp 480w, /assets/images/residence-5-640.webp 640w" sizes="(max-width: 760px) 90vw, 30vw" alt="Résidence basse derrière un jardin planté d’oliviers" width="640" height="800" loading="lazy" decoding="async">
+  </picture>
+</figure>
+      <figcaption>Nom et ville à compléter</figcaption>
+    </figure>
+  </div>
+</section>
+<section class="fin-page fin-page--courbes" id="appel">
+  <div class="conteneur fin-page-grille">
+    <div class="fin-page-repere" aria-hidden="true" data-effet="ondes-appel" data-visuel><span></span><span></span><span></span><svg class="repere fin-repere" viewBox="0 0 128 236" aria-hidden="true" focusable="false"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg></div>
+    <div>
+      <h2 data-anime="lignes">Un projet immobilier ?</h2>
+      <p data-anime>Parlons de votre situation et de vos objectifs avant de parler d’un bien.</p>
+      <p class="appel-actions" data-anime><a href="/contact?sujet=immobilier#rendez-vous" class="bouton" data-libelle="Contact">Prendre rendez-vous</a> <a class="bouton bouton--contour" href="tel:+33663479122">Appeler le 06 63 47 91 22</a></p>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="pied" id="pied" data-masque-barre>
+  <div class="conteneur pied-haut">
+    <img class="pied-logo" src="/assets/images/logo-complet-clair.webp" alt="Proxiconseil Patrimoine" width="720" height="252" loading="lazy">
+    <p class="pied-devise">Le patrimoine accessible à tous</p>
+  </div>
+  <div class="conteneur pied-grille">
+    <div>
+      <p class="pied-titre">Contact</p>
+      <p>Nicolas Rabouan<br>28 route du Calvaire, 72190 Saint-Pavace<br><a href="tel:+33663479122">06 63 47 91 22</a><br><a href="mailto:n.rabouan@proxiconseil-patrimoine.fr">n.rabouan@proxiconseil-patrimoine.fr</a></p>
+      <p class="pied-titre">Réseaux</p>
+      <ul class="pied-reseaux"><li><a href="https://www.linkedin.com/in/nicolas-rabouan-7a981812a/" target="_blank" rel="noopener">LinkedIn (nouvel onglet)</a></li><li><a href="https://www.facebook.com/profile.php?id=100094350663130" target="_blank" rel="noopener">Facebook (nouvel onglet)</a></li></ul>
+    </div>
+    <nav aria-label="Plan du site">
+      <p class="pied-titre">Plan du site</p>
+      <ul><li><a href="/" data-libelle="Accueil">Accueil</a></li><li><a href="/accompagnement" data-libelle="Accompagnement">Accompagnement</a></li><li><a href="/qui-suis-je" data-libelle="Qui suis-je ?">Qui suis-je ?</a></li><li><a href="/immobilier" data-libelle="Immobilier" aria-current="page">Immobilier</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div>
+      <p class="pied-titre">Confort</p>
+      <ul>
+        <li><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></li>
+        <li><a href="#haut" data-sans-transition>Retour en haut</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="conteneur pied-legal">
+    <p class="pied-titre">Statuts</p>
+    <p>SARL Proxiconseil Patrimoine, au capital de 5 000 €, RCS Le Mans 920 596 368. ORIAS n° 22007088 : conseiller en investissements financiers, membre de l’ANACOFI, association professionnelle agréée par l’AMF ; mandataire d’intermédiaire en opérations de banque et en services de paiement ; mandataire d’intermédiaire d’assurance. Attestation d’habilitation délivrée par Stellium Immobilier, titulaire de la carte de transaction immobilière n° CPI 3101 2015 000 001 813.</p>
+    <p>Médiation : ANM Conso pour un produit immobilier ou d’assurance, médiateur de l’AMF pour un placement financier.</p>
+    <p>Tout placement comporte des risques, dont celui de perte en capital. Les solutions sont proposées après étude de votre situation.</p>
+  </div>
+  <div class="conteneur pied-bas"><p>Mentions légales : à compléter · Politique de confidentialité : à compléter</p><p>Maquette de démonstration : les informations marquées « à compléter » seront fournies par Proxiconseil Patrimoine.</p><p>© Proxiconseil Patrimoine</p></div>
+</footer>
+<div data-barre-fixe>
+  <a class="bouton bouton--contour" href="tel:+33663479122">Appeler</a>
+  <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Rendez-vous</a>
+</div>
+</body>
+</html>

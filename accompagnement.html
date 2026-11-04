@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="fr" data-v="1" data-curseur>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mon accompagnement : Proxiconseil Patrimoine</title>
+<meta name="description" content="Six objectifs pour votre patrimoine, pour les particuliers et les chefs d’entreprise, et le déroulé d’un accompagnement.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://proxiconseil-maquette.vercel.app/accompagnement">
+<style>:root{--fond:#f4f1ea;--texte:#0e2a30;--voile-fond:#08262b;--ouverture-fond:#f4f1ea;--menu-fond:#08262b}:root { --entete-h: 72px; --barres-h: 0px; } html { background: var(--fond); color: var(--texte); scrollbar-gutter: stable; } body { margin: 0; background: var(--fond); } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime] { opacity: 0; } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime].vu { opacity: 1; } [data-voile] { position: fixed; inset: 0; z-index: 900; background: var(--voile-fond); transform: translateY(100%); visibility: hidden; pointer-events: none; } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) [data-voile] { transform: none; visibility: visible; } html.calme [data-voile], html.secours [data-voile] { visibility: hidden !important; } .ouverture-panneau { position: fixed; inset: 0; z-index: 850; display: none; place-content: center; justify-items: center; background: var(--ouverture-fond, var(--voile-fond)); color: var(--fond); text-align: center; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouverture-panneau { display: grid; } html.defilement-bloque, html.defilement-bloque body, html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie), html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) body, html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours), html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) body { overflow: hidden; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) { background-color: var(--ouverture-fond, var(--voile-fond)); } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) { background-color: var(--voile-fond); }</style>
+<script>(function () {
+var d = document.documentElement, ss = null, ls = null;
+try { ss = window.sessionStorage; ls = window.localStorage; } catch (e) {}
+d.classList.add('js');
+var calme = false;
+try { calme = !!ls && ls.getItem('socle:calme') === 'oui'; } catch (e) {}
+if (!calme && window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) calme = true;
+if (calme) d.classList.add('calme');
+var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+var type = nav ? nav.type : 'navigate';
+var depart = null;
+try { depart = JSON.parse(ss.getItem('socle:depart') || 'null'); ss.removeItem('socle:depart'); } catch (e) {}
+if (depart && !(Date.now() - depart.t < 15000)) depart = null;
+var retourSection = false;
+try { retourSection = !!ss.getItem('socle:calme-retour'); } catch (e) {}
+var mode = type === 'back_forward' || retourSection ? 'retour' : type === 'reload' ? 'intro' : depart ? 'voile' : 'intro';
+d.setAttribute('data-arrivee', mode);
+if (mode === 'voile' && depart.couleur) d.style.setProperty('--voile-fond', depart.couleur);
+if (type === 'reload' && 'scrollRestoration' in history) {
+if (!retourSection) history.scrollRestoration = 'manual';
+}
+try {
+var choisie = ls && ls.getItem('socle:langue');
+var langue = (d.lang || '').slice(0, 2);
+if (choisie && choisie !== langue && type === 'navigate' && !depart) {
+var alt = document.querySelector('link[rel="alternate"][hreflang="' + choisie + '"]');
+if (alt) location.replace(new URL(alt.href).pathname + location.search + location.hash);
+}
+} catch (e) {}
+setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('secours'); }, 2000);
+})();</script>
+<link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/polices/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/socle.css?v=1">
+<link rel="stylesheet" href="/assets/css/site.css?v=1">
+<link rel="modulepreload" href="/assets/js/site.js?v=1">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=1">
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/SplitText.min.js" defer></script>
+<script type="module" src="/assets/js/site.js?v=1"></script>
+<meta name="theme-color" content="#f4f1ea">
+<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Proxiconseil Patrimoine">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Mon accompagnement : Proxiconseil Patrimoine">
+<meta property="og:description" content="Six objectifs pour votre patrimoine, pour les particuliers et les chefs d’entreprise, et le déroulé d’un accompagnement.">
+<meta property="og:url" content="https://proxiconseil-maquette.vercel.app/accompagnement">
+<meta property="og:image" content="https://proxiconseil-maquette.vercel.app/assets/partage/accompagnement-fr.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Les six objectifs de l’accompagnement de Proxiconseil Patrimoine">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FinancialService","name":"Proxiconseil Patrimoine","legalName":"SARL Proxiconseil Patrimoine","slogan":"Le patrimoine accessible à tous","url":"https://proxiconseil-maquette.vercel.app/","logo":"https://proxiconseil-maquette.vercel.app/assets/images/logo-complet.png","telephone":"+33663479122","email":"n.rabouan@proxiconseil-patrimoine.fr","address":{"@type":"PostalAddress","streetAddress":"28 route du Calvaire","postalCode":"72190","addressLocality":"Saint-Pavace","addressCountry":"FR"},"areaServed":"Le Mans","employee":{"@type":"Person","name":"Nicolas Rabouan","jobTitle":"Conseiller en investissements financiers"},"identifier":[{"@type":"PropertyValue","propertyID":"ORIAS","value":"22007088"},{"@type":"PropertyValue","propertyID":"RCS Le Mans","value":"920 596 368"}],"sameAs":["https://www.linkedin.com/in/nicolas-rabouan-7a981812a/","https://www.facebook.com/profile.php?id=100094350663130"],"description":"Conseil en gestion de patrimoine au Mans : épargne et trésorerie d'entreprise, immobilier, retraite, fiscalité à titre privé et professionnel, transmission."}</script>
+</head>
+<body id="haut">
+<div data-voile aria-hidden="true"><div class="voile-contenu"><img src="/assets/images/repere-clair.svg" alt="" width="40" height="74"><span data-voile-libelle>Accompagnement</span></div></div>
+<div class="ouverture-panneau" data-ouverture aria-hidden="true">
+  <div class="ouverture-scene">
+    <span class="ouverture-onde"></span><span class="ouverture-onde"></span><span class="ouverture-onde"></span>
+    <svg class="repere ouverture-repere" viewBox="0 0 128 236" aria-hidden="true" focusable="false"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg>
+  </div>
+  <img class="ouverture-nom" src="/assets/images/logo-texte.webp" alt="" width="547" height="201">
+</div>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header data-entete>
+  <div class="entete-rangee">
+    <a class="entete-logo" href="/" data-libelle="Accueil">
+      <img src="/assets/images/logo-complet.webp" alt="" width="720" height="252"><span class="visuellement-cache">Proxiconseil Patrimoine</span>
+    </a>
+    <nav data-nav aria-label="Navigation principale">
+      <ul><li><a href="/accompagnement" data-libelle="Accompagnement" aria-current="page">Accompagnement</a></li><li><a href="/qui-suis-je" data-libelle="Qui suis-je ?">Qui suis-je ?</a></li><li><a href="/immobilier" data-libelle="Immobilier">Immobilier</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div class="entete-actions">
+      <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Prendre rendez-vous</a>
+      <button type="button" data-menu-bouton aria-controls="menu" aria-expanded="false" data-libelle-ouvrir="Menu" data-libelle-fermer="Fermer"><span data-libelle-bouton>Menu</span></button>
+    </div>
+  </div>
+</header>
+<div id="menu" data-menu role="dialog" aria-modal="true" aria-label="Menu">
+  <ul><li style="--i:0"><a href="/" class="menu-lien" data-libelle="Accueil">Accueil</a></li><li style="--i:1"><a href="/accompagnement" class="menu-lien" data-libelle="Accompagnement" aria-current="page">Accompagnement</a></li><li style="--i:2"><a href="/qui-suis-je" class="menu-lien" data-libelle="Qui suis-je ?">Qui suis-je ?</a></li><li style="--i:3"><a href="/immobilier" class="menu-lien" data-libelle="Immobilier">Immobilier</a></li><li style="--i:4"><a href="/contact" class="menu-lien" data-libelle="Contact">Contact</a></li></ul>
+  <p><a class="bouton" href="tel:+33663479122">Appeler 06 63 47 91 22</a></p>
+  <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
+</div>
+<main id="contenu" tabindex="-1" data-page="accompagnement">
+<section class="acc-tete" id="debut">
+  <div class="acc-tete-texte conteneur">
+    <p class="surtitre" data-anime="gsap">Mon accompagnement</p>
+    <h1 class="acc-titre"><span class="ligne-masque"><span class="acc-ligne" data-anime="gsap">Votre patrimoine,</span></span><span class="ligne-masque"><span class="acc-ligne" data-anime="gsap"><em>objectif par objectif</em></span></span></h1>
+    <p class="acc-intro" data-anime="gsap">Épargne, trésorerie, immobilier, retraite, impôts, transmission : je pars de vos objectifs actuels et futurs.</p>
+    <p class="acc-actions" data-anime="gsap"><a href="/contact#rendez-vous" class="bouton bouton--clair" data-libelle="Contact" data-action-principale data-survol="magnetique">Prendre rendez-vous</a> <span class="acc-info" data-info-cle>Particuliers et chefs d’entreprise</span></p>
+  </div>
+  <div class="acc-horizon" data-superpose><svg class="anneaux anneaux--horizon" viewBox="-520 -520 1040 560" role="img" aria-label="Six anneaux autour du repère, un objectif sur chacun" data-effet="anneaux-horizon">
+  <g class="anneau" data-i="0" data-cle="epargne">
+      <circle class="anneau-cercle" r="120" fill="none"/>
+      <circle class="anneau-point" cx="-92" cy="-77" r="5" data-repere/>
+      <text class="anneau-nom" x="-106" y="-69" text-anchor="end">Épargne</text>
+    </g><g class="anneau" data-i="1" data-cle="tresorerie">
+      <circle class="anneau-cercle" r="182" fill="none"/>
+      <circle class="anneau-point" cx="148" cy="-106" r="5" data-repere/>
+      <text class="anneau-nom" x="162" y="-98" text-anchor="start">Trésorerie d’entreprise</text>
+    </g><g class="anneau" data-i="2" data-cle="immobilier">
+      <circle class="anneau-cercle" r="244" fill="none"/>
+      <circle class="anneau-point" cx="-90" cy="-227" r="5" data-repere/>
+      <text class="anneau-nom" x="-104" y="-219" text-anchor="end">Immobilier</text>
+    </g><g class="anneau" data-i="3" data-cle="retraite">
+      <circle class="anneau-cercle" r="306" fill="none"/>
+      <circle class="anneau-point" cx="139" cy="-273" r="5" data-repere/>
+      <text class="anneau-nom" x="153" y="-265" text-anchor="start">Retraite</text>
+    </g><g class="anneau" data-i="4" data-cle="impots">
+      <circle class="anneau-cercle" r="368" fill="none"/>
+      <circle class="anneau-point" cx="-340" cy="-140" r="5" data-repere/>
+      <text class="anneau-nom" x="-354" y="-132" text-anchor="end">Impôts</text>
+    </g><g class="anneau" data-i="5" data-cle="transmission">
+      <circle class="anneau-cercle" r="430" fill="none"/>
+      <circle class="anneau-point" cx="408" cy="-135" r="5" data-repere/>
+      <text class="anneau-nom" x="394" y="-127" text-anchor="end">Transmission</text>
+    </g>
+  <circle class="anneaux-deco" r="514" fill="none"/>
+  <g class="anneaux-repere" transform="translate(-16 -46) scale(.25)"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g>
+</svg></div>
+</section>
+<section class="planches conteneur" id="objectifs">
+  <h2 class="planches-titre" data-anime="lignes">Les six objectifs</h2>
+  <ol class="planches-liste" data-effet="planches">
+    <li class="planche" id="objectif-epargne" style="--i:0">
+      <figure class="media planche-media" data-grok style="--cadrage:50% 55%">
+  <picture>
+    <img src="/assets/images/grok/objectif-epargne-784.webp" srcset="/assets/images/grok/objectif-epargne-480.webp 480w, /assets/images/grok/objectif-epargne-640.webp 640w, /assets/images/grok/objectif-epargne-784.webp 784w" sizes="(max-width: 760px) 90vw, 36vw" alt="Graine qui germe dans une terre sombre" width="784" height="980" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <div class="planche-texte">
+        <span class="planche-num">01 / 06</span>
+        <h3>Épargne</h3>
+        <p>Optimiser et dynamiser votre épargne.</p>
+        <a href="/contact?sujet=epargne#rendez-vous" class="lien-fleche" data-libelle="Contact">En parler</a>
+      </div>
+      <span class="planche-voile" aria-hidden="true" data-superpose></span>
+    </li><li class="planche" id="objectif-tresorerie" style="--i:1">
+      <figure class="media planche-media" data-grok style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/grok/objectif-tresorerie-784.webp" srcset="/assets/images/grok/objectif-tresorerie-480.webp 480w, /assets/images/grok/objectif-tresorerie-640.webp 640w, /assets/images/grok/objectif-tresorerie-784.webp 784w" sizes="(max-width: 760px) 90vw, 36vw" alt="Atelier d’une petite entreprise, vide, au petit matin" width="784" height="980" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <div class="planche-texte">
+        <span class="planche-num">02 / 06</span>
+        <h3>Trésorerie d’entreprise</h3>
+        <p>Optimiser la trésorerie de votre entreprise.</p>
+        <a href="/contact?sujet=tresorerie#rendez-vous" class="lien-fleche" data-libelle="Contact">En parler</a>
+      </div>
+      <span class="planche-voile" aria-hidden="true" data-superpose></span>
+    </li><li class="planche" id="objectif-immobilier" style="--i:2">
+      <figure class="media planche-media" data-grok style="--cadrage:50% 45%">
+  <picture>
+    <img src="/assets/images/grok/objectif-immobilier-784.webp" srcset="/assets/images/grok/objectif-immobilier-480.webp 480w, /assets/images/grok/objectif-immobilier-640.webp 640w, /assets/images/grok/objectif-immobilier-784.webp 784w" sizes="(max-width: 760px) 90vw, 36vw" alt="Façade de maison de ville en tuffeau aux volets gris clair" width="784" height="980" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <div class="planche-texte">
+        <span class="planche-num">03 / 06</span>
+        <h3>Immobilier</h3>
+        <p>Investir dans l’immobilier et valoriser votre patrimoine.</p>
+        <a href="/contact?sujet=immobilier#rendez-vous" class="lien-fleche" data-libelle="Contact">En parler</a>
+      </div>
+      <span class="planche-voile" aria-hidden="true" data-superpose></span>
+    </li><li class="planche" id="objectif-retraite" style="--i:3">
+      <figure class="media planche-media" data-grok style="--cadrage:50% 60%">
+  <picture>
+    <img src="/assets/images/grok/objectif-retraite-784.webp" srcset="/assets/images/grok/objectif-retraite-480.webp 480w, /assets/images/grok/objectif-retraite-640.webp 640w, /assets/images/grok/objectif-retraite-784.webp 784w" sizes="(max-width: 760px) 90vw, 36vw" alt="Chaise de jardin en bois sous un vieux pommier" width="784" height="980" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <div class="planche-texte">
+        <span class="planche-num">04 / 06</span>
+        <h3>Retraite</h3>
+        <p>Préparer votre retraite.</p>
+        <a href="/contact?sujet=retraite#rendez-vous" class="lien-fleche" data-libelle="Contact">En parler</a>
+      </div>
+      <span class="planche-voile" aria-hidden="true" data-superpose></span>
+    </li><li class="planche" id="objectif-impots" style="--i:4">
+      <figure class="media planche-media" data-grok style="--cadrage:50% 55%">
+  <picture>
+    <img src="/assets/images/grok/objectif-impots-784.webp" srcset="/assets/images/grok/objectif-impots-480.webp 480w, /assets/images/grok/objectif-impots-640.webp 640w, /assets/images/grok/objectif-impots-784.webp 784w" sizes="(max-width: 760px) 90vw, 36vw" alt="Dossier fermé par une sangle sous une lampe de bureau en laiton" width="784" height="980" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <div class="planche-texte">
+        <span class="planche-num">05 / 06</span>
+        <h3>Impôts</h3>
+        <p>Réduire votre imposition, à titre privé comme professionnel.</p>
+        <a href="/contact?sujet=impots#rendez-vous" class="lien-fleche" data-libelle="Contact">En parler</a>
+      </div>
+      <span class="planche-voile" aria-hidden="true" data-superpose></span>
+    </li><li class="planche" id="objectif-transmission" style="--i:5">
+      <figure class="media planche-media" data-grok style="--cadrage:50% 55%">
+  <picture>
+    <img src="/assets/images/grok/objectif-transmission-784.webp" srcset="/assets/images/grok/objectif-transmission-480.webp 480w, /assets/images/grok/objectif-transmission-640.webp 640w, /assets/images/grok/objectif-transmission-784.webp 784w" sizes="(max-width: 760px) 90vw, 36vw" alt="Clé ancienne posée sur un buffet en noyer" width="784" height="980" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <div class="planche-texte">
+        <span class="planche-num">06 / 06</span>
+        <h3>Transmission</h3>
+        <p>Transmettre efficacement votre patrimoine immobilier et financier.</p>
+        <a href="/contact?sujet=transmission#rendez-vous" class="lien-fleche" data-libelle="Contact">En parler</a>
+      </div>
+      <span class="planche-voile" aria-hidden="true" data-superpose></span>
+    </li>
+  </ol>
+  <p class="planches-risque">Tout placement comporte des risques, dont celui de perte en capital. Les solutions sont proposées après étude de votre situation.</p>
+</section>
+<section class="pourqui conteneur" id="pour-qui">
+  <h2 data-anime="lignes">Pour qui ?</h2>
+  <div class="pourqui-grille">
+    <article class="pourqui-carte">
+      <figure class="media pourqui-media" data-grok data-anime="rideau" style="--cadrage:55% 60%">
+  <picture>
+    <img src="/assets/images/grok/pour-particuliers-784.webp" srcset="/assets/images/grok/pour-particuliers-480.webp 480w, /assets/images/grok/pour-particuliers-640.webp 640w, /assets/images/grok/pour-particuliers-784.webp 784w" sizes="(max-width: 760px) 90vw, 44vw" alt="Table de cuisine familiale le matin, deux tasses et un carnet fermé" width="784" height="523" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <h3>À titre privé</h3>
+      <p>Votre épargne, vos projets immobiliers, votre retraite, vos impôts et la transmission à vos proches.</p>
+    </article>
+    <article class="pourqui-carte">
+      <figure class="media pourqui-media" data-grok data-anime="rideau" style="--cadrage:45% 55%">
+  <picture>
+    <img src="/assets/images/grok/pour-entreprises-784.webp" srcset="/assets/images/grok/pour-entreprises-480.webp 480w, /assets/images/grok/pour-entreprises-640.webp 640w, /assets/images/grok/pour-entreprises-784.webp 784w" sizes="(max-width: 760px) 90vw, 44vw" alt="Bureau lumineux d’une petite entreprise, vide, le matin" width="784" height="523" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <h3>À titre professionnel</h3>
+      <p>La trésorerie de votre entreprise et votre imposition professionnelle.</p>
+    </article>
+  </div>
+</section>
+<section class="boussole" id="boussole" data-boussole>
+  <div class="conteneur boussole-grille">
+    <div class="boussole-tete">
+      <h2 data-anime="lignes">Par où commencer ?</h2>
+      <p data-anime>Choisissez votre situation : les objectifs qui vous concernent s’allument.</p>
+      <fieldset class="boussole-choix" data-anime="cascade">
+        <legend class="visuellement-cache">Votre situation</legend>
+        <label class="choix"><input type="radio" name="situation" value="epargne" data-objectifs="epargne impots" checked><span>Je veux faire travailler mon épargne</span></label><label class="choix"><input type="radio" name="situation" value="entreprise" data-objectifs="tresorerie impots retraite"><span>Je dirige une entreprise</span></label><label class="choix"><input type="radio" name="situation" value="achat" data-objectifs="immobilier epargne impots"><span>Je prépare un investissement immobilier</span></label><label class="choix"><input type="radio" name="situation" value="retraite" data-objectifs="retraite epargne transmission"><span>La retraite approche</span></label><label class="choix"><input type="radio" name="situation" value="famille" data-objectifs="transmission immobilier"><span>Je pense à mes enfants</span></label>
+      </fieldset>
+    </div>
+    <div class="boussole-resultat">
+      <div class="boussole-schema" data-visuel><svg class="anneaux anneaux--boussole" viewBox="-330 -330 660 660" role="img" aria-label="Six anneaux autour du repère, un objectif sur chacun" data-effet="boussole">
+  <g class="anneau" data-i="0" data-cle="epargne">
+      <circle class="anneau-cercle" r="62" fill="none"/>
+      <circle class="anneau-point" cx="-36" cy="-50" r="5" data-repere/>
+      <text class="anneau-nom" x="-50" y="-42" text-anchor="end">Épargne</text>
+    </g><g class="anneau" data-i="1" data-cle="tresorerie">
+      <circle class="anneau-cercle" r="98" fill="none"/>
+      <circle class="anneau-point" cx="72" cy="-67" r="5" data-repere/>
+      <text class="anneau-nom" x="86" y="-59" text-anchor="start">Trésorerie</text>
+    </g><g class="anneau" data-i="2" data-cle="immobilier">
+      <circle class="anneau-cercle" r="134" fill="none"/>
+      <circle class="anneau-point" cx="132" cy="20" r="5" data-repere/>
+      <text class="anneau-nom" x="146" y="28" text-anchor="start">Immobilier</text>
+    </g><g class="anneau" data-i="3" data-cle="retraite">
+      <circle class="anneau-cercle" r="170" fill="none"/>
+      <circle class="anneau-point" cx="99" cy="138" r="5" data-repere/>
+      <text class="anneau-nom" x="113" y="146" text-anchor="start">Retraite</text>
+    </g><g class="anneau" data-i="4" data-cle="impots">
+      <circle class="anneau-cercle" r="206" fill="none"/>
+      <circle class="anneau-point" cx="-95" cy="183" r="5" data-repere/>
+      <text class="anneau-nom" x="-109" y="191" text-anchor="end">Impôts</text>
+    </g><g class="anneau" data-i="5" data-cle="transmission">
+      <circle class="anneau-cercle" r="242" fill="none"/>
+      <circle class="anneau-point" cx="-224" cy="92" r="5" data-repere/>
+      <text class="anneau-nom" x="-210" y="100" text-anchor="start">Transmission</text>
+    </g>
+  <circle class="anneaux-deco" r="300" fill="none"/>
+  <g class="anneaux-repere" transform="translate(-16 -46) scale(.25)"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g>
+</svg></div>
+      <p class="boussole-liste" aria-live="polite"><strong>Objectifs à étudier ensemble :</strong> <span data-boussole-noms>Épargne, Impôts</span></p>
+      <p><a href="/contact?sujet=epargne#rendez-vous" class="bouton" data-libelle="Contact" data-boussole-lien>En parler avec Nicolas</a></p>
+      <p class="boussole-mention">Orientation indicative : seul un entretien permet de vous conseiller.</p>
+    </div>
+  </div>
+  <script type="application/json" data-boussole-json>{"epargne":"Épargne","tresorerie":"Trésorerie d’entreprise","immobilier":"Immobilier","retraite":"Retraite","impots":"Impôts","transmission":"Transmission"}</script>
+</section>
+<section class="feuillets" id="deroule">
+  <div class="conteneur">
+    <h2 data-anime="lignes">Le déroulé d’un accompagnement</h2>
+    <p class="feuillets-intro" data-anime>Chaque étape laisse une trace écrite, comme le prévoit la réglementation des conseillers en investissements financiers. <span class="a-valider">à valider par Nicolas Rabouan</span></p>
+    <ol class="feuillets-liste" data-effet="feuillets" data-visuel>
+      <li class="feuillet" style="--i:0"><span class="feuillet-num">1</span><h3>Faire connaissance</h3><p>Un premier échange, et la remise du document d’entrée en relation : statuts, mode de rémunération, partenaires.</p><span class="feuillet-lignes" aria-hidden="true"></span></li><li class="feuillet" style="--i:1"><span class="feuillet-num">2</span><h3>Comprendre votre situation</h3><p>Le recueil de votre situation, de vos objectifs, de votre horizon et de votre rapport au risque.</p><span class="feuillet-lignes" aria-hidden="true"></span></li><li class="feuillet" style="--i:2"><span class="feuillet-num">3</span><h3>Préconiser par écrit</h3><p>Une lettre de mission, puis un rapport écrit qui explique pourquoi les solutions proposées vous correspondent.</p><span class="feuillet-lignes" aria-hidden="true"></span></li><li class="feuillet" style="--i:3"><span class="feuillet-num">4</span><h3>Suivre dans la durée</h3><p>Des points réguliers pour adapter la stratégie à l’évolution de vos projets.</p><span class="feuillet-lignes" aria-hidden="true"></span></li>
+    </ol>
+  </div>
+</section>
+<section class="statuts conteneur" id="statuts">
+  <div class="statuts-tete">
+    <h2 data-anime="lignes">Mes statuts, en clair</h2>
+    <p data-anime>Chaque statut est enregistré à l’ORIAS sous le numéro 22007088.</p>
+    <a class="lien-fleche" href="https://www.orias.fr/" target="_blank" rel="noopener">Vérifier sur orias.fr (nouvel onglet)</a>
+  </div>
+  <div class="tampon" aria-hidden="true" data-effet="tampon-orias" data-visuel data-superpose>
+    <svg viewBox="0 0 200 200"><defs><path id="tampon-cercle" d="M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0"/></defs>
+      <circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="100" r="58" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <text class="tampon-texte"><textPath href="#tampon-cercle">ORIAS · CONSEILLER EN INVESTISSEMENTS FINANCIERS · </textPath></text>
+      <text class="tampon-num" x="100" y="96" text-anchor="middle">22007088</text><text class="tampon-petit" x="100" y="118" text-anchor="middle">ANACOFI · AMF</text>
+    </svg>
+  </div>
+  <ul class="statuts-liste" data-anime="cascade">
+    <li><h3>Conseiller en investissements financiers</h3><p>Le conseil sur vos placements financiers. Membre de l’ANACOFI, association professionnelle agréée par l’AMF.</p></li>
+    <li><h3>Mandataire d’intermédiaire en opérations de banque</h3><p>Le financement de vos projets, en opérations de banque et en services de paiement.</p></li>
+    <li><h3>Mandataire d’intermédiaire d’assurance</h3><p>Les contrats d’assurance qui accompagnent votre patrimoine.</p></li>
+    <li><h3>Transactions immobilières</h3><p>Attestation d’habilitation délivrée par Stellium Immobilier, titulaire de la carte de transaction immobilière n° CPI 3101 2015 000 001 813.</p></li>
+  </ul>
+</section>
+<section class="fin-page fin-page--nuit" id="appel">
+  <div class="conteneur fin-page-grille">
+    <div class="fin-page-repere" aria-hidden="true" data-effet="ondes-appel" data-visuel><span></span><span></span><span></span><svg class="repere fin-repere" viewBox="0 0 128 236" aria-hidden="true" focusable="false"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg></div>
+    <div>
+      <h2 data-anime="lignes">Échangeons et concrétisons, ensemble, tous vos projets</h2>
+      <p data-anime>Un premier échange pour faire le point sur votre situation et vos objectifs.</p>
+      <p class="appel-actions" data-anime><a href="/contact#rendez-vous" class="bouton" data-libelle="Contact">Prendre rendez-vous</a> <a class="bouton bouton--contour" href="tel:+33663479122">Appeler le 06 63 47 91 22</a></p>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="pied" id="pied" data-masque-barre>
+  <div class="conteneur pied-haut">
+    <img class="pied-logo" src="/assets/images/logo-complet-clair.webp" alt="Proxiconseil Patrimoine" width="720" height="252" loading="lazy">
+    <p class="pied-devise">Le patrimoine accessible à tous</p>
+  </div>
+  <div class="conteneur pied-grille">
+    <div>
+      <p class="pied-titre">Contact</p>
+      <p>Nicolas Rabouan<br>28 route du Calvaire, 72190 Saint-Pavace<br><a href="tel:+33663479122">06 63 47 91 22</a><br><a href="mailto:n.rabouan@proxiconseil-patrimoine.fr">n.rabouan@proxiconseil-patrimoine.fr</a></p>
+      <p class="pied-titre">Réseaux</p>
+      <ul class="pied-reseaux"><li><a href="https://www.linkedin.com/in/nicolas-rabouan-7a981812a/" target="_blank" rel="noopener">LinkedIn (nouvel onglet)</a></li><li><a href="https://www.facebook.com/profile.php?id=100094350663130" target="_blank" rel="noopener">Facebook (nouvel onglet)</a></li></ul>
+    </div>
+    <nav aria-label="Plan du site">
+      <p class="pied-titre">Plan du site</p>
+      <ul><li><a href="/" data-libelle="Accueil">Accueil</a></li><li><a href="/accompagnement" data-libelle="Accompagnement" aria-current="page">Accompagnement</a></li><li><a href="/qui-suis-je" data-libelle="Qui suis-je ?">Qui suis-je ?</a></li><li><a href="/immobilier" data-libelle="Immobilier">Immobilier</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div>
+      <p class="pied-titre">Confort</p>
+      <ul>
+        <li><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></li>
+        <li><a href="#haut" data-sans-transition>Retour en haut</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="conteneur pied-legal">
+    <p class="pied-titre">Statuts</p>
+    <p>SARL Proxiconseil Patrimoine, au capital de 5 000 €, RCS Le Mans 920 596 368. ORIAS n° 22007088 : conseiller en investissements financiers, membre de l’ANACOFI, association professionnelle agréée par l’AMF ; mandataire d’intermédiaire en opérations de banque et en services de paiement ; mandataire d’intermédiaire d’assurance. Attestation d’habilitation délivrée par Stellium Immobilier, titulaire de la carte de transaction immobilière n° CPI 3101 2015 000 001 813.</p>
+    <p>Médiation : ANM Conso pour un produit immobilier ou d’assurance, médiateur de l’AMF pour un placement financier.</p>
+    <p>Tout placement comporte des risques, dont celui de perte en capital. Les solutions sont proposées après étude de votre situation.</p>
+  </div>
+  <div class="conteneur pied-bas"><p>Mentions légales : à compléter · Politique de confidentialité : à compléter</p><p>Maquette de démonstration : les informations marquées « à compléter » seront fournies par Proxiconseil Patrimoine.</p><p>© Proxiconseil Patrimoine</p></div>
+</footer>
+<div data-barre-fixe>
+  <a class="bouton bouton--contour" href="tel:+33663479122">Appeler</a>
+  <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Rendez-vous</a>
+</div>
+</body>
+</html>

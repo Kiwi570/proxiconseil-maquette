@@ -1,0 +1,56 @@
+[
+  {
+    "cle": "epargne",
+    "nom": "Épargne",
+    "texte": "Optimiser et dynamiser votre épargne.",
+    "image": "grok/objectif-epargne",
+    "alt": "Graine qui germe dans une terre sombre",
+    "cadrage": "50% 55%",
+    "court": "Épargne"
+  },
+  {
+    "cle": "tresorerie",
+    "nom": "Trésorerie d’entreprise",
+    "texte": "Optimiser la trésorerie de votre entreprise.",
+    "image": "grok/objectif-tresorerie",
+    "alt": "Atelier d’une petite entreprise, vide, au petit matin",
+    "cadrage": "50% 50%",
+    "court": "Trésorerie"
+  },
+  {
+    "cle": "immobilier",
+    "nom": "Immobilier",
+    "texte": "Investir dans l’immobilier et valoriser votre patrimoine.",
+    "image": "grok/objectif-immobilier",
+    "alt": "Façade de maison de ville en tuffeau aux volets gris clair",
+    "cadrage": "50% 45%",
+    "court": "Immobilier"
+  },
+  {
+    "cle": "retraite",
+    "nom": "Retraite",
+    "texte": "Préparer votre retraite.",
+    "image": "grok/objectif-retraite",
+    "alt": "Chaise de jardin en bois sous un vieux pommier",
+    "cadrage": "50% 60%",
+    "court": "Retraite"
+  },
+  {
+    "cle": "impots",
+    "nom": "Impôts",
+    "texte": "Réduire votre imposition, à titre privé comme professionnel.",
+    "image": "grok/objectif-impots",
+    "alt": "Dossier fermé par une sangle sous une lampe de bureau en laiton",
+    "cadrage": "50% 55%",
+    "court": "Impôts"
+  },
+  {
+    "cle": "transmission",
+    "nom": "Transmission",
+    "texte": "Transmettre efficacement votre patrimoine immobilier et financier.",
+    "image": "grok/objectif-transmission",
+    "alt": "Clé ancienne posée sur un buffet en noyer",
+    "cadrage": "50% 55%",
+    "court": "Transmission"
+  }
+]

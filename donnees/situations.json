@@ -1,0 +1,7 @@
+[
+  { "cle": "epargne", "libelle": "Je veux faire travailler mon épargne", "objectifs": ["epargne", "impots"] },
+  { "cle": "entreprise", "libelle": "Je dirige une entreprise", "objectifs": ["tresorerie", "impots", "retraite"] },
+  { "cle": "achat", "libelle": "Je prépare un investissement immobilier", "objectifs": ["immobilier", "epargne", "impots"] },
+  { "cle": "retraite", "libelle": "La retraite approche", "objectifs": ["retraite", "epargne", "transmission"] },
+  { "cle": "famille", "libelle": "Je pense à mes enfants", "objectifs": ["transmission", "immobilier"] }
+]

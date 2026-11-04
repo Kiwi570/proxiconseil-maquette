@@ -1,0 +1,249 @@
+{
+ "client": "Proxiconseil Patrimoine",
+ "activite": "conseil + finance",
+ "direction": "Le repère",
+ "date": "2026-11-04T16:23:36.494Z",
+ "images": [
+  {
+   "nom": "raisons-bureau",
+   "fichier": "raisons-bureau.jpg",
+   "page": "Accueil",
+   "emplacement": "Pourquoi un conseiller (fond qui ondule)",
+   "role": "section-fond",
+   "format": "3:2",
+   "grok": "1168×784",
+   "priorite": "Indispensable",
+   "gabarit": "lieu",
+   "pieges": [
+    "texte parasite"
+   ],
+   "consigne": "An empty advisor's office at the end of the afternoon: a solid pale oak table, two chairs facing each other, a closed notebook with a pencil, two glasses of water, low golden light falling across the table from a tall window, quiet and welcoming, the left third of the room calm and in soft shadow. Landscape composition, aspect ratio 3:2, generous empty space on the left third of the frame for a title. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. Pages completely blank, blank book spines, abstract unreadable marks, plain unmarked surfaces, dials with tick marks only and no numbers. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "deroule-chemin",
+   "fichier": "deroule-chemin.jpg",
+   "page": "Accueil",
+   "emplacement": "Le déroulé (fond de l'itinéraire)",
+   "role": "section-fond",
+   "format": "16:9",
+   "grok": "1168×784",
+   "priorite": "Indispensable",
+   "gabarit": "section-fond",
+   "pieges": [
+    "paysage qui dérive"
+   ],
+   "consigne": "A narrow country lane winding between tall hedgerows through small bocage fields at dawn, light mist resting in the hollows, gently rolling land, a soft pale sky filling the upper half, calm and inviting, nobody on the lane. Wide horizontal composition, aspect ratio 16:9, main subject well inside the central area with generous margins on every side, so the image can be cropped, quiet uncluttered area in the upper half for a title. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. Only the real features of the bocage countryside of western France: small fields, hedgerows, oaks and poplars, no tea plantation, no rice terraces, no high mountains, no tropical vegetation, no power lines, no pylons, no modern buildings. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "citation-horizon",
+   "fichier": "citation-horizon.jpg",
+   "page": "Accueil",
+   "emplacement": "Citation de Bernanos (fond)",
+   "role": "section-fond",
+   "format": "16:9",
+   "grok": "1168×784",
+   "priorite": "Indispensable",
+   "gabarit": "section-fond",
+   "pieges": [
+    "paysage qui dérive"
+   ],
+   "consigne": "A wide open horizon over gently rolling fields at sunrise, a single earthen path leading far toward the soft light, a very wide sky with thin clouds, deep calm, the middle of the frame quiet and empty. Wide horizontal composition, aspect ratio 16:9, main subject well inside the central area with generous margins on every side, so the image can be cropped, calm empty space in the middle of the frame for a title. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. Only the real features of the bocage countryside of western France: small fields, hedgerows, oaks and poplars, no tea plantation, no rice terraces, no high mountains, no tropical vegetation, no power lines, no pylons, no modern buildings. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "appel-riviere",
+   "fichier": "appel-riviere.jpg",
+   "page": "Accueil",
+   "emplacement": "Appel final (fond)",
+   "role": "section-fond",
+   "format": "16:9",
+   "grok": "1168×784",
+   "priorite": "Conseillée",
+   "gabarit": "section-fond",
+   "pieges": [
+    "paysage qui dérive"
+   ],
+   "consigne": "A quiet river lined with tall poplars in the early morning, still water reflecting the trees, light mist above the water, a small empty wooden jetty on the right bank, the left third of the frame open sky and calm water. Wide horizontal composition, aspect ratio 16:9, main subject well inside the central area with generous margins on every side, so the image can be cropped, generous empty space on the left third of the frame for a title. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. Only the real features of the bocage countryside of western France: small fields, hedgerows, oaks and poplars, no tea plantation, no rice terraces, no high mountains, no tropical vegetation, no power lines, no pylons, no modern buildings. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "objectif-epargne",
+   "fichier": "objectif-epargne.jpg",
+   "page": "Accueil et Mon accompagnement",
+   "emplacement": "Les 6 objectifs : épargne",
+   "role": "carte-service",
+   "format": "4:5",
+   "grok": "784×1168",
+   "priorite": "Indispensable",
+   "gabarit": "texture",
+   "pieges": [],
+   "consigne": "Macro photograph of a single seed just splitting open in dark moist soil, its first pale root emerging, warm side light, very shallow depth of field, dark warm background. Vertical composition, aspect ratio 4:5, main subject well inside the central area with generous margins on every side, so the image can be cropped. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "objectif-tresorerie",
+   "fichier": "objectif-tresorerie.jpg",
+   "page": "Accueil et Mon accompagnement",
+   "emplacement": "Les 6 objectifs : trésorerie d'entreprise",
+   "role": "carte-service",
+   "format": "4:5",
+   "grok": "784×1168",
+   "priorite": "Indispensable",
+   "gabarit": "lieu",
+   "pieges": [],
+   "consigne": "The empty workshop of a small family business early in the morning: a long workbench in pale oak, tidy plain tools hanging on a pegboard, a glass door half open onto soft street light, calm and orderly, nobody present. Vertical composition, aspect ratio 4:5, main subject well inside the central area with generous margins on every side, so the image can be cropped. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "objectif-immobilier",
+   "fichier": "objectif-immobilier.jpg",
+   "page": "Accueil et Mon accompagnement",
+   "emplacement": "Les 6 objectifs : immobilier",
+   "role": "carte-service",
+   "format": "4:5",
+   "grok": "784×1168",
+   "priorite": "Indispensable",
+   "gabarit": "lieu",
+   "pieges": [],
+   "consigne": "The facade of a generic old townhouse in pale tufa limestone with light grey shutters and a slate roof, a climbing rose beside a painted wooden door, late afternoon sun, generic and unidentifiable. Vertical composition, aspect ratio 4:5, main subject well inside the central area with generous margins on every side, so the image can be cropped. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "objectif-retraite",
+   "fichier": "objectif-retraite.jpg",
+   "page": "Accueil et Mon accompagnement",
+   "emplacement": "Les 6 objectifs : retraite",
+   "role": "carte-service",
+   "format": "4:5",
+   "grok": "784×1168",
+   "priorite": "Indispensable",
+   "gabarit": "lieu",
+   "pieges": [],
+   "consigne": "A weathered wooden garden chair under an old apple tree at the end of summer, long grass, a few apples on the ground, soft golden evening light, nobody present. Vertical composition, aspect ratio 4:5, main subject well inside the central area with generous margins on every side, so the image can be cropped. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "objectif-impots",
+   "fichier": "objectif-impots.jpg",
+   "page": "Accueil et Mon accompagnement",
+   "emplacement": "Les 6 objectifs : impôts",
+   "role": "carte-service",
+   "format": "4:5",
+   "grok": "784×1168",
+   "priorite": "Indispensable",
+   "gabarit": "lieu",
+   "pieges": [
+    "texte parasite"
+   ],
+   "consigne": "A closed plain cardboard document folder tied with a fabric strap, lying on a tidy pale oak desk under a brass desk lamp, a fountain pen beside it, the folder completely plain and unmarked, warm pool of lamplight. Vertical composition, aspect ratio 4:5, main subject well inside the central area with generous margins on every side, so the image can be cropped. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. Pages completely blank, blank book spines, abstract unreadable marks, plain unmarked surfaces, dials with tick marks only and no numbers. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "objectif-transmission",
+   "fichier": "objectif-transmission.jpg",
+   "page": "Accueil et Mon accompagnement",
+   "emplacement": "Les 6 objectifs : transmission",
+   "role": "carte-service",
+   "format": "4:5",
+   "grok": "784×1168",
+   "priorite": "Indispensable",
+   "gabarit": "lieu",
+   "pieges": [],
+   "consigne": "An old wrought-iron key resting on a polished walnut sideboard, a ray of window light across the wood, a small ceramic bowl and a folded linen cloth nearby, intimate and warm, nobody present. Vertical composition, aspect ratio 4:5, main subject well inside the central area with generous margins on every side, so the image can be cropped. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "pour-particuliers",
+   "fichier": "pour-particuliers.jpg",
+   "page": "Mon accompagnement",
+   "emplacement": "Pour qui : particuliers et familles",
+   "role": "carte-service",
+   "format": "3:2",
+   "grok": "1168×784",
+   "priorite": "Conseillée",
+   "gabarit": "lieu",
+   "pieges": [
+    "texte parasite"
+   ],
+   "consigne": "A family kitchen table in the morning, two ceramic cups, a closed notebook with a pencil, two chairs pulled back, soft window light, a bowl of fruit, nobody present. Landscape composition, aspect ratio 3:2. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. Pages completely blank, blank book spines, abstract unreadable marks, plain unmarked surfaces, dials with tick marks only and no numbers. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "pour-entreprises",
+   "fichier": "pour-entreprises.jpg",
+   "page": "Mon accompagnement",
+   "emplacement": "Pour qui : chefs d'entreprise",
+   "role": "carte-service",
+   "format": "3:2",
+   "grok": "1168×784",
+   "priorite": "Conseillée",
+   "gabarit": "lieu",
+   "pieges": [
+    "texte parasite"
+   ],
+   "consigne": "A bright empty office of a small company with large windows, a long oak desk, a potted plant, rolled blank plans on a shelf, morning light, chairs tucked in, nobody present. Landscape composition, aspect ratio 3:2. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. Pages completely blank, blank book spines, abstract unreadable marks, plain unmarked surfaces, dials with tick marks only and no numbers. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "carnet-bureau",
+   "fichier": "carnet-bureau.jpg",
+   "page": "Qui suis-je",
+   "emplacement": "Le parcours (image de section)",
+   "role": "scene-metier",
+   "format": "3:2",
+   "grok": "1168×784",
+   "priorite": "Conseillée",
+   "gabarit": "lieu",
+   "pieges": [
+    "texte parasite"
+   ],
+   "consigne": "A closed brown leather notebook and a fountain pen on a pale oak desk, a pair of reading glasses folded beside them, soft side light from a window, rich gentle shadows, nobody present. Landscape composition, aspect ratio 3:2. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. Pages completely blank, blank book spines, abstract unreadable marks, plain unmarked surfaces, dials with tick marks only and no numbers. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "immobilier-facade",
+   "fichier": "immobilier-facade.jpg",
+   "page": "Immobilier",
+   "emplacement": "Ouverture (bandeau sous le plan de masse) (ordinateur)",
+   "role": "ouverture",
+   "format": "16:9",
+   "grok": "1168×784",
+   "priorite": "Indispensable",
+   "gabarit": "lieu",
+   "pieges": [],
+   "consigne": "The facade of a generic contemporary residential building with balconies and light wooden cladding, a landscaped garden in front, soft late afternoon light, calm and well kept, generic and unidentifiable, no vehicles. Wide horizontal composition, aspect ratio 16:9, main subject well inside the central area with generous margins on every side, so the image can be cropped, quiet uncluttered area in the upper half for a title. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "immobilier-facade",
+   "fichier": "immobilier-facade-mobile.jpg",
+   "page": "Immobilier",
+   "emplacement": "Ouverture (bandeau sous le plan de masse) (téléphone)",
+   "role": "ouverture",
+   "format": "9:16",
+   "grok": "784×1168",
+   "priorite": "Indispensable",
+   "gabarit": "lieu",
+   "pieges": [],
+   "consigne": "The facade of a generic contemporary residential building with balconies and light wooden cladding, a landscaped garden in front, soft late afternoon light, calm and well kept, generic and unidentifiable, no vehicles. Vertical composition, aspect ratio 9:16, highest resolution available, at least 1080 pixels wide, main subject well inside the central area with generous margins on every side, so the image can be cropped, main subject in the lower half, quiet uncluttered area in the upper half for a title. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "contact-bocage",
+   "fichier": "contact-bocage.jpg",
+   "page": "Contact",
+   "emplacement": "Bandeau panoramique",
+   "role": "section-fond",
+   "format": "16:9",
+   "grok": "1168×784",
+   "priorite": "Conseillée",
+   "gabarit": "section-fond",
+   "pieges": [
+    "paysage qui dérive"
+   ],
+   "consigne": "Hedgerow-lined fields under a wide evening sky, a lone oak tree on a gentle hill, soft golden light, the upper half a calm open sky. Wide horizontal composition, aspect ratio 16:9, main subject well inside the central area with generous margins on every side, so the image can be cropped, quiet uncluttered area in the upper half for a title. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. Only the real features of the bocage countryside of western France: small fields, hedgerows, oaks and poplars, no tea plantation, no rice terraces, no high mountains, no tropical vegetation, no power lines, no pylons, no modern buildings. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  },
+  {
+   "nom": "hors-carte",
+   "fichier": "hors-carte.jpg",
+   "page": "404",
+   "emplacement": "En tête de page",
+   "role": "404",
+   "format": "16:9",
+   "grok": "1168×784",
+   "priorite": "Conseillée",
+   "gabarit": "404",
+   "pieges": [
+    "paysage qui dérive"
+   ],
+   "consigne": "A country path disappearing into thick white fog, the hedgerows on each side fading softly into the mist, quiet, gentle and slightly mysterious, nobody on the path. Wide horizontal composition, aspect ratio 16:9, main subject well inside the central area with generous margins on every side, so the image can be cropped, quiet uncluttered area in the upper half for a title. Cinematic editorial photograph, calm, clear and reassuring mood, palette of limestone cream, deep petrol blue, soft sand and a touch of aged brass, soft, low natural light, tactile pale oak, tufa limestone, linen and brushed brass, set in a calm provincial setting of western France on a mild day at the end of summer, soft volumetric light, subtle film grain, calm and contemplative, medium-format look, natural realistic colours, generous negative space. No charts with numbers, no readable documents, no handshake, no puzzle pieces, no chess pieces, no arrows pointing up, nobody looking at the camera, no flags. No numbers, no prices, no currency symbols, no upward trend, no gold coins, no banknotes, no piggy bank, no stock-photo handshake, no readable chart, no recognizable face. Only the real features of the bocage countryside of western France: small fields, hedgerows, oaks and poplars, no tea plantation, no rice terraces, no high mountains, no tropical vegetation, no power lines, no pylons, no modern buildings. No text, no letters, no numbers, no logos, no brand names, no signage, no watermark, no signature, no recognizable person, no visible face, no real or famous people, not a specific real building or landmark."
+  }
+ ]
+}

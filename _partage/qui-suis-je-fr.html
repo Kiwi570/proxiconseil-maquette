@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<link rel="stylesheet" href="/assets/css/socle.css"><link rel="stylesheet" href="/assets/css/site.css">
+<style>:root{--fond:#f4f1ea;--texte:#0e2a30}
+html,body{margin:0;width:1200px;height:630px;overflow:hidden;background:var(--fond);color:var(--texte)}
+.carte{display:grid;grid-template-columns:1fr 1fr;width:1200px;height:630px}
+.carte-texte{display:flex;flex-direction:column;justify-content:space-between;padding:64px}
+.carte-texte img{width:300px;height:auto}
+.carte-image{position:relative}
+.carte-pin{position:absolute;left:50%;top:50%;width:70px;transform:translate(-50%,-90%);color:#00606c}
+.carte-mention{position:absolute;right:12px;bottom:12px;padding:4px 10px;border-radius:999px;background:rgba(8,38,43,.78);color:#fff;font:600 14px var(--police-texte)}
+.carte-titre{font-family:var(--police-titres);font-size:64px;line-height:1.02;margin:0;text-wrap:balance}
+.carte-nom{font-size:24px;font-weight:600;margin:0}
+.carte-image{background:center/cover no-repeat}</style>
+</head><body>
+<div class="carte">
+  <div class="carte-texte">
+    <img src="/assets/images/logo-complet.webp" alt="">
+    <p class="carte-titre">Nicolas Rabouan</p>
+    <p class="carte-nom">Proxiconseil Patrimoine</p>
+  </div>
+  <div class="carte-image" style="background-image:url('/assets/images/portrait-1134.webp')"></div>
+</div>
+</body></html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr" data-v="1" data-curseur>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hors de la carte : Proxiconseil Patrimoine</title>
+<meta name="description" content="Cette adresse ne mène nulle part.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="https://proxiconseil-maquette.vercel.app/404">
+<style>:root{--fond:#f4f1ea;--texte:#0e2a30;--voile-fond:#08262b;--ouverture-fond:#f4f1ea;--menu-fond:#08262b}:root { --entete-h: 72px; --barres-h: 0px; } html { background: var(--fond); color: var(--texte); scrollbar-gutter: stable; } body { margin: 0; background: var(--fond); } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime] { opacity: 0; } html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) [data-anime].vu { opacity: 1; } [data-voile] { position: fixed; inset: 0; z-index: 900; background: var(--voile-fond); transform: translateY(100%); visibility: hidden; pointer-events: none; } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) [data-voile] { transform: none; visibility: visible; } html.calme [data-voile], html.secours [data-voile] { visibility: hidden !important; } .ouverture-panneau { position: fixed; inset: 0; z-index: 850; display: none; place-content: center; justify-items: center; background: var(--ouverture-fond, var(--voile-fond)); color: var(--fond); text-align: center; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouverture-panneau { display: grid; } html.defilement-bloque, html.defilement-bloque body, html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie), html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) body, html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours), html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) body { overflow: hidden; } html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) { background-color: var(--ouverture-fond, var(--voile-fond)); } html[data-arrivee="voile"]:not(.voile-leve):not(.calme):not(.secours) { background-color: var(--voile-fond); }</style>
+<script>(function () {
+var d = document.documentElement, ss = null, ls = null;
+try { ss = window.sessionStorage; ls = window.localStorage; } catch (e) {}
+d.classList.add('js');
+var calme = false;
+try { calme = !!ls && ls.getItem('socle:calme') === 'oui'; } catch (e) {}
+if (!calme && window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) calme = true;
+if (calme) d.classList.add('calme');
+var nav = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+var type = nav ? nav.type : 'navigate';
+var depart = null;
+try { depart = JSON.parse(ss.getItem('socle:depart') || 'null'); ss.removeItem('socle:depart'); } catch (e) {}
+if (depart && !(Date.now() - depart.t < 15000)) depart = null;
+var retourSection = false;
+try { retourSection = !!ss.getItem('socle:calme-retour'); } catch (e) {}
+var mode = type === 'back_forward' || retourSection ? 'retour' : type === 'reload' ? 'intro' : depart ? 'voile' : 'intro';
+d.setAttribute('data-arrivee', mode);
+if (mode === 'voile' && depart.couleur) d.style.setProperty('--voile-fond', depart.couleur);
+if (type === 'reload' && 'scrollRestoration' in history) {
+if (!retourSection) history.scrollRestoration = 'manual';
+}
+try {
+var choisie = ls && ls.getItem('socle:langue');
+var langue = (d.lang || '').slice(0, 2);
+if (choisie && choisie !== langue && type === 'navigate' && !depart) {
+var alt = document.querySelector('link[rel="alternate"][hreflang="' + choisie + '"]');
+if (alt) location.replace(new URL(alt.href).pathname + location.search + location.hash);
+}
+} catch (e) {}
+setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('secours'); }, 2000);
+})();</script>
+<link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/polices/manrope.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/css/socle.css?v=1">
+<link rel="stylesheet" href="/assets/css/site.css?v=1">
+<link rel="modulepreload" href="/assets/js/site.js?v=1">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=1">
+<script src="/assets/vendor/gsap.min.js" defer></script>
+<script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="/assets/vendor/SplitText.min.js" defer></script>
+<script type="module" src="/assets/js/site.js?v=1"></script>
+<meta name="theme-color" content="#f4f1ea">
+<link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Proxiconseil Patrimoine">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Hors de la carte : Proxiconseil Patrimoine">
+<meta property="og:description" content="Cette adresse ne mène nulle part.">
+<meta property="og:url" content="https://proxiconseil-maquette.vercel.app/404">
+<meta property="og:image" content="https://proxiconseil-maquette.vercel.app/assets/partage/accueil-fr.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Proxiconseil Patrimoine, proximité et conseil au service de votre patrimoine, au Mans">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FinancialService","name":"Proxiconseil Patrimoine","legalName":"SARL Proxiconseil Patrimoine","slogan":"Le patrimoine accessible à tous","url":"https://proxiconseil-maquette.vercel.app/","logo":"https://proxiconseil-maquette.vercel.app/assets/images/logo-complet.png","telephone":"+33663479122","email":"n.rabouan@proxiconseil-patrimoine.fr","address":{"@type":"PostalAddress","streetAddress":"28 route du Calvaire","postalCode":"72190","addressLocality":"Saint-Pavace","addressCountry":"FR"},"areaServed":"Le Mans","employee":{"@type":"Person","name":"Nicolas Rabouan","jobTitle":"Conseiller en investissements financiers"},"identifier":[{"@type":"PropertyValue","propertyID":"ORIAS","value":"22007088"},{"@type":"PropertyValue","propertyID":"RCS Le Mans","value":"920 596 368"}],"sameAs":["https://www.linkedin.com/in/nicolas-rabouan-7a981812a/","https://www.facebook.com/profile.php?id=100094350663130"],"description":"Conseil en gestion de patrimoine au Mans : épargne et trésorerie d'entreprise, immobilier, retraite, fiscalité à titre privé et professionnel, transmission."}</script>
+</head>
+<body id="haut">
+<div data-voile aria-hidden="true"><div class="voile-contenu"><img src="/assets/images/repere-clair.svg" alt="" width="40" height="74"><span data-voile-libelle>Page introuvable</span></div></div>
+<div class="ouverture-panneau" data-ouverture aria-hidden="true">
+  <div class="ouverture-scene">
+    <span class="ouverture-onde"></span><span class="ouverture-onde"></span><span class="ouverture-onde"></span>
+    <svg class="repere ouverture-repere" viewBox="0 0 128 236" aria-hidden="true" focusable="false"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg>
+  </div>
+  <img class="ouverture-nom" src="/assets/images/logo-texte.webp" alt="" width="547" height="201">
+</div>
+<a class="evitement" href="#contenu">Aller au contenu</a>
+<header data-entete>
+  <div class="entete-rangee">
+    <a class="entete-logo" href="/" data-libelle="Accueil">
+      <img src="/assets/images/logo-complet.webp" alt="" width="720" height="252"><span class="visuellement-cache">Proxiconseil Patrimoine</span>
+    </a>
+    <nav data-nav aria-label="Navigation principale">
+      <ul><li><a href="/accompagnement" data-libelle="Accompagnement">Accompagnement</a></li><li><a href="/qui-suis-je" data-libelle="Qui suis-je ?">Qui suis-je ?</a></li><li><a href="/immobilier" data-libelle="Immobilier">Immobilier</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div class="entete-actions">
+      <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Prendre rendez-vous</a>
+      <button type="button" data-menu-bouton aria-controls="menu" aria-expanded="false" data-libelle-ouvrir="Menu" data-libelle-fermer="Fermer"><span data-libelle-bouton>Menu</span></button>
+    </div>
+  </div>
+</header>
+<div id="menu" data-menu role="dialog" aria-modal="true" aria-label="Menu">
+  <ul><li style="--i:0"><a href="/" class="menu-lien" data-libelle="Accueil">Accueil</a></li><li style="--i:1"><a href="/accompagnement" class="menu-lien" data-libelle="Accompagnement">Accompagnement</a></li><li style="--i:2"><a href="/qui-suis-je" class="menu-lien" data-libelle="Qui suis-je ?">Qui suis-je ?</a></li><li style="--i:3"><a href="/immobilier" class="menu-lien" data-libelle="Immobilier">Immobilier</a></li><li style="--i:4"><a href="/contact" class="menu-lien" data-libelle="Contact">Contact</a></li></ul>
+  <p><a class="bouton" href="tel:+33663479122">Appeler 06 63 47 91 22</a></p>
+  <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
+</div>
+<main id="contenu" tabindex="-1" data-page="404">
+<section class="introuvable" id="debut">
+  <figure class="media introuvable-fond" data-grok data-fx="zoom" style="--cadrage:50% 60%">
+  <picture>
+    <img src="/assets/images/grok/hors-carte-1280.webp" srcset="/assets/images/grok/hors-carte-640.webp 640w, /assets/images/grok/hors-carte-1280.webp 1280w, /assets/images/grok/hors-carte-1752.webp 1752w" sizes="100vw" alt="Chemin de campagne qui disparaît dans un épais brouillard" width="1280" height="720" fetchpriority="high" loading="eager" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+  <div class="introuvable-texte conteneur">
+    <div class="introuvable-scene" aria-hidden="true"><svg class="repere introuvable-repere" viewBox="0 0 128 236" aria-hidden="true" focusable="false" data-effet="repere-chute"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg></div>
+    <h1 data-anime="lignes">Hors de la carte</h1>
+    <p data-anime>Cette adresse ne mène nulle part. Revenons à un repère connu.</p>
+    <p data-anime><a href="/" class="bouton" data-libelle="Accueil" data-action-principale>Retour à l’accueil</a> <span class="introuvable-info" data-info-cle>06 63 47 91 22</span></p>
+  </div>
+</section>
+</main>
+<footer class="pied" id="pied" data-masque-barre>
+  <div class="conteneur pied-haut">
+    <img class="pied-logo" src="/assets/images/logo-complet-clair.webp" alt="Proxiconseil Patrimoine" width="720" height="252" loading="lazy">
+    <p class="pied-devise">Le patrimoine accessible à tous</p>
+  </div>
+  <div class="conteneur pied-grille">
+    <div>
+      <p class="pied-titre">Contact</p>
+      <p>Nicolas Rabouan<br>28 route du Calvaire, 72190 Saint-Pavace<br><a href="tel:+33663479122">06 63 47 91 22</a><br><a href="mailto:n.rabouan@proxiconseil-patrimoine.fr">n.rabouan@proxiconseil-patrimoine.fr</a></p>
+      <p class="pied-titre">Réseaux</p>
+      <ul class="pied-reseaux"><li><a href="https://www.linkedin.com/in/nicolas-rabouan-7a981812a/" target="_blank" rel="noopener">LinkedIn (nouvel onglet)</a></li><li><a href="https://www.facebook.com/profile.php?id=100094350663130" target="_blank" rel="noopener">Facebook (nouvel onglet)</a></li></ul>
+    </div>
+    <nav aria-label="Plan du site">
+      <p class="pied-titre">Plan du site</p>
+      <ul><li><a href="/" data-libelle="Accueil">Accueil</a></li><li><a href="/accompagnement" data-libelle="Accompagnement">Accompagnement</a></li><li><a href="/qui-suis-je" data-libelle="Qui suis-je ?">Qui suis-je ?</a></li><li><a href="/immobilier" data-libelle="Immobilier">Immobilier</a></li><li><a href="/contact" data-libelle="Contact">Contact</a></li></ul>
+    </nav>
+    <div>
+      <p class="pied-titre">Confort</p>
+      <ul>
+        <li><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></li>
+        <li><a href="#haut" data-sans-transition>Retour en haut</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="conteneur pied-legal">
+    <p class="pied-titre">Statuts</p>
+    <p>SARL Proxiconseil Patrimoine, au capital de 5 000 €, RCS Le Mans 920 596 368. ORIAS n° 22007088 : conseiller en investissements financiers, membre de l’ANACOFI, association professionnelle agréée par l’AMF ; mandataire d’intermédiaire en opérations de banque et en services de paiement ; mandataire d’intermédiaire d’assurance. Attestation d’habilitation délivrée par Stellium Immobilier, titulaire de la carte de transaction immobilière n° CPI 3101 2015 000 001 813.</p>
+    <p>Médiation : ANM Conso pour un produit immobilier ou d’assurance, médiateur de l’AMF pour un placement financier.</p>
+    <p>Tout placement comporte des risques, dont celui de perte en capital. Les solutions sont proposées après étude de votre situation.</p>
+  </div>
+  <div class="conteneur pied-bas"><p>Mentions légales : à compléter · Politique de confidentialité : à compléter</p><p>Maquette de démonstration : les informations marquées « à compléter » seront fournies par Proxiconseil Patrimoine.</p><p>© Proxiconseil Patrimoine</p></div>
+</footer>
+<div data-barre-fixe>
+  <a class="bouton bouton--contour" href="tel:+33663479122">Appeler</a>
+  <a class="bouton" href="/contact#rendez-vous" data-libelle="Contact">Rendez-vous</a>
+</div>
+</body>
+</html>

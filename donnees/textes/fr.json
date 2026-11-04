@@ -1,0 +1,339 @@
+{
+  "commun": {
+    "navigation": "Navigation principale",
+    "menu": "Menu",
+    "fermer": "Fermer",
+    "langueAutre": "English version",
+    "actionEntete": "Prendre rendez-vous",
+    "appeler": "Appeler",
+    "calmeReduire": "Réduire les animations",
+    "calmeRetablir": "Rétablir les animations",
+    "calmeSysteme": "Animations réduites par le réglage de votre appareil",
+    "sommaire": "Plan du site",
+    "confort": "Confort",
+    "retourHaut": "Retour en haut",
+    "maquette": "Maquette de démonstration : les informations marquées « à compléter » seront fournies par Proxiconseil Patrimoine.",
+    "evitement": "Aller au contenu",
+    "mentionIa": "Illustration générée",
+    "pause": "Pause",
+    "lecture": "Lecture",
+    "introLigne": "Le patrimoine accessible à tous",
+    "logoAlt": "Proxiconseil Patrimoine, accueil",
+    "contact": "Contact",
+    "reseaux": "Réseaux",
+    "linkedin": "LinkedIn (nouvel onglet)",
+    "facebook": "Facebook (nouvel onglet)",
+    "statutsTitre": "Statuts",
+    "statuts": "SARL Proxiconseil Patrimoine, au capital de 5 000 €, RCS Le Mans 920 596 368. ORIAS n° 22007088 : conseiller en investissements financiers, membre de l’ANACOFI, association professionnelle agréée par l’AMF ; mandataire d’intermédiaire en opérations de banque et en services de paiement ; mandataire d’intermédiaire d’assurance. Attestation d’habilitation délivrée par Stellium Immobilier, titulaire de la carte de transaction immobilière n° CPI 3101 2015 000 001 813.",
+    "mediateurs": "Médiation : ANM Conso pour un produit immobilier ou d’assurance, médiateur de l’AMF pour un placement financier.",
+    "risque": "Tout placement comporte des risques, dont celui de perte en capital. Les solutions sont proposées après étude de votre situation.",
+    "mentions": "Mentions légales : à compléter",
+    "confidentialite": "Politique de confidentialité : à compléter",
+    "aValider": "à valider par Nicolas Rabouan",
+    "actionCourte": "Rendez-vous"
+  },
+  "pages": {
+    "accueil": {
+      "titre": "Proxiconseil Patrimoine : conseil en gestion de patrimoine au Mans",
+      "description": "Nicolas Rabouan, conseiller en investissements financiers au Mans : épargne, trésorerie d’entreprise, immobilier, retraite, impôts et transmission.",
+      "nav": "Accueil",
+      "partageAlt": "Proxiconseil Patrimoine, proximité et conseil au service de votre patrimoine, au Mans",
+      "accroche": "Proximité et conseil au service de votre patrimoine"
+    },
+    "accompagnement": {
+      "titre": "Mon accompagnement : Proxiconseil Patrimoine",
+      "description": "Six objectifs pour votre patrimoine, pour les particuliers et les chefs d’entreprise, et le déroulé d’un accompagnement.",
+      "nav": "Accompagnement",
+      "partageAlt": "Les six objectifs de l’accompagnement de Proxiconseil Patrimoine",
+      "accroche": "Votre patrimoine, objectif par objectif"
+    },
+    "qui-suis-je": {
+      "titre": "Qui suis-je ? Nicolas Rabouan, Proxiconseil Patrimoine",
+      "description": "Nicolas Rabouan : 18 années dans le milieu bancaire, conseiller en investissements financiers au Mans, signataire de la charte des valeurs Prodémial.",
+      "nav": "Qui suis-je ?",
+      "partageAlt": "Portrait de Nicolas Rabouan, conseiller en investissements financiers",
+      "accroche": "Nicolas Rabouan"
+    },
+    "immobilier": {
+      "titre": "Immobilier : Proxiconseil Patrimoine",
+      "description": "Investir dans l’immobilier : ce que l’on examine, les risques, et les résidences commercialisées et livrées par Stellium Immobilier.",
+      "nav": "Immobilier",
+      "partageAlt": "Investir dans la pierre avec Proxiconseil Patrimoine",
+      "accroche": "Investir dans la pierre"
+    },
+    "contact": {
+      "titre": "Contact et rendez-vous : Proxiconseil Patrimoine",
+      "description": "Prendre rendez-vous avec Nicolas Rabouan, conseiller en investissements financiers au Mans : 06 63 47 91 22.",
+      "nav": "Contact",
+      "partageAlt": "Prendre rendez-vous avec Proxiconseil Patrimoine au 06 63 47 91 22",
+      "accroche": "Prendre rendez-vous"
+    },
+    "404": {
+      "titre": "Hors de la carte : Proxiconseil Patrimoine",
+      "description": "Cette adresse ne mène nulle part.",
+      "nav": "Page introuvable",
+      "partageAlt": "Page introuvable",
+      "accroche": "Hors de la carte"
+    }
+  },
+  "accueil": {
+    "hero": {
+      "surtitre": "Nicolas Rabouan · Conseiller en investissements financiers",
+      "titre1": "Proximité et conseil",
+      "titre2": "au service de votre",
+      "titre3": "patrimoine",
+      "texte": "Vous souhaitez optimiser votre épargne ou votre trésorerie d’entreprise, investir dans l’immobilier, préparer votre retraite, réduire votre imposition ou transmettre votre patrimoine ? Échangeons et concrétisons, ensemble, tous vos projets.",
+      "action": "Prendre rendez-vous",
+      "info": "ORIAS 22007088",
+      "infoDetail": "CIF membre de l’ANACOFI",
+      "coordonnees": "Le Mans · 48° 00′ N · 0° 12′ E",
+      "carteAlt": "Carte en courbes de niveau, un repère posé sur Le Mans",
+      "defiler": "Faites défiler"
+    },
+    "raisons": {
+      "surtitre": "Mon métier",
+      "titre": "Pourquoi faire appel à un conseiller patrimonial ?",
+      "r1": "Pour vous apporter une information et le meilleur conseil sur les possibilités de développer votre patrimoine et de sécuriser financièrement votre avenir.",
+      "r2": "Pour vous aider à dynamiser votre épargne, valoriser votre patrimoine, diminuer vos impôts, préparer votre retraite et transmettre dans les meilleures conditions.",
+      "r3": "Pour créer une relation durable et de confiance, en vous accompagnant dans l’atteinte de vos objectifs actuels et futurs.",
+      "alt": "Bureau de conseil vide en fin d’après-midi, deux chaises face à face",
+      "aValider": "formulations du site actuel, à valider"
+    },
+    "objectifs": {
+      "surtitre": "Ce que nous construisons ensemble",
+      "titre": "Six objectifs, un seul repère",
+      "texte": "Particuliers comme chefs d’entreprise : chaque accompagnement part de vos objectifs.",
+      "lien": "Découvrir l’accompagnement",
+      "consigne": "Faites défiler pour parcourir les six objectifs"
+    },
+    "deroule": {
+      "surtitre": "Le déroulé",
+      "titre": "Quatre étapes, à votre rythme",
+      "texte": "Le cadre que fixe la réglementation des conseillers en investissements financiers."
+    },
+    "citation": {
+      "faux": "On subit l’avenir.",
+      "vrai": "« On ne subit pas l’avenir, on le fait. »",
+      "auteur": "Georges Bernanos",
+      "rature": "Phrase barrée, remplacée par la citation de Georges Bernanos"
+    },
+    "apercu": {
+      "surtitre": "Qui suis-je ?",
+      "titre": "Nicolas Rabouan",
+      "texte": "Fort de 18 années d’expérience dans le milieu bancaire et de succès personnels dans l’investissement patrimonial, je souhaite partager mon savoir et accompagner mes clients sur le long terme.",
+      "chiffre": "années dans le milieu bancaire",
+      "lien": "Découvrir mon parcours",
+      "alt": "Nicolas Rabouan, portrait en noir et blanc"
+    },
+    "avis": {
+      "surtitre": "Avis investisseurs",
+      "titre": "Ils recommandent Nicolas",
+      "texte": "Six avis publiés sur Google, repris du site actuel.",
+      "source": "Avis Google"
+    },
+    "immobilier": {
+      "surtitre": "Immobilier",
+      "titre": "Investir dans la pierre",
+      "texte": "Résidences commercialisées et livrées par Stellium Immobilier, qui a délivré son attestation d’habilitation à Nicolas Rabouan.",
+      "region": "Résidences, défilement horizontal",
+      "legende": "Résidence Stellium Immobilier · nom et ville à compléter",
+      "lien": "L’immobilier"
+    },
+    "appel": {
+      "titre": "Échangeons et concrétisons, ensemble, tous vos projets",
+      "texte": "Un premier échange pour faire le point sur votre situation et vos objectifs.",
+      "rdv": "Prendre rendez-vous",
+      "appeler": "Appeler le 06 63 47 91 22"
+    }
+  },
+  "accompagnement": {
+    "tete": {
+      "surtitre": "Mon accompagnement",
+      "titre1": "Votre patrimoine,",
+      "titre2": "objectif par objectif",
+      "texte": "Épargne, trésorerie, immobilier, retraite, impôts, transmission : je pars de vos objectifs actuels et futurs.",
+      "action": "Prendre rendez-vous",
+      "info": "Particuliers et chefs d’entreprise",
+      "anneauxAlt": "Six anneaux autour du repère, un objectif sur chacun"
+    },
+    "objectifs": {
+      "titre": "Les six objectifs",
+      "lien": "En parler"
+    },
+    "pourqui": {
+      "titre": "Pour qui ?",
+      "particuliersTitre": "À titre privé",
+      "particuliers": "Votre épargne, vos projets immobiliers, votre retraite, vos impôts et la transmission à vos proches.",
+      "entreprisesTitre": "À titre professionnel",
+      "entreprises": "La trésorerie de votre entreprise et votre imposition professionnelle.",
+      "particuliersAlt": "Table de cuisine familiale le matin, deux tasses et un carnet fermé",
+      "entreprisesAlt": "Bureau lumineux d’une petite entreprise, vide, le matin"
+    },
+    "boussole": {
+      "titre": "Par où commencer ?",
+      "texte": "Choisissez votre situation : les objectifs qui vous concernent s’allument.",
+      "legende": "Votre situation",
+      "action": "En parler avec Nicolas",
+      "aucune": "Choisissez une situation pour voir les objectifs concernés.",
+      "resultat": "Objectifs à étudier ensemble :",
+      "mention": "Orientation indicative : seul un entretien permet de vous conseiller."
+    },
+    "deroule": {
+      "titre": "Le déroulé d’un accompagnement",
+      "texte": "Chaque étape laisse une trace écrite, comme le prévoit la réglementation des conseillers en investissements financiers."
+    },
+    "statuts": {
+      "titre": "Mes statuts, en clair",
+      "texte": "Chaque statut est enregistré à l’ORIAS sous le numéro 22007088.",
+      "cifTitre": "Conseiller en investissements financiers",
+      "cif": "Le conseil sur vos placements financiers. Membre de l’ANACOFI, association professionnelle agréée par l’AMF.",
+      "iobspTitre": "Mandataire d’intermédiaire en opérations de banque",
+      "iobsp": "Le financement de vos projets, en opérations de banque et en services de paiement.",
+      "iasTitre": "Mandataire d’intermédiaire d’assurance",
+      "ias": "Les contrats d’assurance qui accompagnent votre patrimoine.",
+      "immoTitre": "Transactions immobilières",
+      "immo": "Attestation d’habilitation délivrée par Stellium Immobilier, titulaire de la carte de transaction immobilière n° CPI 3101 2015 000 001 813.",
+      "orias": "Vérifier sur orias.fr (nouvel onglet)"
+    }
+  },
+  "quisuisje": {
+    "tete": {
+      "surtitre": "Qui suis-je ?",
+      "titre": "Nicolas Rabouan",
+      "role": "Conseiller en investissements financiers, au Mans",
+      "texte": "Fort de 18 années d’expérience dans le milieu bancaire et de succès personnels dans l’investissement patrimonial, je souhaite partager mon savoir et accompagner mes clients sur le long terme.",
+      "action": "Prendre rendez-vous",
+      "info": "ORIAS 22007088 · CIF membre de l’ANACOFI",
+      "alt": "Nicolas Rabouan, conseiller en investissements financiers, portrait en noir et blanc",
+      "prenom": "Nicolas",
+      "nom": "Rabouan"
+    },
+    "valeur": {
+      "titre": "Ma priorité",
+      "texte": "Apporter une véritable valeur ajoutée à la situation de chacun de mes clients est mon principal objectif. Aujourd’hui, leurs recommandations confirment la qualité des produits et services préconisés."
+    },
+    "parcours": {
+      "titre": "Mon parcours",
+      "e1Titre": "Dans le milieu bancaire",
+      "e1": "Une expérience professionnelle dans la banque, et des succès personnels dans l’investissement patrimonial.",
+      "e2Titre": "Proxiconseil Patrimoine",
+      "e2": "Création de la SARL, enregistrée au RCS du Mans. Date à compléter.",
+      "e3Titre": "Enregistrement à l’ORIAS",
+      "e3": "Conseiller en investissements financiers, mandataire d’intermédiaire en opérations de banque et en services de paiement, mandataire d’intermédiaire d’assurance, sous le n° 22007088.",
+      "e4Titre": "Consultant Prodémial",
+      "e4": "Signataire de la charte des valeurs des consultants Prodémial.",
+      "alt": "Carnet en cuir fermé et stylo plume sur un bureau en chêne"
+    },
+    "charte": {
+      "titre": "Une charte, des engagements",
+      "texte": "J’ai signé la charte des valeurs des consultants Prodémial et m’engage à travailler dans l’intérêt de l’investisseur, avec respect et professionnalisme.",
+      "recommandation": "Je construis une relation durable et exclusive avec chaque investisseur qui, s’il est satisfait, me recommandera à son propre cercle relationnel.",
+      "sceau1": "Intérêt de l’investisseur",
+      "sceau2": "Respect",
+      "sceau3": "Professionnalisme",
+      "sceauAlt": "Sceau des engagements : intérêt de l’investisseur, respect, professionnalisme"
+    },
+    "legal": {
+      "titre": "Mes informations légales",
+      "reseaux": "Retrouvez-moi aussi sur",
+      "l1": "SARL Proxiconseil Patrimoine, au capital de 5 000 €, RCS Le Mans 920 596 368.",
+      "l2": "Enregistrement à l’ORIAS n° 22007088 : conseiller en investissements financiers, membre de l’ANACOFI, association professionnelle agréée par l’AMF ; mandataire d’intermédiaire en opérations de banque et en services de paiement ; mandataire d’intermédiaire d’assurance.",
+      "l3": "Attestation d’habilitation délivrée par Stellium Immobilier, titulaire de la carte de transaction immobilière n° CPI 3101 2015 000 001 813.",
+      "logoAlt": "Proxiconseil Patrimoine, le patrimoine accessible à tous"
+    }
+  },
+  "immobilier": {
+    "tete": {
+      "surtitre": "Immobilier",
+      "titre1": "Investir",
+      "titre2": "dans la pierre",
+      "texte": "Investir dans l’immobilier fait partie des projets que nous étudions ensemble. Nicolas Rabouan est habilité par Stellium Immobilier, titulaire de la carte de transaction immobilière.",
+      "action": "Parler d’un projet immobilier",
+      "info": "Carte T n° CPI 3101 2015 000 001 813 · Stellium Immobilier",
+      "alt": "Façade d’une résidence contemporaine générique avec balcons et jardin",
+      "planAlt": "Plan de masse d’architecte qui recouvre la photo",
+      "cartouche": "Plan de masse",
+      "cartoucheNote": "Schéma illustratif"
+    },
+    "couches": {
+      "titre": "Un investissement, couche par couche",
+      "texte": "Ce que l’on examine ensemble avant d’investir dans un bien.",
+      "risque": "Un investissement immobilier comporte des risques : perte en capital, vacance locative, liquidité réduite, évolution de la fiscalité."
+    },
+    "residences": {
+      "titre": "Résidences commercialisées et livrées par Stellium Immobilier",
+      "texte": "Photos reprises du site actuel.",
+      "region": "Résidences, défilement horizontal",
+      "legende": "Nom et ville à compléter"
+    },
+    "appel": {
+      "titre": "Un projet immobilier ?",
+      "texte": "Parlons de votre situation et de vos objectifs avant de parler d’un bien.",
+      "action": "Prendre rendez-vous"
+    }
+  },
+  "contact": {
+    "tete": {
+      "surtitre": "Contact",
+      "titre": "Prendre rendez-vous",
+      "texte": "Un premier échange pour faire le point. Appelez, écrivez, ou laissez vos disponibilités : je vous recontacte.",
+      "info": "06 63 47 91 22",
+      "email": "n.rabouan@proxiconseil-patrimoine.fr",
+      "adresse": "28 route du Calvaire, 72190 Saint-Pavace",
+      "horaires": "Horaires : à compléter"
+    },
+    "formulaire": {
+      "titre": "Votre demande en quatre étapes",
+      "deroule": "Objectif, situation, disponibilités, coordonnées : environ une minute.",
+      "etape": "Étape",
+      "sur": "sur",
+      "suivant": "Suivant",
+      "precedent": "Précédent",
+      "e1": "Votre objectif",
+      "e1Aide": "Choisissez le sujet principal.",
+      "autre": "Autre sujet",
+      "e2": "Votre situation",
+      "particulier": "À titre privé",
+      "professionnel": "Pour mon entreprise",
+      "projet": "Votre projet en quelques mots (facultatif)",
+      "e3": "Vos disponibilités",
+      "e3Aide": "Quand préférez-vous être rappelé ?",
+      "matin": "En matinée",
+      "midi": "En début d’après-midi",
+      "soir": "En fin de journée",
+      "moyen": "Comment vous recontacter ?",
+      "parTel": "Par téléphone",
+      "parEmail": "Par e-mail",
+      "e4": "Vos coordonnées",
+      "nom": "Nom et prénom",
+      "tel": "Téléphone",
+      "email": "E-mail",
+      "accord": "J’accepte que mes informations servent uniquement à répondre à ma demande.",
+      "donnees": "Vos informations ne servent qu’à répondre à votre demande. Politique de confidentialité : à compléter.",
+      "envoyer": "Envoyer la demande",
+      "recap": "Récapitulatif",
+      "recapVide": "Vos choix s’affichent ici.",
+      "recapObjectif": "Objectif",
+      "recapSituation": "Situation",
+      "recapDispo": "Disponibilités",
+      "recapContact": "Recontact",
+      "envoye": "Demande simulée : rien n’a été envoyé. Sur le site final, elle parviendra à Nicolas Rabouan."
+    },
+    "carte": {
+      "titre": "Au Mans et autour",
+      "texte": "Proxiconseil Patrimoine est installé à Saint-Pavace, aux portes du Mans. Zone d’intervention : à compléter.",
+      "alt": "Schéma : Saint-Pavace au nord du Mans, le long de la Sarthe",
+      "leMans": "Le Mans",
+      "saintPavace": "Saint-Pavace",
+      "echelle": "Schéma, échelle indicative",
+      "riviere": "La Sarthe",
+      "bandeauAlt": "Champs bordés de haies sous un grand ciel du soir, un chêne isolé"
+    }
+  },
+  "introuvable": {
+    "titre": "Hors de la carte",
+    "texte": "Cette adresse ne mène nulle part. Revenons à un repère connu.",
+    "retour": "Retour à l’accueil",
+    "alt": "Chemin de campagne qui disparaît dans un épais brouillard"
+  }
+}

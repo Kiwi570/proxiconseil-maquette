@@ -1,0 +1,20 @@
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "name": "Proxiconseil Patrimoine",
+  "legalName": "SARL Proxiconseil Patrimoine",
+  "slogan": "Le patrimoine accessible à tous",
+  "url": "https://proxiconseil-maquette.vercel.app/",
+  "logo": "https://proxiconseil-maquette.vercel.app/assets/images/logo-complet.png",
+  "telephone": "+33663479122",
+  "email": "n.rabouan@proxiconseil-patrimoine.fr",
+  "address": { "@type": "PostalAddress", "streetAddress": "28 route du Calvaire", "postalCode": "72190", "addressLocality": "Saint-Pavace", "addressCountry": "FR" },
+  "areaServed": "Le Mans",
+  "employee": { "@type": "Person", "name": "Nicolas Rabouan", "jobTitle": "Conseiller en investissements financiers" },
+  "identifier": [
+    { "@type": "PropertyValue", "propertyID": "ORIAS", "value": "22007088" },
+    { "@type": "PropertyValue", "propertyID": "RCS Le Mans", "value": "920 596 368" }
+  ],
+  "sameAs": ["https://www.linkedin.com/in/nicolas-rabouan-7a981812a/", "https://www.facebook.com/profile.php?id=100094350663130"],
+  "description": "Conseil en gestion de patrimoine au Mans : épargne et trésorerie d'entreprise, immobilier, retraite, fiscalité à titre privé et professionnel, transmission."
+}

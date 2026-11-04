@@ -1,0 +1,7 @@
+[
+  { "cle": "toit", "titre": "La revente", "texte": "La liquidité du bien et les conditions de sortie, à anticiper dès l’achat." },
+  { "cle": "etage2", "titre": "La fiscalité", "texte": "Le cadre fiscal de l’investissement, au regard de votre imposition." },
+  { "cle": "etage1", "titre": "La gestion", "texte": "La location, l’entretien et les charges du bien." },
+  { "cle": "rdc", "titre": "Le bien", "texte": "La construction, le promoteur et la qualité du programme." },
+  { "cle": "sol", "titre": "L’emplacement", "texte": "La ville, le quartier et la demande locative." }
+]

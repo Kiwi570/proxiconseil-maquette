@@ -1,0 +1,332 @@
+[
+ {
+  "source": "recu/suis-je.jpg",
+  "nom": "logo",
+  "role": "logo",
+  "alt": "Proxiconseil Patrimoine, le patrimoine accessible à tous",
+  "cadrage": [
+   50,
+   47
+  ]
+ },
+ {
+  "source": "recu/nicolas-rabouan-conseiller-gestion.jpg",
+  "nom": "portrait",
+  "role": "portrait",
+  "alt": "Nicolas Rabouan, conseiller en investissements financiers, portrait en noir et blanc",
+  "mobile": "4:5",
+  "cadrage": [
+   52,
+   40
+  ],
+  "largeurs": [
+   480,
+   784,
+   1134,
+   1600
+  ]
+ },
+ {
+  "source": "recu/gestion-patrimoine-mans-immobilier-4.jpg",
+  "nom": "residence-1",
+  "role": "galerie",
+  "ratio": "4:5",
+  "alt": "Résidence contemporaine aux façades blanches autour d'un jardin intérieur"
+ },
+ {
+  "source": "recu/gestion-patrimoine-mans-immobilier-5.jpg",
+  "nom": "residence-2",
+  "role": "galerie",
+  "ratio": "4:5",
+  "alt": "Résidence moderne à balcons vitrés au bord d'une ligne de tramway"
+ },
+ {
+  "source": "recu/gestion-patrimoine-mans-immobilier-6.jpg",
+  "nom": "residence-3",
+  "role": "galerie",
+  "ratio": "4:5",
+  "alt": "Immeuble de style classique aux façades crème et balcons en fer forgé"
+ },
+ {
+  "source": "recu/gestion-patrimoine-mans-immobilier-7.jpg",
+  "nom": "residence-4",
+  "role": "galerie",
+  "ratio": "4:5",
+  "alt": "Petite résidence crème aux balcons bleus et volets bleus"
+ },
+ {
+  "source": "recu/gestion-patrimoine-mans-immobilier-8.jpg",
+  "nom": "residence-5",
+  "role": "galerie",
+  "ratio": "4:5",
+  "alt": "Résidence basse derrière un jardin planté d'oliviers"
+ },
+ {
+  "source": "recu/grok/raisons-bureau.jpg",
+  "nom": "raisons-bureau",
+  "role": "section-fond",
+  "page": "Accueil",
+  "emplacement": "Pourquoi un conseiller (fond qui ondule)",
+  "priorite": "Indispensable",
+  "gabarit": "lieu",
+  "ratio": "3:2",
+  "zone_texte": "gauche",
+  "alt": "Bureau de conseil vide en fin d'après-midi, deux chaises face à face",
+  "consigne_scene": "An empty advisor's office at the end of the afternoon: a solid pale oak table, two chairs facing each other, a closed notebook with a pencil, two glasses of water, low golden light falling across the table from a tall window, quiet and welcoming, the left third of the room calm and in soft shadow",
+  "largeurs": [
+   640,
+   1280,
+   1752
+  ],
+  "cadrage": [
+   45,
+   62
+  ]
+ },
+ {
+  "source": "recu/grok/deroule-chemin.jpg",
+  "nom": "deroule-chemin",
+  "role": "section-fond",
+  "page": "Accueil",
+  "emplacement": "Le déroulé (fond de l'itinéraire)",
+  "priorite": "Indispensable",
+  "gabarit": "section-fond",
+  "ratio": "16:9",
+  "zone_texte": "haut",
+  "alt": "Chemin de bocage entre les haies à l'aube",
+  "consigne_scene": "A narrow country lane winding between tall hedgerows through small bocage fields at dawn, light mist resting in the hollows, gently rolling land, a soft pale sky filling the upper half, calm and inviting, nobody on the lane",
+  "largeurs": [
+   640,
+   1280,
+   1752
+  ]
+ },
+ {
+  "source": "recu/grok/citation-horizon.jpg",
+  "nom": "citation-horizon",
+  "role": "section-fond",
+  "page": "Accueil",
+  "emplacement": "Citation de Bernanos (fond)",
+  "priorite": "Indispensable",
+  "gabarit": "section-fond",
+  "ratio": "16:9",
+  "zone_texte": "centre",
+  "alt": "Horizon dégagé au lever du soleil sur des champs ondulés",
+  "consigne_scene": "A wide open horizon over gently rolling fields at sunrise, a single earthen path leading far toward the soft light, a very wide sky with thin clouds, deep calm, the middle of the frame quiet and empty",
+  "largeurs": [
+   640,
+   1280,
+   1752
+  ]
+ },
+ {
+  "source": "recu/grok/appel-riviere.jpg",
+  "nom": "appel-riviere",
+  "role": "section-fond",
+  "page": "Accueil",
+  "emplacement": "Appel final (fond)",
+  "priorite": "Conseillée",
+  "gabarit": "section-fond",
+  "ratio": "16:9",
+  "zone_texte": "gauche",
+  "alt": "Rivière calme bordée de peupliers au petit matin",
+  "consigne_scene": "A quiet river lined with tall poplars in the early morning, still water reflecting the trees, light mist above the water, a small empty wooden jetty on the right bank, the left third of the frame open sky and calm water",
+  "largeurs": [
+   640,
+   1280,
+   1752
+  ]
+ },
+ {
+  "source": "recu/grok/objectif-epargne.jpg",
+  "nom": "objectif-epargne",
+  "role": "carte-service",
+  "page": "Accueil et Mon accompagnement",
+  "emplacement": "Les 6 objectifs : épargne",
+  "priorite": "Indispensable",
+  "gabarit": "texture",
+  "ratio": "4:5",
+  "alt": "Graine qui germe dans une terre sombre",
+  "consigne_scene": "Macro photograph of a single seed just splitting open in dark moist soil, its first pale root emerging, warm side light, very shallow depth of field, dark warm background",
+  "cadrage": [
+   48,
+   55
+  ]
+ },
+ {
+  "source": "recu/grok/objectif-tresorerie.jpg",
+  "nom": "objectif-tresorerie",
+  "role": "carte-service",
+  "page": "Accueil et Mon accompagnement",
+  "emplacement": "Les 6 objectifs : trésorerie d'entreprise",
+  "priorite": "Indispensable",
+  "gabarit": "lieu",
+  "ratio": "4:5",
+  "alt": "Atelier d'une petite entreprise, vide, au petit matin",
+  "consigne_scene": "The empty workshop of a small family business early in the morning: a long workbench in pale oak, tidy plain tools hanging on a pegboard, a glass door half open onto soft street light, calm and orderly, nobody present",
+  "cadrage": [
+   50,
+   55
+  ]
+ },
+ {
+  "source": "recu/grok/objectif-immobilier.jpg",
+  "nom": "objectif-immobilier",
+  "role": "carte-service",
+  "page": "Accueil et Mon accompagnement",
+  "emplacement": "Les 6 objectifs : immobilier",
+  "priorite": "Indispensable",
+  "gabarit": "lieu",
+  "ratio": "4:5",
+  "alt": "Façade de maison de ville en tuffeau aux volets gris clair",
+  "consigne_scene": "The facade of a generic old townhouse in pale tufa limestone with light grey shutters and a slate roof, a climbing rose beside a painted wooden door, late afternoon sun, generic and unidentifiable",
+  "cadrage": [
+   55,
+   50
+  ]
+ },
+ {
+  "source": "recu/grok/objectif-retraite.jpg",
+  "nom": "objectif-retraite",
+  "role": "carte-service",
+  "page": "Accueil et Mon accompagnement",
+  "emplacement": "Les 6 objectifs : retraite",
+  "priorite": "Indispensable",
+  "gabarit": "lieu",
+  "ratio": "4:5",
+  "alt": "Chaise de jardin en bois sous un vieux pommier",
+  "consigne_scene": "A weathered wooden garden chair under an old apple tree at the end of summer, long grass, a few apples on the ground, soft golden evening light, nobody present",
+  "cadrage": [
+   40,
+   55
+  ]
+ },
+ {
+  "source": "recu/grok/objectif-impots.jpg",
+  "nom": "objectif-impots",
+  "role": "carte-service",
+  "page": "Accueil et Mon accompagnement",
+  "emplacement": "Les 6 objectifs : impôts",
+  "priorite": "Indispensable",
+  "gabarit": "lieu",
+  "ratio": "4:5",
+  "alt": "Dossier fermé par une sangle sous une lampe de bureau en laiton",
+  "consigne_scene": "A closed plain cardboard document folder tied with a fabric strap, lying on a tidy pale oak desk under a brass desk lamp, a fountain pen beside it, the folder completely plain and unmarked, warm pool of lamplight",
+  "cadrage": [
+   55,
+   45
+  ]
+ },
+ {
+  "source": "recu/grok/objectif-transmission.jpg",
+  "nom": "objectif-transmission",
+  "role": "carte-service",
+  "page": "Accueil et Mon accompagnement",
+  "emplacement": "Les 6 objectifs : transmission",
+  "priorite": "Indispensable",
+  "gabarit": "lieu",
+  "ratio": "4:5",
+  "alt": "Clé ancienne posée sur un buffet en noyer",
+  "consigne_scene": "An old wrought-iron key resting on a polished walnut sideboard, a ray of window light across the wood, a small ceramic bowl and a folded linen cloth nearby, intimate and warm, nobody present",
+  "cadrage": [
+   40,
+   55
+  ]
+ },
+ {
+  "source": "recu/grok/pour-particuliers.jpg",
+  "nom": "pour-particuliers",
+  "role": "carte-service",
+  "page": "Mon accompagnement",
+  "emplacement": "Pour qui : particuliers et familles",
+  "priorite": "Conseillée",
+  "gabarit": "lieu",
+  "ratio": "3:2",
+  "alt": "Table de cuisine familiale le matin, deux tasses et un carnet fermé",
+  "consigne_scene": "A family kitchen table in the morning, two ceramic cups, a closed notebook with a pencil, two chairs pulled back, soft window light, a bowl of fruit, nobody present"
+ },
+ {
+  "source": "recu/grok/pour-entreprises.jpg",
+  "nom": "pour-entreprises",
+  "role": "carte-service",
+  "page": "Mon accompagnement",
+  "emplacement": "Pour qui : chefs d'entreprise",
+  "priorite": "Conseillée",
+  "gabarit": "lieu",
+  "ratio": "3:2",
+  "alt": "Bureau lumineux d'une petite entreprise, vide, le matin",
+  "consigne_scene": "A bright empty office of a small company with large windows, a long oak desk, a potted plant, rolled blank plans on a shelf, morning light, chairs tucked in, nobody present"
+ },
+ {
+  "source": "recu/grok/carnet-bureau.jpg",
+  "nom": "carnet-bureau",
+  "role": "scene-metier",
+  "page": "Qui suis-je",
+  "emplacement": "Le parcours (image de section)",
+  "priorite": "Conseillée",
+  "gabarit": "lieu",
+  "ratio": "3:2",
+  "alt": "Carnet en cuir fermé et stylo plume sur un bureau en chêne",
+  "consigne_scene": "A closed brown leather notebook and a fountain pen on a pale oak desk, a pair of reading glasses folded beside them, soft side light from a window, rich gentle shadows, nobody present"
+ },
+ {
+  "source": "recu/grok/immobilier-facade.jpg",
+  "source_mobile": "recu/grok/immobilier-facade-mobile.jpg",
+  "nom": "immobilier-facade",
+  "role": "ouverture",
+  "page": "Immobilier",
+  "emplacement": "Ouverture (bandeau sous le plan de masse)",
+  "priorite": "Indispensable",
+  "gabarit": "lieu",
+  "ratio": "16:9",
+  "mobile": "9:16",
+  "zone_texte": "haut",
+  "alt": "Façade d'une résidence contemporaine générique avec balcons et jardin",
+  "consigne_scene": "The facade of a generic contemporary residential building with balconies and light wooden cladding, a landscaped garden in front, soft late afternoon light, calm and well kept, generic and unidentifiable, no vehicles",
+  "largeurs": [
+   640,
+   1280,
+   1752
+  ],
+  "cadrage": [
+   45,
+   55
+  ]
+ },
+ {
+  "source": "recu/grok/contact-bocage.jpg",
+  "nom": "contact-bocage",
+  "role": "section-fond",
+  "page": "Contact",
+  "emplacement": "Bandeau panoramique",
+  "priorite": "Conseillée",
+  "gabarit": "section-fond",
+  "ratio": "16:9",
+  "zone_texte": "haut",
+  "alt": "Champs bordés de haies sous un grand ciel du soir, un chêne isolé",
+  "consigne_scene": "Hedgerow-lined fields under a wide evening sky, a lone oak tree on a gentle hill, soft golden light, the upper half a calm open sky",
+  "largeurs": [
+   640,
+   1280,
+   1752
+  ]
+ },
+ {
+  "source": "recu/grok/hors-carte.jpg",
+  "nom": "hors-carte",
+  "role": "404",
+  "page": "404",
+  "emplacement": "En tête de page",
+  "priorite": "Conseillée",
+  "gabarit": "404",
+  "ratio": "16:9",
+  "zone_texte": "haut",
+  "alt": "Chemin de campagne qui disparaît dans un épais brouillard",
+  "consigne_scene": "A country path disappearing into thick white fog, the hedgerows on each side fading softly into the mist, quiet, gentle and slightly mysterious, nobody on the path",
+  "largeurs": [
+   640,
+   1280,
+   1752
+  ]
+ }
+]
