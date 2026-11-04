@@ -2,9 +2,10 @@
    Le socle gère l'ouverture, le voile, l'en-tête, le menu, le mode calme, les boucles, les mesures
    et la bibliothèque d'effets (data-anime, data-fx, data-survol). Ici : l'intro du repère, et les effets
    propres de chaque page, chacun marqué data-effet="nom" (liste dans _audit/config.json). */
-import { demarrer, boucle, etat, quand } from './socle/index.js?v=1';
-import { carteCourbes } from './carte.js?v=1';
-import { pagesInterieures } from './pages.js?v=1';
+import { demarrer, boucle, etat, quand } from './socle/index.js?v=2';
+import { horizonVivant } from './horizon.js?v=2';
+import { pagesInterieures } from './pages.js?v=2';
+import { ondesAuClic } from './ondes.js?v=2';
 
 const gsap = window.gsap;
 const ST = window.ScrollTrigger;
@@ -49,17 +50,29 @@ function intro(tl) {
 /* ---------- Accueil ---------- */
 const accueil = {
   preparer() {
-    /* Carte en courbes de niveau (WebGL), image fixe dessous. */
-    const canvas = $('.hero-carte-gl');
-    this.carte = canvas ? carteCourbes(canvas, $('.hero'), $('.hero-pose')) : null;
-    if (!actif()) return;
+    /* Lever de soleil (WebGL) sur son image ; le repère est posé sur le soleil quel que soit le cadrage. */
+    const hero = $('.hero');
+    this.horizon = horizonVivant($('.hero-scene'), hero);
+    this.soleil = { v: 0 };
+    quand('pret', () => this.horizon.qualite(1));
 
-    /* Au défilement, la carte s'incline et s'éloigne ; le repère reste posé. */
+    /* En-tête nuit pétrole tant qu'il est posé sur le hero. Simple écoute du défilement (pas de ScrollTrigger :
+       en mode calme, ScrollTrigger est arrêté s'il n'a rien à suivre). Mesure au chargement et au redimensionnement. */
+    if (hero) {
+      let limite = 0;
+      const mesurer = () => { limite = hero.offsetHeight - ($('[data-entete]')?.offsetHeight || 64); };
+      const poser = () => document.documentElement.classList.toggle('entete-sur-hero', window.scrollY < limite);
+      mesurer(); poser();
+      window.addEventListener('resize', () => { mesurer(); poser(); });
+      window.addEventListener('scroll', poser, { passive: true });
+    }
+    if (!actif()) { this.horizon.lever(1); return; }
+
+    /* Au défilement : travelling vers le soleil dans l'image (le texte reste sur son voile). */
     gsap.timeline({ scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true,
-      onUpdate: (s) => this.carte && this.carte.defiler(s.progress) } })
-      .fromTo('.hero-carte', { transformPerspective: 1400, rotateX: 0, scale: 1, yPercent: 0 }, { rotateX: 24, scale: 1.18, yPercent: 8, ease: 'none' }, 0)
-      .fromTo('.hero-pose', { yPercent: 0, opacity: 1 }, { yPercent: -60, opacity: 0.2, ease: 'none' }, 0)
-      .fromTo('.hero-texte', { y: 0 }, { y: -60, ease: 'none' }, 0);
+      onUpdate: (s) => this.horizon.defiler(s.progress) } })
+      .fromTo('.hero-defiler', { autoAlpha: 1 }, { autoAlpha: 0, ease: 'none', duration: 0.25 }, 0)
+      .set({}, {}, 1);
 
     /* Raisons : les mots s'allument au fil de la lecture. */
     $$('.manifeste').forEach((p) => {
@@ -149,30 +162,39 @@ const accueil = {
     ST.refresh();
   },
 
-  /* Partie de l'accueil dans l'intro : le repère tombe sur Le Mans, le titre monte. */
+  /* Partie de l'accueil dans l'intro : le paysage se pose, le titre monte, le repère tombe sur le soleil qui se lève. */
   entree(tl, t0) {
-    this.chute(tl, t0);
-    tl.fromTo('.hero-ligne', { yPercent: 135, opacity: 1 }, { yPercent: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out' }, t0 - 0.15)
-      .fromTo('.hero .surtitre, .hero-intro, .hero-actions, .hero-coordonnees', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power2.out' }, t0 + 0.05);
+    /* Le paysage se pose sur sa propre durée (hors de l'intro : un clic qui l'accélère ne le brusque pas). */
+    tl.set('.hero-scene', { scale: 1.14 }, 0)
+      .call(() => { if (!etat.calme) gsap.to('.hero-scene', { scale: 1, duration: 2.6, ease: 'expo.out' }); else gsap.set('.hero-scene', { scale: 1 }); }, null, Math.max(0, t0 - 0.5));
+    tl.fromTo('.hero-ligne', { yPercent: 135, opacity: 1 }, { yPercent: 0, opacity: 1, duration: 0.9, stagger: 0.1, ease: 'power3.out' }, t0 - 0.1)
+      .fromTo('.hero .surtitre, .hero-intro, .hero-actions, .hero-defiler', { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power2.out' }, t0 + 0.1);
+    this.chute(tl, t0 + 0.1);
   },
   chute(tl, t0) {
     const corps = $('.hero-repere .repere-corps'), ombre = $('.hero-repere .repere-ombre');
     if (!corps) return;
-    tl.fromTo(corps, { y: -window.innerHeight * 0.9, scaleY: 1.12, scaleX: 0.94 }, { y: 0, scaleY: 1, scaleX: 1, duration: 0.55, ease: 'power3.in' }, t0 - 0.35)
+    const soleil = this.soleil;
+    tl.fromTo(corps, { y: -window.innerHeight * 0.55, scaleY: 1.12, scaleX: 0.94 }, { y: 0, scaleY: 1, scaleX: 1, duration: 0.55, ease: 'power3.in' }, t0 - 0.35)
       .fromTo(ombre, { scale: 0.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: 'power3.in' }, t0 - 0.35)
       .to(corps, { scaleY: 0.92, scaleX: 1.05, duration: 0.08 }, t0 + 0.2)
       .to(corps, { scaleY: 1, scaleX: 1, duration: 0.5, ease: 'elastic.out(1, 0.4)' }, t0 + 0.28)
-      .call(() => { if (!etat.calme) gsap.fromTo('.hero-onde', { scale: 0.5, opacity: 0.9 }, { scale: 5, opacity: 0, duration: 1.3, stagger: 0.2, ease: 'power2.out' }); }, null, t0 + 0.2)
-      .fromTo('.hero-lieu', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, t0 + 0.3)
-      .call(() => this.carte && this.carte.onde(), null, t0 + 0.2);
+      .call(() => {
+        if (etat.calme) return;
+        gsap.fromTo('.hero-onde', { scale: 0.4, opacity: 0.95 }, { scale: 6, opacity: 0, duration: 1.6, stagger: 0.22, ease: 'power2.out' });
+        this.horizon.onde();
+        gsap.fromTo(soleil, { v: 0 }, { v: 1, duration: 1.8, ease: 'power2.out', onUpdate: () => this.horizon.lever(soleil.v) });
+      }, null, t0 + 0.2);
   },
   arrivee() {
     const tl = gsap.timeline({ delay: 0.15 });
     this.entree(tl, 0.35);
   },
   etatFinal() {
-    gsap.set('.hero-ligne, .hero .surtitre, .hero-intro, .hero-actions, .hero-coordonnees, .hero-lieu', { clearProps: 'transform,opacity' });
+    gsap.set('.hero-scene', { scale: 1 });
+    gsap.set('.hero-ligne, .hero .surtitre, .hero-intro, .hero-actions, .hero-defiler', { clearProps: 'transform,opacity' });
     gsap.set('.hero-repere .repere-corps, .hero-repere .repere-ombre', { clearProps: 'transform,opacity' });
+    this.soleil.v = 1; this.horizon && this.horizon.lever(1);
     gsap.set('.citation-vrai, .citation-auteur', { opacity: 1 });
     gsap.set('.citation-rature path', { strokeDashoffset: 0 });
   },
@@ -201,3 +223,4 @@ demarrer({
 });
 
 quand('retour', () => courante.etatFinal && courante.etatFinal());
+ondesAuClic();

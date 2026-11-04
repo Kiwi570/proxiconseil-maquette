@@ -1,10 +1,10 @@
-/* Contact. Ouverture compacte : le numéro de téléphone en très grand, chiffre par chiffre, et le repère
-   qui se pose à côté ; le formulaire est visible tout de suite. Formulaire simulé en quatre étapes avec
+/* Contact. Ouverture : la carte vivante en courbes de niveau (WebGL : relief sous la souris, onde au clic),
+   le repère qui tombe sur Le Mans, le numéro de téléphone chiffre par chiffre. Formulaire simulé en quatre étapes avec
    récapitulatif en direct, puis schéma Saint-Pavace / Le Mans et bandeau de bocage. */
 import { html, brut } from '../../outils/gabarit.mjs';
 import { repere } from '../gabarits/commun.mjs';
 
-export const page = { cle: 'contact', fichier: 'contact', imagePartage: 'grok/contact-bocage-1280.webp' };
+export const page = { cle: 'contact', fichier: 'contact', imagePartage: 'carte-courbes.webp' };
 
 export default (c) => {
   const f = (k) => c.t(`contact.formulaire.${k}`);
@@ -12,12 +12,20 @@ export default (c) => {
   const chiffres = k.telephone.split('');
   return html`
 <section class="ct-tete" id="debut">
-  <img class="ct-courbes" src="/assets/images/carte-courbes.webp" alt="" width="1600" height="1000" aria-hidden="true" fetchpriority="high">
+  <div class="carte-vivante" aria-hidden="true" data-effet="carte-courbes" data-souris>
+    <img class="carte-vivante-image" src="/assets/images/carte-courbes.webp" alt="" width="1600" height="1000" fetchpriority="high" loading="eager" decoding="async" data-audit-ignorer>
+    <canvas class="carte-vivante-gl" data-audit-ignorer></canvas>
+  </div>
+  <div class="carte-pose" aria-hidden="true">
+    <span class="carte-onde"></span><span class="carte-onde"></span>
+    ${repere('carte-repere', 'data-effet="repere-chute"')}
+    <span class="carte-lieu">${c.t('contact.carte.leMans')}</span>
+  </div>
   <div class="conteneur ct-tete-grille">
-    <div>
+    <div class="ct-tete-texte">
       <p class="surtitre" data-anime="gsap">${c.t('contact.tete.surtitre')}</p>
       <h1 class="ct-titre" data-anime="gsap">${c.t('contact.tete.titre')}</h1>
-      <p class="ct-numero" data-effet="numero-pose"><a href="tel:${k.telephoneLien}" data-info-cle aria-label="${c.s('commun.appeler')} ${k.telephone}">${chiffres.map((ch) => (ch === ' ' ? brut('<span class="ct-espace"> </span>') : html`<span class="ct-chiffre"><span>${ch}</span></span>`))}</a><span class="ct-pin" aria-hidden="true">${repere('ct-repere')}</span></p>
+      <p class="ct-numero" data-effet="numero-pose"><a href="tel:${k.telephoneLien}" data-info-cle aria-label="${c.s('commun.appeler')} ${k.telephone}">${chiffres.map((ch) => (ch === ' ' ? brut('<span class="ct-espace"> </span>') : html`<span class="ct-chiffre"><span>${ch}</span></span>`))}</a></p>
       <p class="ct-intro" data-anime="gsap">${c.t('contact.tete.texte')}</p>
       <ul class="ct-coord" data-anime="gsap">
         <li><a href="mailto:${k.email}">${k.email}</a></li>
@@ -27,6 +35,7 @@ export default (c) => {
       <p data-anime="gsap"><a class="bouton" href="#rendez-vous" data-action-principale>${f('titre')}</a></p>
     </div>
   </div>
+  <p class="carte-coordonnees" data-anime="gsap"><span>${c.t('accueil.hero.coordonnees')}</span></p>
 </section>
 
 <section class="rdv conteneur" id="rendez-vous">

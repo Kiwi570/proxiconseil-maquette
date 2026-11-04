@@ -1,7 +1,8 @@
 /* Effets propres des pages intérieures (accompagnement, qui suis-je, immobilier, contact, 404).
    Chaque page : preparer() (déclencheurs au défilement, états de départ), entree(tl, t0) (sa part de l'intro),
    arrivee() (après le voile), etatFinal() (retour, calme, secours). Chaque effet porte data-effet="nom". */
-import { trameApi } from './trame.js?v=1';
+import { trameApi } from './trame.js?v=2';
+import { carteCourbes } from './carte.js?v=2';
 
 export function pagesInterieures({ gsap, ST, $, $$, etat, actif }) {
   /* Ondes du repère en fin de page, au défilement. */
@@ -146,9 +147,16 @@ export function pagesInterieures({ gsap, ST, $, $$, etat, actif }) {
   const contact = {
     preparer() {
       this.etapes();
+      /* Carte en courbes de niveau (WebGL), image fixe dessous ; le relief se soulève sous la souris. */
+      const canvas = $('.carte-vivante-gl');
+      this.carte = canvas ? carteCourbes(canvas, $('.ct-tete'), $('.carte-pose')) : null;
       if (!actif()) return;
-      gsap.fromTo('.ct-courbes', { scale: 1, yPercent: 0 }, { scale: 1.15, yPercent: 6, ease: 'none', scrollTrigger: { trigger: '.ct-tete', start: 'top top', end: 'bottom top', scrub: true } });
-      gsap.fromTo('.ct-numero a', { x: 0 }, { x: -40, ease: 'none', scrollTrigger: { trigger: '.ct-tete', start: 'top top', end: 'bottom top', scrub: true } });
+      /* Au défilement, la carte s'incline et s'éloigne ; le repère reste posé. */
+      gsap.timeline({ scrollTrigger: { trigger: '.ct-tete', start: 'top top', end: 'bottom top', scrub: true,
+        onUpdate: (s) => this.carte && this.carte.defiler(s.progress) } })
+        .fromTo('.carte-vivante', { transformPerspective: 1400, rotateX: 0, scale: 1, yPercent: 0 }, { rotateX: 24, scale: 1.18, yPercent: 8, ease: 'none' }, 0)
+        .fromTo('.carte-pose', { yPercent: 0, opacity: 1 }, { yPercent: -60, opacity: 0.2, ease: 'none' }, 0)
+        .fromTo('.ct-numero a', { x: 0 }, { x: -40, ease: 'none' }, 0);
     },
     /* Formulaire en quatre étapes : une étape à la fois, hauteur animée, récapitulatif en direct. */
     etapes() {
@@ -186,13 +194,19 @@ export function pagesInterieures({ gsap, ST, $, $$, etat, actif }) {
     entree(tl, t0) {
       tl.fromTo('.ct-tete .surtitre, .ct-titre', { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.08 }, t0 - 0.2)
         .fromTo('.ct-chiffre > span', { yPercent: (i) => 125 + (i % 3) * 30 }, { yPercent: 0, duration: 0.7, stagger: 0.045, ease: 'power3.out' }, t0 - 0.1)
-        .fromTo('.ct-repere .repere-corps', { y: -160, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: 'power3.in' }, t0 + 0.3)
-        .fromTo('.ct-repere .repere-ombre', { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: 'power3.in' }, t0 + 0.3)
-        .to('.ct-repere .repere-corps', { scaleY: 0.86, scaleX: 1.1, duration: 0.08, transformOrigin: '50% 100%' }, t0 + 0.8)
-        .to('.ct-repere .repere-corps', { scaleY: 1, scaleX: 1, duration: 0.45, ease: 'elastic.out(1, 0.4)' }, t0 + 0.88)
-        .fromTo('.ct-intro, .ct-coord, .ct-tete .bouton', { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.07 }, t0 + 0.2);
+        .fromTo('.ct-intro, .ct-coord, .ct-tete .bouton, .carte-coordonnees', { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.07 }, t0 + 0.2);
+      /* Le repère tombe sur Le Mans, s'écrase, et ses ondes parcourent la carte. */
+      const corps = $('.carte-repere .repere-corps'), ombre = $('.carte-repere .repere-ombre');
+      if (!corps) return;
+      const t1 = t0 + 0.1;
+      tl.fromTo(corps, { y: -window.innerHeight * 0.9, scaleY: 1.12, scaleX: 0.94 }, { y: 0, scaleY: 1, scaleX: 1, duration: 0.55, ease: 'power3.in' }, t1 - 0.35)
+        .fromTo(ombre, { scale: 0.2, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.55, ease: 'power3.in' }, t1 - 0.35)
+        .to(corps, { scaleY: 0.92, scaleX: 1.05, duration: 0.08 }, t1 + 0.2)
+        .to(corps, { scaleY: 1, scaleX: 1, duration: 0.5, ease: 'elastic.out(1, 0.4)' }, t1 + 0.28)
+        .call(() => { if (!etat.calme) gsap.fromTo('.carte-onde', { scale: 0.5, opacity: 0.9 }, { scale: 5, opacity: 0, duration: 1.3, stagger: 0.2, ease: 'power2.out' }); this.carte && this.carte.onde(); }, null, t1 + 0.2)
+        .fromTo('.carte-lieu', { opacity: 0, y: 8 }, { opacity: 1, y: 0, duration: 0.4 }, t1 + 0.3);
     },
-    etatFinal() { remettre('.ct-tete .surtitre, .ct-titre, .ct-chiffre > span, .ct-repere .repere-corps, .ct-repere .repere-ombre, .ct-intro, .ct-coord, .ct-tete .bouton'); },
+    etatFinal() { remettre('.ct-tete .surtitre, .ct-titre, .ct-chiffre > span, .carte-repere .repere-corps, .carte-repere .repere-ombre, .carte-lieu, .ct-intro, .ct-coord, .ct-tete .bouton, .carte-coordonnees'); },
   };
   contact.arrivee = arriver(contact);
 

@@ -88,39 +88,74 @@ html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie):not(.i
 @media (max-height: 520px) { .ouverture-nom { width: 200px; } .ouverture-scene { width: 52px; } }
 
 /* ---------- Accueil ---------- */
-/* Ouverture : carte en courbes de niveau, plein écran clair. */
-.hero { position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-items: center; overflow: hidden; padding: calc(var(--entete-h) + 24px) 0 calc(var(--barres-h) + 40px); isolation: isolate; }
-.hero-carte { position: absolute; inset: 0; z-index: -1; transform-origin: 62% 52%; }
-.hero-carte-image, .hero-carte-gl { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.hero-carte-gl { opacity: 0; transition: opacity .6s linear; }
-.hero-carte-gl.gl-pret { opacity: 1; }
-.hero-carte::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(244, 241, 234, .96) 0%, rgba(244, 241, 234, .86) 36%, rgba(244, 241, 234, 0) 62%); }
-.hero-pose { --pose-x: 70%; --pose-y: 54%; z-index: 3 !important; position: absolute; left: var(--pose-x); top: var(--pose-y); width: clamp(46px, min(5vw, 8vh), 74px); aspect-ratio: 128 / 236; transform: translate(-50%, -96%); color: var(--petrole); z-index: 1; pointer-events: none; }
-.hero-repere { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
-.hero-onde { position: absolute; left: 50%; top: 92%; width: 90%; aspect-ratio: 44 / 16; border: 1.5px solid var(--petrole); border-radius: 50%; transform: translate(-50%, -50%) scale(.5); opacity: 0; }
-.hero-lieu { position: absolute; left: 50%; top: calc(100% + 14px); transform: translateX(-50%); font-weight: 700; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; color: var(--encre); background: rgba(244, 241, 234, .9); padding: 2px 8px; border-radius: 999px; }
-.hero-texte { position: relative; z-index: 2; }
-.hero-titre { width: fit-content; max-width: 11.5em; font-size: clamp(2.6rem, min(6.6vw, 10.5vh), 6.6rem); line-height: .98; margin: 0 0 .32em; color: var(--encre); font-weight: 350; }
-.hero-titre em { font-weight: 300; }
+/* Ouverture : lever de soleil plein cadre, le repère se pose sur le soleil. Grand titre en bas à gauche,
+   texte et action en bas à droite. Le cadrage (zoom, point d'ancrage) est partagé par l'image et le WebGL. */
+.hero { position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-items: end; overflow: hidden; padding: calc(var(--entete-h) + 24px) 0 calc(var(--barres-h) + clamp(28px, 6vh, 64px)); isolation: isolate; background: var(--nuit); color: var(--calcaire); }
+.hero-scene { --cadre-zoom: 1.05; --cadre-x: .5; --cadre-y: .5; position: absolute; inset: 0; z-index: -1; overflow: hidden; transform-origin: 64% 44%; }
+.hero-media { position: absolute; inset: 0; border-radius: 0; background: var(--nuit); }
+.hero-media img { object-position: calc(var(--cadre-x) * 100%) calc(var(--cadre-y) * 100%); transform: scale(var(--cadre-zoom)); transform-origin: calc(var(--cadre-x) * 100%) calc(var(--cadre-y) * 100%); }
+.hero-media .mention-ia { z-index: 4; right: 12px; bottom: calc(var(--barres-h) + 12px); }
+.hero-gl { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; opacity: 0; transition: opacity .8s linear; }
+.hero-gl.gl-pret { opacity: 1; }
+/* Voile : haut pour l'en-tête, bas et gauche pour le texte ; le soleil reste franc. */
+.hero-scene::after { content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none; background:
+  linear-gradient(180deg, rgba(8, 38, 43, .5) 0%, rgba(8, 38, 43, .16) 14%, rgba(8, 38, 43, 0) 24%),
+  linear-gradient(0deg, rgba(8, 38, 43, .9) 0%, rgba(8, 38, 43, .74) 34%, rgba(8, 38, 43, .42) 50%, rgba(8, 38, 43, 0) 66%),
+  linear-gradient(90deg, rgba(8, 38, 43, .55) 0%, rgba(8, 38, 43, .22) 40%, rgba(8, 38, 43, 0) 60%); }
+.hero-pose { position: absolute; left: var(--pose-x, 61%); top: var(--pose-y, 45%); z-index: 3; width: clamp(40px, min(4vw, 7vh), 64px); aspect-ratio: 128 / 236; transform: translate(-50%, -92%); color: var(--petrole); pointer-events: none; }
+.hero-repere { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; filter: drop-shadow(0 6px 14px rgba(8, 38, 43, .35)); }
+.hero-onde { position: absolute; left: 50%; top: 92%; width: 120%; aspect-ratio: 44 / 12; border: 1.5px solid rgba(244, 241, 234, .9); border-radius: 50%; transform: translate(-50%, -50%) scale(.4); opacity: 0; }
+.hero-texte { position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .8fr); gap: clamp(24px, 4vw, 72px); align-items: end; }
+.hero .surtitre { color: var(--laiton-clair); }
+.hero-titre { width: fit-content; max-width: 11em; font-size: clamp(2.5rem, min(5.6vw, 10vh), 6.6rem); line-height: .98; margin: 0; color: var(--calcaire); font-weight: 350; text-shadow: 0 2px 34px rgba(8, 38, 43, .4); }
+.hero-titre em { color: var(--laiton-clair); font-weight: 300; }
 .ligne-masque { display: block; width: fit-content; max-width: 100%; overflow: visible; clip-path: inset(-.4em -.6em -.22em -.6em); }
 .hero-ligne { display: block; }
-.hero-intro { max-width: 34em; font-size: clamp(1rem, .95rem + .3vw, 1.2rem); color: var(--texte-doux); }
-.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 1.4em; }
-.hero-info { display: inline-flex; flex-direction: column; font-size: .9rem; line-height: 1.35; padding-left: 16px; border-left: 2px solid var(--laiton); }
-.hero-info strong { font-size: 1rem; letter-spacing: .04em; color: var(--encre); }
-.hero-info span { color: var(--texte-doux); }
-.hero-coordonnees { position: absolute; right: var(--gouttiere); bottom: calc(var(--barres-h) + 20px); margin: 0; font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--texte-doux); font-variant-numeric: tabular-nums; }
+.hero-cote { padding-bottom: .3em; }
+.hero-intro { margin: 0; max-width: 30em; font-size: clamp(1rem, .95rem + .2vw, 1.12rem); line-height: 1.55; color: rgba(244, 241, 234, .92); }
+.hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin: 1.4em 0 0; }
+.hero-info { display: inline-flex; flex-direction: column; font-size: .9rem; line-height: 1.35; padding-left: 16px; border-left: 2px solid var(--laiton-clair); }
+.hero-info strong { font-size: 1rem; letter-spacing: .04em; color: var(--calcaire); }
+.hero-info span { color: rgba(244, 241, 234, .88); }
+.hero-defiler { position: absolute; left: 50%; bottom: calc(var(--barres-h) + 10px); z-index: 2; transform: translateX(-50%); display: inline-flex; flex-direction: column; align-items: center; gap: 6px; min-height: 44px; padding: 4px 8px; font-size: .75rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--calcaire); text-decoration: none; }
+.hero-defiler::after { content: ''; width: 1px; height: 34px; background: linear-gradient(var(--laiton-clair), rgba(217, 185, 127, 0)); transform-origin: 50% 0; animation: defiler 2.4s ease-in-out 3s 4 both; }
+@keyframes defiler { 0% { transform: scaleY(0); opacity: 1; } 55% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); opacity: 0; } }
+html.calme .hero-defiler::after { animation: none; }
+@media (max-width: 1100px) and (min-width: 761px) { .hero-texte { grid-template-columns: 1fr; } .hero-cote { max-width: 36em; } .hero-defiler { display: none; } }
+/* Téléphone : titre dans le ciel en haut, soleil et repère au milieu, texte et action en bas sur la terre. */
 @media (max-width: 760px) {
-  .hero { align-items: start; padding-top: calc(var(--entete-h) + 20px); }
-  .hero-carte { transform-origin: 70% 78%; }
-  .hero-carte::after { background: linear-gradient(180deg, rgba(244, 241, 234, .97) 0%, rgba(244, 241, 234, .9) 52%, rgba(244, 241, 234, .2) 78%, rgba(244, 241, 234, 0) 100%); }
-  .hero-pose { --pose-x: 74%; --pose-y: 84%; width: 44px; }
-  .hero-titre { font-size: clamp(2.3rem, 11vw, 3.4rem); }
-  .hero-intro { font-size: .98rem; }
-  .hero-coordonnees { left: var(--gouttiere); right: auto; }
+  .hero { align-items: stretch; padding-top: calc(var(--entete-h) + 14px); padding-bottom: calc(var(--barres-h) + 22px); }
+  .hero-scene { --cadre-zoom: 1.04; --cadre-x: .55; --cadre-y: .5; transform-origin: 66% 45%; }
+  .hero-scene::after { background:
+    linear-gradient(180deg, rgba(8, 38, 43, .8) 0%, rgba(8, 38, 43, .66) 28%, rgba(8, 38, 43, 0) 43%),
+    linear-gradient(0deg, rgba(8, 38, 43, .95) 0%, rgba(8, 38, 43, .8) 34%, rgba(8, 38, 43, .4) 44%, rgba(8, 38, 43, 0) 54%); }
+  .hero-media .mention-ia { left: 12px; right: auto; top: 47%; bottom: auto; }
+  .hero-pose { width: 36px; }
+  .hero-texte { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+  .hero .surtitre { font-size: .75rem; letter-spacing: .12em; }
+  .hero-titre { font-size: clamp(2rem, 9.2vw, 3rem); }
+  .hero-intro { font-size: .92rem; line-height: 1.5; }
+  .hero-actions { margin-top: .9em; gap: 10px 18px; }
+  .hero-defiler { display: none; }
 }
 @media (max-height: 600px) and (min-width: 761px) { .hero-intro { display: none; } .hero-titre { font-size: clamp(2.2rem, 11vh, 4.4rem); } }
-@media (max-width: 380px), (max-height: 700px) and (max-width: 760px) { .hero-intro { display: none; } }
+@media (max-width: 359px), (max-height: 700px) and (max-width: 760px) { .hero-intro { display: none; } }
+/* Petits téléphones : le paysage descend (zoom ancré en haut) pour que le repère passe sous le titre. */
+@media (max-width: 760px) and (max-height: 700px) { .hero-scene { --cadre-zoom: 1.25; --cadre-y: 0; } .hero-titre { font-size: clamp(1.8rem, 8.6vw, 2.4rem); } }
+/* Sans script, l'en-tête du téléphone est dans le flux : le hero laisse sa place et la barre du bas. */
+@media (max-width: 760px) { html:not(.js) .hero { min-height: calc(100svh - 240px); } }
+
+/* En-tête nuit pétrole (toujours opaque) tant qu'il est posé sur le hero, fondu vers l'image par un dégradé
+   (classe posée par le script ; sans script, il reste calcaire). */
+[data-entete] { transition: transform .35s var(--courbe), background-color .35s, border-color .35s; }
+[data-entete]::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 56px; pointer-events: none; background: linear-gradient(rgba(8, 38, 43, .9), rgba(8, 38, 43, 0)); opacity: 0; transition: opacity .35s; }
+html.entete-sur-hero:not(.menu-ouvert) [data-entete] { background: var(--nuit); border-bottom-color: var(--nuit); }
+html.entete-sur-hero:not(.menu-ouvert) [data-entete]::after { opacity: 1; }
+html.entete-sur-hero:not(.menu-ouvert) .entete-logo img { content: url('/assets/images/logo-complet-clair.webp'); }
+html.entete-sur-hero:not(.menu-ouvert) [data-nav] a { color: var(--calcaire); }
+html.entete-sur-hero:not(.menu-ouvert) [data-nav] a[aria-current] { color: var(--laiton-clair); }
+html.entete-sur-hero:not(.menu-ouvert) .entete-actions > .bouton, html.entete-sur-hero:not(.menu-ouvert) [data-menu-bouton] { background: var(--calcaire); color: var(--nuit); }
+html.entete-sur-hero:not(.menu-ouvert) .entete-actions > .bouton:hover { background: #fff; }
 
 /* Raisons : photo qui ondule, trois phrases qui s'allument mot à mot. */
 .raisons { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: stretch; gap: 0; background: var(--sable); }
@@ -506,17 +541,33 @@ html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouver
 .mosaique-carte figcaption { margin-top: 8px; font-size: .85rem; color: var(--texte-doux); }
 @media (max-width: 760px) { .mosaique-grille { grid-template-columns: 1fr 1fr; } .mosaique-carte, .mosaique-carte:nth-child(4), .mosaique-carte:nth-child(5) { grid-column: span 1; } .mosaique-carte:nth-child(5) { grid-column: span 2; } }
 
-/* Contact : ouverture compacte, numéro en très grand. */
-.ct-tete { position: relative; padding: calc(var(--entete-h) + clamp(28px, 5vh, 56px)) 0 clamp(28px, 5vh, 56px); overflow: hidden; isolation: isolate; border-bottom: 1px solid var(--ligne); }
-.ct-courbes { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .55; z-index: -1; }
+/* Contact : la carte vivante en courbes de niveau, le repère posé sur Le Mans, le numéro en grand. */
+.ct-tete { position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-items: center; overflow: hidden; padding: calc(var(--entete-h) + 24px) 0 calc(var(--barres-h) + 48px); isolation: isolate; border-bottom: 1px solid var(--ligne); }
+.carte-vivante { position: absolute; inset: 0; z-index: -1; transform-origin: 62% 52%; }
+.carte-vivante-image, .carte-vivante-gl { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.carte-vivante-gl { opacity: 0; transition: opacity .6s linear; }
+.carte-vivante-gl.gl-pret { opacity: 1; }
+.carte-vivante::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(244, 241, 234, .96) 0%, rgba(244, 241, 234, .86) 38%, rgba(244, 241, 234, 0) 64%); }
+.carte-pose { --pose-x: 72%; --pose-y: 52%; position: absolute; left: var(--pose-x); top: var(--pose-y); z-index: 3; width: clamp(46px, min(5vw, 8vh), 74px); aspect-ratio: 128 / 236; transform: translate(-50%, -96%); color: var(--petrole); pointer-events: none; }
+.carte-repere { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.carte-onde { position: absolute; left: 50%; top: 92%; width: 90%; aspect-ratio: 44 / 16; border: 1.5px solid var(--petrole); border-radius: 50%; transform: translate(-50%, -50%) scale(.5); opacity: 0; }
+.carte-lieu { position: absolute; left: 50%; top: calc(100% + 14px); transform: translateX(-50%); font-weight: 700; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; color: var(--encre); background: rgba(244, 241, 234, .9); padding: 2px 8px; border-radius: 999px; }
+.carte-coordonnees { position: absolute; right: var(--gouttiere); bottom: calc(var(--barres-h) + 20px); margin: 0; font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--texte-doux); font-variant-numeric: tabular-nums; }
+.ct-tete-texte { position: relative; z-index: 2; max-width: min(100%, 40rem); }
 .ct-titre { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.6rem); margin: 0 0 .1em; }
 .ct-numero { position: relative; display: flex; align-items: flex-end; gap: clamp(8px, 2vw, 24px); margin: 0 0 .3em; }
-.ct-numero a { display: inline-flex; min-height: 48px; align-items: center; text-decoration: none; font-family: var(--police-titres); font-weight: 300; font-size: clamp(2.6rem, min(11vw, 15vh), 9.6rem); line-height: 1; letter-spacing: -.02em; color: var(--petrole); font-variant-numeric: tabular-nums lining-nums; }
+.ct-numero a { display: inline-flex; min-height: 48px; align-items: center; text-decoration: none; font-family: var(--police-titres); font-weight: 300; font-size: clamp(2.4rem, min(6.4vw, 11vh), 6.6rem); line-height: 1; letter-spacing: -.02em; color: var(--petrole); font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
 .ct-chiffre { display: inline-block; clip-path: inset(-.12em -.06em -.12em -.06em); }
 .ct-chiffre > span { display: inline-block; }
 .ct-espace { display: inline-block; width: .22em; }
-.ct-pin { width: clamp(26px, 3.4vw, 46px); flex: none; margin-bottom: .3em; color: var(--laiton); }
-.ct-repere { width: 100%; height: auto; overflow: visible; }
+@media (max-width: 760px) {
+  .ct-tete { min-height: 0; align-items: start; padding: calc(var(--entete-h) + 20px) 0 200px; }
+  .carte-vivante { transform-origin: 70% 90%; }
+  .carte-vivante::after { background: linear-gradient(180deg, rgba(244, 241, 234, .97) 0%, rgba(244, 241, 234, .9) 66%, rgba(244, 241, 234, .2) 86%, rgba(244, 241, 234, 0) 100%); }
+  .carte-pose { --pose-x: 72%; --pose-y: calc(100% - 78px); width: 40px; }
+  .ct-numero a { font-size: clamp(2.2rem, 11vw, 3.4rem); }
+  .carte-coordonnees { left: var(--gouttiere); right: auto; bottom: 18px; }
+}
 .ct-intro { max-width: 40em; color: var(--texte-doux); }
 .ct-coord { list-style: none; margin: 0 0 1em; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 24px; font-weight: 600; }
 .ct-coord a { display: inline-flex; align-items: center; min-height: 44px; color: var(--petrole); }
@@ -617,3 +668,18 @@ html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouver
 
 /* Vignettes étroites : la mention peut passer sur deux lignes plutôt que d'être coupée. */
 .objectif-media .mention-ia { white-space: normal; text-align: right; line-height: 1.2; }
+
+/* ---------- v2 : ondes au clic et curseur repère ---------- */
+.ondes-clic { position: fixed; inset: 0; z-index: 1000; pointer-events: none; overflow: hidden; }
+.onde-clic { position: absolute; width: 110px; height: 40px; margin: -20px 0 0 -55px; border: 1.5px solid var(--petrole); border-radius: 50%; opacity: 0; will-change: transform, opacity; }
+.onde-clic--clair { border-color: var(--laiton-clair); }
+/* Curseur : l'ombre du repère autour de la pointe de la souris, un petit repère posé dessus ;
+   sur un lien, le repère se lève et son ombre s'élargit ; au clic, il se pose. */
+.curseur { left: -9px; top: -3.5px; width: 18px; height: 7px; border: 1.5px solid var(--petrole); border-radius: 50%; }
+.curseur::before { content: ''; position: absolute; left: 50%; bottom: 50%; width: 12px; height: 17px; margin-left: -6px; background: var(--petrole); -webkit-mask: url('/assets/images/repere-corps.svg') center bottom / contain no-repeat; mask: url('/assets/images/repere-corps.svg') center bottom / contain no-repeat; transform-origin: 50% 100%; transition: transform .25s var(--courbe), background-color .2s; }
+.curseur.curseur-lien { width: 30px; height: 11px; left: -15px; top: -5.5px; }
+.curseur.curseur-lien::before { transform: translateY(-5px) scale(1.2); }
+.curseur.curseur--clair { border-color: var(--laiton-clair); }
+.curseur.curseur--clair::before { background: var(--laiton-clair); }
+.curseur.curseur-pose::before { animation: curseur-pose .45s var(--courbe); }
+@keyframes curseur-pose { 0% { transform: translateY(-7px); } 45% { transform: translateY(0) scaleY(.8) scaleX(1.14); } 100% { transform: none; } }

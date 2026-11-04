@@ -1,11 +1,11 @@
-/* Accueil : carte en courbes de niveau (WebGL) où le repère du logo se pose sur Le Mans,
-   raisons mot à mot sur une photo qui ondule, six objectifs sur six anneaux (section épinglée),
-   déroulé en itinéraire, citation raturée, aperçu du portrait, avis suspendus à des repères,
+/* Accueil : hero plein cadre, un lever de soleil sur le bocage (WebGL : relief à la souris, courbes de niveau
+   révélées sous le curseur, onde au clic, travelling au défilement) où le repère du logo se pose sur le soleil ;
+   six objectifs sur six anneaux (section épinglée), raisons mot à mot, déroulé en itinéraire, citation raturée, aperçu du portrait, avis suspendus à des repères,
    galerie des résidences, appel final sur des ondes. Une section, au moins un effet au défilement. */
 import { html, brut } from '../../outils/gabarit.mjs';
 import { repere } from '../gabarits/commun.mjs';
 
-export const page = { cle: 'accueil', fichier: 'index', imagePartage: 'carte-courbes.webp' };
+export const page = { cle: 'accueil', fichier: 'index', imagePartage: 'grok/hero-horizon-1280.webp' };
 
 /* Anneaux concentriques : un par objectif, libellé posé sur l'anneau. */
 export function anneaux(c, objectifs, { classe = '', effet = 'anneaux-objectifs', angles = [-2.2, -0.75, 0.15, 0.95, 2.05, 2.75], viewBox = '-330 -330 660 660', R0 = 62, PAS = 36, corps = 23, courts = true } = {}) {
@@ -34,39 +34,28 @@ export function anneaux(c, objectifs, { classe = '', effet = 'anneaux-objectifs'
 
 export default (c) => html`
 <section class="hero" id="debut" data-plein-ecran>
-  <div class="hero-carte" aria-hidden="true" data-effet="carte-courbes">
-    <img class="hero-carte-image" src="/assets/images/carte-courbes.webp" alt="" width="1600" height="1000" fetchpriority="high" loading="eager" decoding="async" data-audit-ignorer>
-    <canvas class="hero-carte-gl" data-audit-ignorer></canvas>
-  </div>
-  <div class="hero-pose" data-repere>
-    <span class="hero-onde"></span><span class="hero-onde"></span>
-    ${repere('hero-repere', 'data-effet="repere-chute"')}
-    <span class="hero-lieu">${c.t('contact.carte.leMans')}</span>
+  <div class="hero-scene" data-effet="horizon-vivant" data-souris data-soleil="0.6413 0.445" data-soleil-mobile="0.6365 0.446" data-horizon="0.445">
+    ${c.media({ nom: 'grok/hero-horizon', alt: c.s('accueil.hero.alt'), classe: 'hero-media', sizes: '100vw', priorite: true })}
+    <canvas class="hero-gl" aria-hidden="true" data-audit-ignorer></canvas>
+    <div class="hero-pose" aria-hidden="true">
+      <span class="hero-onde"></span><span class="hero-onde"></span><span class="hero-onde"></span>
+      ${repere('hero-repere', 'data-effet="repere-horizon"')}
+    </div>
   </div>
   <div class="hero-texte conteneur">
-    <p class="surtitre" data-anime="gsap">${c.t('accueil.hero.surtitre')}</p>
-    <h1 class="hero-titre"><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne">${c.t('accueil.hero.titre1')}</span></span><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne">${c.t('accueil.hero.titre2')}</span></span><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne"><em>${c.t('accueil.hero.titre3')}</em></span></span></h1>
-    <p class="hero-intro" data-anime="gsap">${c.t('accueil.hero.texte')}</p>
-    <p class="hero-actions" data-anime="gsap">
-      ${c.lien('contact', { ancre: 'rendez-vous', classe: 'bouton', texte: c.t('accueil.hero.action'), attrs: 'data-action-principale data-survol="magnetique"' })}
-      <span class="hero-info" data-info-cle><strong>${c.t('accueil.hero.info')}</strong> <span>${c.t('accueil.hero.infoDetail')}</span></span>
-    </p>
+    <div class="hero-titrage">
+      <p class="surtitre" data-anime="gsap">${c.t('accueil.hero.surtitre')}</p>
+      <h1 class="hero-titre"><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne">${c.t('accueil.hero.titre1')}</span></span><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne">${c.t('accueil.hero.titre2')}</span></span><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne"><em>${c.t('accueil.hero.titre3')}</em></span></span></h1>
+    </div>
+    <div class="hero-cote">
+      <p class="hero-intro" data-anime="gsap">${c.t('accueil.hero.texte')}</p>
+      <p class="hero-actions" data-anime="gsap">
+        ${c.lien('contact', { ancre: 'rendez-vous', classe: 'bouton bouton--clair', texte: c.t('accueil.hero.action'), attrs: 'data-action-principale data-survol="magnetique"' })}
+        <span class="hero-info" data-info-cle><strong>${c.t('accueil.hero.info')}</strong> <span>${c.t('accueil.hero.infoDetail')}</span></span>
+      </p>
+    </div>
   </div>
-  <p class="hero-coordonnees" data-anime="gsap"><span>${c.t('accueil.hero.coordonnees')}</span></p>
-</section>
-
-<section class="raisons" id="raisons">
-  ${c.media({ nom: 'grok/raisons-bureau', alt: c.s('accueil.raisons.alt'), cadrage: '45% 88%', classe: 'raisons-media', sizes: '(max-width: 760px) 100vw, 50vw', attrs: 'data-fx="zoom" data-fx-force="16"' })}
-  <div class="raisons-texte conteneur">
-    <p class="surtitre" data-anime>${c.t('accueil.raisons.surtitre')}</p>
-    <h2 data-anime="lignes">${c.t('accueil.raisons.titre')}</h2>
-    <p class="raisons-note" data-anime><span class="a-valider">${c.t('accueil.raisons.aValider')}</span></p>
-    <ol class="raisons-liste">
-      <li><span class="raisons-num" aria-hidden="true">01</span><p class="manifeste" data-effet="manifeste">${c.t('accueil.raisons.r1')}</p></li>
-      <li><span class="raisons-num" aria-hidden="true">02</span><p class="manifeste" data-effet="manifeste">${c.t('accueil.raisons.r2')}</p></li>
-      <li><span class="raisons-num" aria-hidden="true">03</span><p class="manifeste" data-effet="manifeste">${c.t('accueil.raisons.r3')}</p></li>
-    </ol>
-  </div>
+  <a class="hero-defiler" href="#objectifs" data-anime="gsap"><span>${c.t('accueil.hero.defiler')}</span></a>
 </section>
 
 <section class="objectifs ecran epingle" id="objectifs" data-objectifs data-entete-cache>
@@ -86,6 +75,20 @@ export default (c) => html`
     </ol>
   </div>
   <p class="objectifs-pied conteneur"><span class="objectifs-risque">${c.t('commun.risque')}</span> ${c.lien('accompagnement', { classe: 'lien-fleche', texte: c.t('accueil.objectifs.lien') })}</p>
+</section>
+
+<section class="raisons" id="raisons">
+  ${c.media({ nom: 'grok/raisons-bureau', alt: c.s('accueil.raisons.alt'), cadrage: '45% 88%', classe: 'raisons-media', sizes: '(max-width: 760px) 100vw, 50vw', attrs: 'data-fx="zoom" data-fx-force="16"' })}
+  <div class="raisons-texte conteneur">
+    <p class="surtitre" data-anime>${c.t('accueil.raisons.surtitre')}</p>
+    <h2 data-anime="lignes">${c.t('accueil.raisons.titre')}</h2>
+    <p class="raisons-note" data-anime><span class="a-valider">${c.t('accueil.raisons.aValider')}</span></p>
+    <ol class="raisons-liste">
+      <li><span class="raisons-num" aria-hidden="true">01</span><p class="manifeste" data-effet="manifeste">${c.t('accueil.raisons.r1')}</p></li>
+      <li><span class="raisons-num" aria-hidden="true">02</span><p class="manifeste" data-effet="manifeste">${c.t('accueil.raisons.r2')}</p></li>
+      <li><span class="raisons-num" aria-hidden="true">03</span><p class="manifeste" data-effet="manifeste">${c.t('accueil.raisons.r3')}</p></li>
+    </ol>
+  </div>
 </section>
 
 <section class="deroule" id="deroule">

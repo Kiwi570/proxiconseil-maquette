@@ -1,8 +1,8 @@
-# Proxiconseil Patrimoine · maquette v1
+# Proxiconseil Patrimoine · maquette v2
 
 Maquette de site pour **Nicolas Rabouan, Proxiconseil Patrimoine** (conseiller en investissements financiers, Le Mans).
-Direction artistique « **Le repère** » : le repère du logo se pose sur une carte en courbes de niveau, et ses ondes
-deviennent les six objectifs du patrimoine. Papier calcaire, bleu pétrole du logo, nuit pétrole, laiton ; Fraunces et Manrope.
+Direction artistique « **Le repère** » : le repère du logo se pose sur le soleil d'un paysage de bocage (accueil)
+et sur une carte en courbes de niveau (contact), et ses ondes deviennent les six objectifs du patrimoine. Papier calcaire, bleu pétrole du logo, nuit pétrole, laiton ; Fraunces et Manrope.
 
 Site statique (HTML, CSS, JavaScript), prêt pour Vercel sans étape de construction. Maquette non indexée (noindex).
 
@@ -10,11 +10,11 @@ Site statique (HTML, CSS, JavaScript), prêt pour Vercel sans étape de construc
 
 | Page | Ouverture | Effets propres |
 |---|---|---|
-| Accueil `/` | Carte en courbes de niveau (WebGL), le repère tombe sur Le Mans | carte-courbes, repere-chute, manifeste, anneaux-objectifs (épinglé), itineraire-etapes, rature-avenir, avis-epingles, ondes-appel, galerie |
+| Accueil `/` | Lever de soleil plein cadre (WebGL) : relief à la souris, courbes de niveau sous le curseur, onde au clic, travelling au défilement ; le repère tombe sur le soleil | horizon-vivant, repere-horizon, anneaux-objectifs (épinglé), manifeste, itineraire-etapes, rature-avenir, avis-epingles, ondes-appel, galerie |
 | Mon accompagnement `/accompagnement` | Nuit pétrole, centrée, six anneaux qui se lèvent comme un horizon | anneaux-horizon, planches, boussole, feuillets, tampon-orias |
 | Qui suis-je `/qui-suis-je` | Scindée sur fond sable, portrait qui naît d'une trame d'impression (WebGL) | portrait-trame, manifeste, frise tracée, sceau |
 | Immobilier `/immobilier` | Très grand titre, bandeau photo sous un plan de masse qui s'efface | plan-masse, vue-eclatee, mosaïque en rideaux |
-| Contact `/contact` | Compacte, numéro de téléphone en très grand, chiffre par chiffre | numero-pose, formulaire en quatre étapes avec récapitulatif, schéma tracé |
+| Contact `/contact` | Carte vivante en courbes de niveau (WebGL, relief sous la souris, onde au clic), le repère tombe sur Le Mans, numéro chiffre par chiffre | carte-courbes, repere-chute, numero-pose, formulaire en quatre étapes avec récapitulatif, schéma tracé |
 | 404 | « Hors de la carte », le repère tombe à côté | repere-chute |
 
 Pages du site actuel non reprises en v1 (disponibles en v2) : « Mes partenaires » (vide sur le site actuel), une page Avis dédiée.
@@ -23,7 +23,7 @@ Pages du site actuel non reprises en v1 (disponibles en v2) : « Mes partenaires
 
 - Textes : `donnees/textes/fr.json` ; données répétées : `donnees/*.json` (objectifs, avis, étapes, situations, résidences, couches).
 - Pages : `source/pages/*.mjs` ; gabarit commun (en-tête, pied de page, intro, voile) : `source/gabarits/commun.mjs`.
-- Style : `assets/css/site.css` ; effets : `assets/js/site.js` (intro et accueil), `pages.js` (pages intérieures), `carte.js` (carte WebGL), `trame.js` (portrait en trame).
+- Style : `assets/css/site.css` ; effets : `assets/js/site.js` (intro et accueil), `pages.js` (pages intérieures), `horizon.js` (hero WebGL de l'accueil), `carte.js` (carte WebGL du contact), `trame.js` (portrait en trame), `ondes.js` (ondes au clic et teinte du curseur).
 - Générer les pages après toute modification : `node outils/generer.mjs` (ne jamais modifier les `.html` à la main).
 - Audit : `node _audit/audit.mjs` (standard), `--complet` pour la version finale.
 - Numéro de version des fichiers (`?v=N`) : champ `version` de `donnees/site.json`, à augmenter à chaque livraison.
@@ -52,7 +52,7 @@ Pages du site actuel non reprises en v1 (disponibles en v2) : « Mes partenaires
 
 ## Crédits
 
-- Illustrations générées (Grok) : `assets/images/grok/` — raisons-bureau, deroule-chemin, citation-horizon, appel-riviere, objectif-epargne, objectif-tresorerie, objectif-immobilier, objectif-retraite, objectif-impots, objectif-transmission, pour-particuliers, pour-entreprises, carnet-bureau, immobilier-facade, contact-bocage, hors-carte. Chaque image porte la mention « Illustration générée » : **à garder sur le site final**.
+- Illustrations générées (Grok) : `assets/images/grok/` — hero-horizon et hero-horizon-mobile (hero de l'accueil, ordinateur et téléphone), raisons-bureau, deroule-chemin, citation-horizon, appel-riviere, objectif-epargne, objectif-tresorerie, objectif-immobilier, objectif-retraite, objectif-impots, objectif-transmission, pour-particuliers, pour-entreprises, carnet-bureau, immobilier-facade, contact-bocage, hors-carte. Chaque image porte la mention « Illustration générée » : **à garder sur le site final**.
 - Photos du site actuel : portrait de Nicolas Rabouan, logo, cinq résidences commercialisées et livrées par Stellium Immobilier.
 - Photos des résidences : étalonnage commun léger (un peu moins saturées, un peu plus chaudes) pour s'accorder à la palette.
 - Polices : Fraunces et Manrope (licence SIL Open Font License, fichiers `assets/polices/OFL-*.txt`).
@@ -64,7 +64,8 @@ Pages du site actuel non reprises en v1 (disponibles en v2) : « Mes partenaires
 - **Garder** : la mention « Illustration générée » sur les images créées par IA, les statuts et l'ORIAS, la mention de risque de perte en capital.
 - Mettre l'adresse définitive du site dans `donnees/site.json` (`adresse`) et `donnees/structure.json`.
 
-## Pistes pour une v2
+## Pistes pour la suite
+
 
 - Remplacer deux ou trois illustrations par des scènes habitées, sans visage (un rendez-vous vu de dos, des mains qui feuillettent un carnet), et la chaise vide de la retraite par un paysage sarthois.
 - Page « Mes partenaires » si Nicolas en fournit la liste ; page « Avis » avec lien vers la fiche Google.

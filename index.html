@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-v="1" data-curseur>
+<html lang="fr" data-v="2" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/manrope.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=1">
-<link rel="stylesheet" href="/assets/css/site.css?v=1">
-<link rel="modulepreload" href="/assets/js/site.js?v=1">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=1">
+<link rel="stylesheet" href="/assets/css/socle.css?v=2">
+<link rel="stylesheet" href="/assets/css/site.css?v=2">
+<link rel="modulepreload" href="/assets/js/site.js?v=2">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=2">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=1"></script>
+<script type="module" src="/assets/js/site.js?v=2"></script>
 <meta name="theme-color" content="#f4f1ea">
 <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
@@ -96,42 +96,32 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 </div>
 <main id="contenu" tabindex="-1" data-page="accueil">
 <section class="hero" id="debut" data-plein-ecran>
-  <div class="hero-carte" aria-hidden="true" data-effet="carte-courbes">
-    <img class="hero-carte-image" src="/assets/images/carte-courbes.webp" alt="" width="1600" height="1000" fetchpriority="high" loading="eager" decoding="async" data-audit-ignorer>
-    <canvas class="hero-carte-gl" data-audit-ignorer></canvas>
-  </div>
-  <div class="hero-pose" data-repere>
-    <span class="hero-onde"></span><span class="hero-onde"></span>
-    <svg class="repere hero-repere" viewBox="0 0 128 236" aria-hidden="true" focusable="false" data-effet="repere-chute"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg>
-    <span class="hero-lieu">Le Mans</span>
-  </div>
-  <div class="hero-texte conteneur">
-    <p class="surtitre" data-anime="gsap">Nicolas Rabouan · Conseiller en investissements financiers</p>
-    <h1 class="hero-titre"><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne">Proximité et conseil</span></span><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne">au service de votre</span></span><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne"><em>patrimoine</em></span></span></h1>
-    <p class="hero-intro" data-anime="gsap">Vous souhaitez optimiser votre épargne ou votre trésorerie d’entreprise, investir dans l’immobilier, préparer votre retraite, réduire votre imposition ou transmettre votre patrimoine ? Échangeons et concrétisons, ensemble, tous vos projets.</p>
-    <p class="hero-actions" data-anime="gsap">
-      <a href="/contact#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Prendre rendez-vous</a>
-      <span class="hero-info" data-info-cle><strong>ORIAS 22007088</strong> <span>CIF membre de l’ANACOFI</span></span>
-    </p>
-  </div>
-  <p class="hero-coordonnees" data-anime="gsap"><span>Le Mans · 48° 00′ N · 0° 12′ E</span></p>
-</section>
-<section class="raisons" id="raisons">
-  <figure class="media raisons-media" data-grok data-fx="zoom" data-fx-force="16" style="--cadrage:45% 88%">
-  <picture>
-    <img src="/assets/images/grok/raisons-bureau-1280.webp" srcset="/assets/images/grok/raisons-bureau-640.webp 640w, /assets/images/grok/raisons-bureau-1280.webp 1280w, /assets/images/grok/raisons-bureau-1752.webp 1752w" sizes="(max-width: 760px) 100vw, 50vw" alt="Bureau de conseil vide en fin d’après-midi, deux chaises face à face" width="1280" height="854" loading="lazy" decoding="async">
+  <div class="hero-scene" data-effet="horizon-vivant" data-souris data-soleil="0.6413 0.445" data-soleil-mobile="0.6365 0.446" data-horizon="0.445">
+    <figure class="media hero-media" data-grok style="--cadrage:50% 50%">
+  <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/grok/hero-horizon-mobile-480.webp 480w, /assets/images/grok/hero-horizon-mobile-640.webp 640w, /assets/images/grok/hero-horizon-mobile-960.webp 960w, /assets/images/grok/hero-horizon-mobile-1170.webp 1170w" sizes="100vw">
+    <img src="/assets/images/grok/hero-horizon-1280.webp" srcset="/assets/images/grok/hero-horizon-640.webp 640w, /assets/images/grok/hero-horizon-1280.webp 1280w, /assets/images/grok/hero-horizon-1752.webp 1752w" sizes="100vw" alt="Lever de soleil sur un bocage vallonné, un chemin de terre mène vers l’horizon" width="1280" height="859" fetchpriority="high" loading="eager" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-  <div class="raisons-texte conteneur">
-    <p class="surtitre" data-anime>Mon métier</p>
-    <h2 data-anime="lignes">Pourquoi faire appel à un conseiller patrimonial ?</h2>
-    <p class="raisons-note" data-anime><span class="a-valider">formulations du site actuel, à valider</span></p>
-    <ol class="raisons-liste">
-      <li><span class="raisons-num" aria-hidden="true">01</span><p class="manifeste" data-effet="manifeste">Pour vous apporter une information et le meilleur conseil sur les possibilités de développer votre patrimoine et de sécuriser financièrement votre avenir.</p></li>
-      <li><span class="raisons-num" aria-hidden="true">02</span><p class="manifeste" data-effet="manifeste">Pour vous aider à dynamiser votre épargne, valoriser votre patrimoine, diminuer vos impôts, préparer votre retraite et transmettre dans les meilleures conditions.</p></li>
-      <li><span class="raisons-num" aria-hidden="true">03</span><p class="manifeste" data-effet="manifeste">Pour créer une relation durable et de confiance, en vous accompagnant dans l’atteinte de vos objectifs actuels et futurs.</p></li>
-    </ol>
+    <canvas class="hero-gl" aria-hidden="true" data-audit-ignorer></canvas>
+    <div class="hero-pose" aria-hidden="true">
+      <span class="hero-onde"></span><span class="hero-onde"></span><span class="hero-onde"></span>
+      <svg class="repere hero-repere" viewBox="0 0 128 236" aria-hidden="true" focusable="false" data-effet="repere-horizon"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg>
+    </div>
   </div>
+  <div class="hero-texte conteneur">
+    <div class="hero-titrage">
+      <p class="surtitre" data-anime="gsap">Nicolas Rabouan · Conseiller en investissements financiers</p>
+      <h1 class="hero-titre"><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne">Proximité et conseil</span></span><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne">au service de votre</span></span><span class="ligne-masque"><span data-anime="gsap" class="hero-ligne"><em>patrimoine</em></span></span></h1>
+    </div>
+    <div class="hero-cote">
+      <p class="hero-intro" data-anime="gsap">Vous souhaitez optimiser votre épargne ou votre trésorerie d’entreprise, investir dans l’immobilier, préparer votre retraite, réduire votre imposition ou transmettre votre patrimoine ? Échangeons et concrétisons, ensemble, tous vos projets.</p>
+      <p class="hero-actions" data-anime="gsap">
+        <a href="/contact#rendez-vous" class="bouton bouton--clair" data-libelle="Contact" data-action-principale data-survol="magnetique">Prendre rendez-vous</a>
+        <span class="hero-info" data-info-cle><strong>ORIAS 22007088</strong> <span>CIF membre de l’ANACOFI</span></span>
+      </p>
+    </div>
+  </div>
+  <a class="hero-defiler" href="#objectifs" data-anime="gsap"><span>Faites défiler</span></a>
 </section>
 <section class="objectifs ecran epingle" id="objectifs" data-objectifs data-entete-cache>
   <div class="objectifs-grille conteneur">
@@ -217,6 +207,23 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
     </ol>
   </div>
   <p class="objectifs-pied conteneur"><span class="objectifs-risque">Tout placement comporte des risques, dont celui de perte en capital. Les solutions sont proposées après étude de votre situation.</span> <a href="/accompagnement" class="lien-fleche" data-libelle="Accompagnement">Découvrir l’accompagnement</a></p>
+</section>
+<section class="raisons" id="raisons">
+  <figure class="media raisons-media" data-grok data-fx="zoom" data-fx-force="16" style="--cadrage:45% 88%">
+  <picture>
+    <img src="/assets/images/grok/raisons-bureau-1280.webp" srcset="/assets/images/grok/raisons-bureau-640.webp 640w, /assets/images/grok/raisons-bureau-1280.webp 1280w, /assets/images/grok/raisons-bureau-1752.webp 1752w" sizes="(max-width: 760px) 100vw, 50vw" alt="Bureau de conseil vide en fin d’après-midi, deux chaises face à face" width="1280" height="854" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+  <div class="raisons-texte conteneur">
+    <p class="surtitre" data-anime>Mon métier</p>
+    <h2 data-anime="lignes">Pourquoi faire appel à un conseiller patrimonial ?</h2>
+    <p class="raisons-note" data-anime><span class="a-valider">formulations du site actuel, à valider</span></p>
+    <ol class="raisons-liste">
+      <li><span class="raisons-num" aria-hidden="true">01</span><p class="manifeste" data-effet="manifeste">Pour vous apporter une information et le meilleur conseil sur les possibilités de développer votre patrimoine et de sécuriser financièrement votre avenir.</p></li>
+      <li><span class="raisons-num" aria-hidden="true">02</span><p class="manifeste" data-effet="manifeste">Pour vous aider à dynamiser votre épargne, valoriser votre patrimoine, diminuer vos impôts, préparer votre retraite et transmettre dans les meilleures conditions.</p></li>
+      <li><span class="raisons-num" aria-hidden="true">03</span><p class="manifeste" data-effet="manifeste">Pour créer une relation durable et de confiance, en vous accompagnant dans l’atteinte de vos objectifs actuels et futurs.</p></li>
+    </ol>
+  </div>
 </section>
 <section class="deroule" id="deroule">
   <figure class="media deroule-fond" data-grok data-fx="parallaxe" data-fx-force="12" style="--cadrage:50% 60%">

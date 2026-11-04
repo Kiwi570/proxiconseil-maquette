@@ -1,5 +1,31 @@
 {
   "siteActuel": "proxiconseil-patrimoine.fr",
-  "pagesTypes": ["/", "/accompagnement", "/qui-suis-je", "/immobilier", "/contact"],
-  "effets": ["repere-chute", "carte-courbes", "anneaux-objectifs", "itineraire-etapes", "avis-epingles", "plan-masse", "numero-pose", "rature-avenir", "manifeste", "ondes-appel", "anneaux-horizon", "planches", "feuillets", "tampon-orias", "portrait-trame", "sceau", "vue-eclatee"]
+  "pagesTypes": [
+    "/",
+    "/accompagnement",
+    "/qui-suis-je",
+    "/immobilier",
+    "/contact"
+  ],
+  "effets": [
+    "repere-chute",
+    "carte-courbes",
+    "anneaux-objectifs",
+    "itineraire-etapes",
+    "avis-epingles",
+    "plan-masse",
+    "numero-pose",
+    "rature-avenir",
+    "manifeste",
+    "ondes-appel",
+    "anneaux-horizon",
+    "planches",
+    "feuillets",
+    "tampon-orias",
+    "portrait-trame",
+    "sceau",
+    "vue-eclatee",
+    "horizon-vivant",
+    "repere-horizon"
+  ]
 }

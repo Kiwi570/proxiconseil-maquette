@@ -1,5 +1,42 @@
 [
  {
+  "source": "recu/grok/hero-horizon.jpg",
+  "nom": "hero-horizon",
+  "role": "ouverture",
+  "page": "Accueil",
+  "emplacement": "Hero (v2), ordinateur",
+  "priorite": "Indispensable",
+  "gabarit": "ouverture",
+  "ratio": "3:2",
+  "zone_texte": "bas",
+  "alt": "Lever de soleil sur un bocage vallonné, un chemin de terre mène vers l’horizon",
+  "consigne_scene": "Cinematic wide landscape photograph at sunrise over gentle French bocage countryside, a pale dirt path winding toward a low golden sun on the horizon slightly right of centre, hedgerows and oak trees receding into thin morning mist",
+  "largeurs": [
+   640,
+   1280,
+   1752
+  ]
+ },
+ {
+  "source": "recu/grok/hero-horizon-mobile.jpg",
+  "nom": "hero-horizon-mobile",
+  "role": "ouverture",
+  "page": "Accueil",
+  "emplacement": "Hero (v2), téléphone",
+  "priorite": "Indispensable",
+  "gabarit": "ouverture",
+  "ratio": "2:3",
+  "zone_texte": "haut et bas",
+  "alt": "Lever de soleil sur un bocage vallonné, un chemin de terre mène vers l’horizon",
+  "consigne_scene": "Vertical cinematic photograph at sunrise over gentle French bocage countryside, a pale dirt path rising from the bottom of the frame toward a low golden sun on the horizon at mid-height",
+  "largeurs": [
+   480,
+   640,
+   960,
+   1170
+  ]
+ },
+ {
   "source": "recu/suis-je.jpg",
   "nom": "logo",
   "role": "logo",
