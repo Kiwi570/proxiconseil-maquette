@@ -2,11 +2,11 @@
    Le socle gère l'ouverture, le voile, l'en-tête, le menu, le mode calme, les boucles, les mesures
    et la bibliothèque d'effets (data-anime, data-fx, data-survol). Ici : l'intro du repère, et les effets
    propres de chaque page, chacun marqué data-effet="nom" (liste dans _audit/config.json). */
-import { demarrer, boucle, etat, quand } from './socle/index.js?v=5';
-import { horizonVivant } from './horizon.js?v=5';
-import { pagesInterieures } from './pages.js?v=5';
-import { ondesAuClic } from './ondes.js?v=5';
-import { bande } from './bande.js?v=5';
+import { demarrer, boucle, etat, quand } from './socle/index.js?v=6';
+import { horizonVivant } from './horizon.js?v=6';
+import { pagesInterieures } from './pages.js?v=6';
+import { ondesAuClic } from './ondes.js?v=6';
+import { bande } from './bande.js?v=6';
 
 const gsap = window.gsap;
 const ST = window.ScrollTrigger;

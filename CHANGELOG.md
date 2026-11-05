@@ -1,5 +1,15 @@
 # Journal des versions
 
+## v6 — 5 novembre 2026
+
+Nouvelles ouvertures pour les quatre pages intérieures, chacune avec sa composition :
+
+- **Mon accompagnement** : six volets photo plein écran, un par objectif. Le volet survolé s'élargit et montre son objectif (le suivant s'ouvre seul toutes les 4,5 s) ; un clic mène à sa fiche. Les volets montent un à un à l'ouverture et se décalent au défilement.
+- **Qui suis-je** : sur nuit pétrole, le nom en très grand et le vrai portrait dans une fenêtre en forme de repère, cerclée de laiton. Sur ordinateur, la section se fixe et la fenêtre grandit jusqu'au portrait plein écran ; sur téléphone, elle monte au défilement.
+- **Immobilier** : « du plan à la pierre ». La façade apparaît d'abord en plan d'architecte, un balayage révèle la photo, une loupe montre le plan sous la souris, et le plan revient par la droite au défilement. Les informations passent dans un cartouche d'architecte.
+- **Contact** : dans la loupe de la carte vivante, le paysage du bocage apparaît sous les courbes de niveau (sous la souris, ou autour du repère sur téléphone). Sur téléphone, la carte passe derrière le texte, le repère et sa loupe en bas.
+- En-tête nuit pétrole sur les ouvertures sombres (accompagnement, qui suis-je, immobilier).
+
 ## v5 — 5 novembre 2026
 
 - **Investir dans la pierre** : la section se fixe à l'écran, contenu centré, le temps que les images défilent jusqu'à la dernière, qui reste un instant à l'écran ; la page reprend ensuite. À l'arrivée, les images glissent déjà un peu. Même comportement sur téléphone, au-dessus de la barre d'appel.

@@ -1,5 +1,6 @@
-/* Mon accompagnement. Ouverture : fond nuit pétrole, composition centrée, six anneaux qui se lèvent
-   comme un horizon depuis le bas de l'écran (onde qui s'ouvre). Puis fiches d'objectifs empilées,
+/* Mon accompagnement. Ouverture : six volets photo plein écran, un par objectif ; le volet survolé (ou choisi,
+   ou le suivant toutes les 4,5 s) s'élargit et montre son objectif, le titre centré au-dessus sur un voile nuit.
+   Les volets montent un à un à l'ouverture, puis se décalent au défilement. Puis fiches d'objectifs empilées,
    pour qui, boussole (choix de situation), feuillets du déroulé, statuts et tampon ORIAS. */
 import { html, brut } from '../../outils/gabarit.mjs';
 import { repere } from '../gabarits/commun.mjs';
@@ -12,14 +13,20 @@ export default (c) => {
   const nom = Object.fromEntries(obj.map((o) => [o.cle, o.nom]));
   const premiere = c.donnees.situations[0];
   return html`
-<section class="acc-tete" id="debut">
+<section class="acc-tete" id="debut" data-entete-nuit>
+  <div class="volets" data-effet="volets-objectifs" data-ruban>
+    ${obj.map((o, i) => html`<a class="volet${i === 0 ? ' actif' : ''}" href="#objectif-${o.cle}" style="--i:${i}" data-volet="${i}">
+      ${c.media({ nom: o.image, alt: '', cadrage: o.cadrage, classe: 'volet-media', sizes: '(max-width: 760px) 70vw, 36vw', priorite: i < 3 })}
+      <span class="volet-voile" aria-hidden="true"></span>
+      <span class="volet-texte"><span class="volet-nom" data-num="0${i + 1}"><span class="volet-long">${o.nom}</span><span class="volet-court">${o.court}</span></span><span class="volet-detail" aria-hidden="true">${o.texte}</span></span>
+    </a>`)}
+  </div>
   <div class="acc-tete-texte conteneur">
     <p class="surtitre" data-anime="gsap">${c.t('accompagnement.tete.surtitre')}</p>
     <h1 class="acc-titre"><span class="ligne-masque"><span class="acc-ligne" data-anime="gsap">${c.t('accompagnement.tete.titre1')}</span></span><span class="ligne-masque"><span class="acc-ligne" data-anime="gsap"><em>${c.t('accompagnement.tete.titre2')}</em></span></span></h1>
     <p class="acc-intro" data-anime="gsap">${c.t('accompagnement.tete.texte')}</p>
     <p class="acc-actions" data-anime="gsap">${c.lien('contact', { ancre: 'rendez-vous', classe: 'bouton bouton--clair', texte: c.t('accompagnement.tete.action'), attrs: 'data-action-principale data-survol="magnetique"' })} <span class="acc-info" data-info-cle>${c.t('accompagnement.tete.info')}</span></p>
   </div>
-  <div class="acc-horizon" data-superpose>${anneaux(c, obj, { classe: 'anneaux--horizon', effet: 'anneaux-horizon', angles: [-2.45, -0.62, -1.95, -1.1, -2.75, -0.32], R0: 120, PAS: 62, viewBox: '-520 -520 1040 560', corps: 26, courts: false })}</div>
 </section>
 
 <section class="planches conteneur" id="objectifs">

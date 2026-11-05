@@ -398,25 +398,58 @@ html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouver
 .fin-page h2 { max-width: 14em; }
 @media (max-width: 760px) { .fin-page-grille { grid-template-columns: 1fr; } }
 
-/* Accompagnement : nuit pétrole, centré, anneaux en horizon. */
-.acc-tete { position: relative; min-height: 100vh; min-height: 100svh; background: var(--nuit); color: var(--calcaire); overflow: hidden; padding-top: calc(var(--entete-h) + clamp(32px, 7vh, 80px)); isolation: isolate; }
-.acc-tete-texte { text-align: center; display: grid; justify-items: center; position: relative; z-index: 1; }
+/* Accompagnement : six volets photo plein écran (un par objectif), titre centré en haut sur un voile nuit.
+   Le volet actif s'élargit : l'image, plus large que le volet, se découvre sans se recadrer. */
+.acc-tete { --volet-l: 40vw; position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-content: start; background: var(--nuit); color: var(--calcaire); overflow: hidden; padding: calc(var(--entete-h) + clamp(28px, 6vh, 72px)) 0 calc(var(--barres-h) + 24px); isolation: isolate; }
+.acc-tete::before { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(180deg, var(--nuit) 0%, rgba(8, 38, 43, .9) 16%, rgba(8, 38, 43, .62) 40%, rgba(8, 38, 43, 0) 60%); }
+.acc-tete-texte { text-align: center; display: grid; justify-items: center; position: relative; z-index: 2; pointer-events: none; }
+.acc-tete-texte a, .acc-tete-texte button { pointer-events: auto; }
 .acc-tete .surtitre { color: var(--laiton-clair); }
-.acc-titre { color: var(--calcaire); font-size: clamp(2.4rem, min(6vw, 9vh), 6rem); line-height: 1; margin: 0 0 .3em; font-weight: 300; }
+.acc-titre { color: var(--calcaire); font-size: clamp(2.4rem, min(6vw, 9vh), 6rem); line-height: 1; margin: 0 0 .3em; font-weight: 300; text-wrap: balance; }
 .acc-titre em { color: var(--laiton-clair); }
-.acc-intro { max-width: 36em; color: rgba(244, 241, 234, .82); }
+.acc-intro { max-width: 36em; color: rgba(244, 241, 234, .86); }
 .acc-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 12px 20px; }
 .acc-info { font-weight: 700; font-size: .9rem; letter-spacing: .04em; color: var(--calcaire); }
-.acc-horizon { position: absolute; left: 50%; bottom: 0; width: min(1280px, 140vw); transform: translateX(-50%); z-index: -1; pointer-events: none; }
-.anneaux--horizon { width: 100%; height: auto; max-height: none; color: var(--laiton-clair); }
-.anneaux--horizon .anneau-cercle { stroke: rgba(244, 241, 234, .22); }
-.anneaux--horizon .anneau-point { fill: var(--nuit); stroke: var(--laiton-clair); }
-.anneaux--horizon .anneau-nom { fill: rgba(244, 241, 234, .9); stroke: var(--nuit); font-size: 26px; }
-.anneaux--horizon .anneaux-deco { stroke: var(--laiton-clair); opacity: .35; }
-.anneaux--horizon .anneaux-repere { color: var(--laiton-clair); }
-@media (min-width: 761px) { .acc-horizon { width: min(1280px, 100vw); } }
-@media (max-width: 760px) { .acc-horizon { width: 150vw; } .anneaux--horizon .anneau-nom, .anneaux--horizon .anneau-point { display: none; } .acc-tete { min-height: 0; padding-bottom: 64vw; } }
-@media (max-height: 700px) and (min-width: 761px) { .acc-horizon { width: min(1000px, 120vw); } }
+.volets { position: absolute; inset: 0; z-index: 0; display: flex; gap: 2px; background: var(--nuit); }
+.volet { position: relative; flex: 1 1 0; min-width: 44px; overflow: hidden; display: block; color: var(--calcaire); text-decoration: none; container: volet / inline-size; transition: flex-grow .9s cubic-bezier(.7, 0, .2, 1); }
+.volet.actif { flex-grow: 2.7; }
+/* Cachés jusqu'à l'ouverture de la page (le script les fait monter un à un). */
+html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) .volet:not(.vu) { opacity: 0; }
+.volet::after { content: ''; position: absolute; inset: 0; background: var(--nuit); opacity: .3; transition: opacity .7s; pointer-events: none; }
+.volet.actif::after { opacity: 0; }
+.volet:focus-visible { outline: 3px solid var(--laiton-clair); outline-offset: -3px; }
+.volet-media { position: absolute; inset: 0; overflow: visible; border-radius: 0; background: var(--nuit-2); }
+.volet-media img { position: absolute; top: -6%; left: 50%; height: 112%; width: max(100%, var(--volet-l)); max-width: none; margin-left: calc(max(100%, var(--volet-l)) * -.5); }
+.volet-voile { position: absolute; inset: 0; z-index: 1; background: linear-gradient(0deg, rgba(8, 38, 43, .95) 0%, rgba(8, 38, 43, .9) calc(var(--barres-h) + 170px), rgba(8, 38, 43, .5) calc(var(--barres-h) + 240px), rgba(8, 38, 43, 0) calc(var(--barres-h) + 330px)); pointer-events: none; }
+.volet-texte { position: absolute; z-index: 3; left: 16px; right: 14px; top: calc(100% - var(--barres-h) - 150px); display: grid; gap: 8px; }
+.volet-nom { font-weight: 700; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; line-height: 1.3; }
+.volet-nom::before { content: attr(data-num); color: var(--laiton-clair); margin-right: .5em; padding-right: .5em; border-right: 1.5px solid rgba(217, 185, 127, .7); }
+.volet-court { display: none; }
+.volet-detail { max-width: 15em; font-family: var(--police-titres); font-size: clamp(1.05rem, .9rem + .5vw, 1.35rem); line-height: 1.25; opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s; }
+.volet.actif .volet-detail { opacity: 1; transform: none; transition-delay: .35s; }
+.volet .mention-ia { z-index: 3; left: 16px; right: auto; bottom: calc(var(--barres-h) + 14px); }
+/* Volet étroit (téléphone, volet replié) : nom court à la verticale, mention couchée elle aussi. */
+@container volet (max-width: 150px) {
+  .volet-texte { left: 6px; right: auto; top: auto; bottom: calc(var(--barres-h) + 16px); }
+  .volet-nom { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; }
+  .volet-nom::before { margin: 0 0 .5em; padding: 0; border: 0; }
+  .volet-long, .volet-detail { display: none; }
+  .volet-court { display: inline; }
+  .volet .mention-ia { left: auto; right: 2px; bottom: calc(var(--barres-h) + 16px); writing-mode: vertical-rl; transform: rotate(180deg); padding: 0; background: none; color: rgba(244, 241, 234, .8); text-shadow: 0 1px 3px rgba(8, 38, 43, .9); }
+}
+html.calme .volet, html.calme .volet::after, html.calme .volet-detail { transition: none; }
+@media (max-width: 760px) {
+  .acc-tete { --volet-l: 78vw; padding-top: calc(var(--entete-h) + 22px); }
+  .acc-tete::before { background: linear-gradient(180deg, var(--nuit) 0%, rgba(8, 38, 43, .94) 30%, rgba(8, 38, 43, .6) 50%, rgba(8, 38, 43, 0) 64%); }
+  .volet.actif { flex-grow: 4.2; }
+  .acc-intro { font-size: .95rem; }
+}
+@media (max-height: 700px) and (min-width: 761px) { .acc-titre { font-size: clamp(2.2rem, min(5vw, 8vh), 4.4rem); } }
+/* Écran très bas (téléphone à l'horizontale) : les volets ne gardent que leur nom, l'intro se retire. */
+@media (max-height: 500px) {
+  .acc-intro, .acc-info, .volet-detail { display: none; }
+  .volet-texte { top: auto; bottom: calc(var(--barres-h) + 44px); }
+}
 
 .planches { padding-block: clamp(64px, 10vw, 130px); }
 .planches-titre { margin-bottom: 32px; }
@@ -475,23 +508,53 @@ html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouver
 .statuts-liste p { margin: 0; color: var(--texte-doux); }
 @media (max-width: 760px) { .statuts { grid-template-columns: 1fr; } .tampon { grid-column: 1; grid-row: auto; justify-self: center; } .statuts-liste { grid-template-columns: 1fr; } }
 
-/* Qui suis-je : scindée sur fond sable, portrait en trame. */
-.qsj-tete { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 100vh; min-height: 100svh; background: var(--sable); }
-.qsj-tete-texte { align-self: center; padding: calc(var(--entete-h) + 32px) clamp(24px, 5vw, 80px) 48px max(var(--gouttiere), calc((100vw - var(--largeur)) / 2)); }
-.qsj-titre { font-size: clamp(3rem, min(8vw, 13vh), 8.4rem); line-height: .98; margin: 0 0 .25em; font-weight: 300; }
-.qsj-role { font-weight: 700; color: var(--petrole); }
-.qsj-intro { max-width: 32em; color: var(--texte-doux); }
-.qsj-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
-.qsj-info { display: inline-flex; align-items: baseline; gap: 8px; font-weight: 600; }
-.qsj-info strong { font-family: var(--police-titres); font-weight: 300; font-size: 2.6rem; line-height: 1; color: var(--petrole); }
-.qsj-portrait { position: relative; overflow: hidden; background: #111; }
-.qsj-media { position: absolute; inset: 0; border-radius: 0; height: 100%; }
-.qsj-trame { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; }
-.qsj-trame.gl-pret { opacity: 1; }
+/* Qui suis-je : nuit pétrole, nom géant à gauche, portrait dans une fenêtre en forme de repère (masque SVG),
+   cerclée de laiton avec son ombre. Le script pose la géométrie (masque, photo, contour) et la fait grandir au
+   défilement ; les valeurs CSS ci-dessous servent sans script et avant son calcul. */
+.qsj-tete { --fw: calc(min(76svh, 720px) / 1.84); --fcx: 69vw; --ftop: calc(var(--entete-h) + (100svh - var(--entete-h) - var(--fw) * 1.84) / 2);
+  position: relative; min-height: 100vh; min-height: 100svh; overflow: hidden; background: var(--nuit); color: var(--calcaire); isolation: isolate; }
+.qsj-tete::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, rgba(8, 38, 43, .92) 0%, rgba(8, 38, 43, .78) 34%, rgba(8, 38, 43, 0) 60%); }
+.qsj-fenetre { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: #1d1d1f;
+  -webkit-mask: url('/assets/images/repere-plein.svg') no-repeat; mask: url('/assets/images/repere-plein.svg') no-repeat;
+  -webkit-mask-size: var(--fw) calc(var(--fw) * 1.4141); mask-size: var(--fw) calc(var(--fw) * 1.4141);
+  -webkit-mask-position: calc(var(--fcx) - var(--fw) / 2) var(--ftop); mask-position: calc(var(--fcx) - var(--fw) / 2) var(--ftop); }
+.qsj-photo { position: absolute; left: 0; top: 0; max-width: none; height: auto; width: calc(var(--fw) * 1.7); transform-origin: 0 0; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 30%); mask-image: linear-gradient(90deg, transparent 0%, #000 30%);
+  translate: calc(var(--fcx) - var(--fw) * 1.7 * .52) calc(var(--ftop) + var(--fw) * .4883 - var(--fw) * 1.7 / 1.061 * .3); }
+.qsj-teinte { position: absolute; inset: 0; background: #0d5560; mix-blend-mode: color; opacity: .5; }
+.qsj-contour { position: absolute; left: 0; top: 0; z-index: 1; width: var(--fw); height: auto; overflow: visible; color: var(--laiton-clair); pointer-events: none; transform-origin: 0 0;
+  translate: calc(var(--fcx) - var(--fw) / 2) var(--ftop); }
+.qsj-contour path, .qsj-contour ellipse { fill: none; stroke: currentColor; stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.qsj-contour ellipse { opacity: .7; }
+.qsj-tete-texte { position: relative; z-index: 2; min-height: 100vh; min-height: 100svh; display: grid; align-content: space-between; gap: 20px; padding-top: calc(var(--entete-h) + clamp(20px, 5vh, 56px)); padding-bottom: calc(var(--barres-h) + clamp(24px, 6vh, 64px)); }
+.qsj-haut { max-width: min(100%, 42rem); }
+.qsj-bas { max-width: min(100%, 36rem); }
+.qsj-tete .surtitre { color: var(--laiton-clair); }
+.qsj-titre { font-size: clamp(3.2rem, min(10.5vw, 17vh), 11rem); line-height: 1.04; margin: 0; font-weight: 300; letter-spacing: -.02em; color: var(--calcaire); }
+.qsj-titre em { color: var(--laiton-clair); }
+.qsj-role { font-weight: 700; color: var(--laiton-clair); margin: 0 0 .6em; }
+.qsj-intro { max-width: 32em; color: rgba(244, 241, 234, .86); }
+.qsj-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-bottom: 0; }
+.qsj-info { display: inline-flex; align-items: baseline; gap: 8px; font-weight: 600; color: var(--calcaire); }
 @media (max-width: 760px) {
-  .qsj-tete { grid-template-columns: 1fr; min-height: 0; }
-  .qsj-tete-texte { padding: calc(var(--entete-h) + 20px) var(--gouttiere) 28px; }
-  .qsj-portrait { aspect-ratio: 4 / 5; }
+  .qsj-tete { --fw: calc(min(36svh, 100vw) / 1.4141); --fcx: 50vw; --ftop: calc(var(--entete-h) + 170px); }
+  .qsj-tete::after { background: linear-gradient(0deg, rgba(8, 38, 43, .94) 0%, rgba(8, 38, 43, .78) 24%, rgba(8, 38, 43, 0) 46%), linear-gradient(180deg, rgba(8, 38, 43, .8) 0%, rgba(8, 38, 43, 0) 26%); }
+  .qsj-tete-texte { padding-top: calc(var(--entete-h) + 18px); padding-bottom: calc(var(--barres-h) + 20px); }
+  .qsj-titre { font-size: clamp(2.5rem, 13vw, 4.2rem); }
+  .qsj-intro { font-size: .9rem; margin-bottom: .8em; }
+  .qsj-contour ellipse { display: none; }
+  .qsj-photo { -webkit-mask-image: none; mask-image: none; }
+}
+@media (max-height: 640px) { .qsj-intro { display: none; } }
+/* Sans script, la barre d'action du téléphone n'est pas mesurée : on garde le bas de l'ouverture au-dessus d'elle. */
+@media (max-width: 760px) {
+  /* Sans script, l'en-tête (menu sur plusieurs lignes) est dans le flux : l'ouverture se resserre pour garder le
+     bouton et l'information clé au-dessus de la barre d'action. */
+  html:not(.js) .qsj-tete, html:not(.js) .qsj-tete-texte { min-height: 0; }
+  html:not(.js) .qsj-tete { --fw: calc(220px / 1.4141); --ftop: 178px; }
+  html:not(.js) .qsj-tete-texte { padding-top: 20px; padding-bottom: 24px; }
+  html:not(.js) .qsj-haut { margin-bottom: 228px; }
+  html:not(.js) .qsj-intro { display: none; }
+  html:not(.js) .imm-tete { min-height: calc(100svh - 240px); padding-top: 20px; padding-bottom: 24px; }
 }
 .priorite { padding-block: clamp(64px, 10vw, 140px); }
 .priorite-grille { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: clamp(28px, 5vw, 72px); align-items: center; }
@@ -525,25 +588,46 @@ html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouver
 .legal-reseaux { margin-top: 20px; }
 .legal-reseaux a { display: inline-flex; align-items: center; min-height: 44px; font-weight: 700; color: var(--petrole); }
 
-/* Immobilier : très grand titre, bandeau photo sous un plan de masse. */
-.imm-tete { padding-top: calc(var(--entete-h) + clamp(24px, 5vh, 56px)); background: var(--calcaire); }
-.imm-tete-texte { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, .6fr); gap: 12px clamp(24px, 4vw, 56px); align-items: end; }
-.imm-titre { grid-column: 1; font-size: clamp(3rem, min(10vw, 15vh), 11rem); line-height: .98; margin: 0; font-weight: 300; letter-spacing: -.03em; }
-.imm-tete .surtitre { grid-column: 1 / -1; }
-.imm-tete-cote { grid-column: 2; padding-bottom: .6em; }
-.imm-tete-cote > p:first-child { color: var(--texte-doux); font-size: .98rem; }
-.imm-actions { display: grid; justify-items: start; gap: 10px; }
-.imm-info { font-size: .8rem; font-weight: 700; letter-spacing: .04em; color: var(--texte-doux); }
-.imm-bandeau { position: relative; margin-top: clamp(20px, 4vh, 40px); height: clamp(260px, 46svh, 560px); overflow: hidden; }
-.imm-media { position: absolute; inset: 0; border-radius: 0; height: 100%; }
-.imm-plan { position: absolute; inset: 0; background: rgba(244, 241, 234, .9); color: var(--petrole); }
-.plan-masse { width: 100%; height: 100%; }
+/* Immobilier : du plan à la pierre. Façade plein écran ; le plan (même image, même cadrage) par-dessus, découvert
+   par un masque : la partie à droite du balayage (--scan) et la loupe sous la souris (--r, --mx, --my).
+   Sans script et en mode calme : --scan à 100 %, loupe fermée, seule la photo se voit. */
+.imm-tete { position: relative; min-height: 100vh; min-height: 100svh; display: grid; align-items: end; overflow: hidden; background: var(--nuit); color: var(--calcaire); isolation: isolate; padding: calc(var(--entete-h) + 24px) 0 calc(var(--barres-h) + clamp(28px, 6vh, 64px)); }
+.imm-tete::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(0deg, rgba(8, 38, 43, .9) 0%, rgba(8, 38, 43, .62) 26%, rgba(8, 38, 43, 0) 52%), linear-gradient(180deg, rgba(8, 38, 43, .5) 0%, rgba(8, 38, 43, 0) 20%); }
+.imm-scene { --scan: 100%; position: absolute; inset: 0; z-index: 0; }
+.imm-photo, .imm-plan-media { position: absolute; inset: 0; border-radius: 0; height: 100%; background: var(--nuit); }
+.imm-photo .mention-ia { z-index: 3; top: calc(var(--entete-h) + 12px); bottom: auto; right: 12px; }
+.imm-plan { --r: 0px; --mx: 50%; --my: 50%; position: absolute; inset: 0; pointer-events: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent var(--scan), #000 var(--scan)), radial-gradient(circle var(--r) at var(--mx) var(--my), #000 calc(100% - 1px), transparent 100%);
+  mask-image: linear-gradient(90deg, transparent var(--scan), #000 var(--scan)), radial-gradient(circle var(--r) at var(--mx) var(--my), #000 calc(100% - 1px), transparent 100%);
+  -webkit-mask-composite: source-over; mask-composite: add; }
+.plan-cartouche { position: absolute; z-index: 2; left: max(var(--gouttiere), calc((100% - var(--largeur)) / 2)); top: calc(var(--entete-h) + 20px); margin: 0; display: grid; gap: 2px; padding: 8px 12px; border: 1px solid rgba(244, 241, 234, .6); color: var(--calcaire); font: 700 .75rem/1.3 var(--police-texte); letter-spacing: .14em; text-transform: uppercase; }
+.plan-cartouche span:last-child { font-weight: 500; letter-spacing: .04em; text-transform: none; color: rgba(244, 241, 234, .8); }
+.imm-scan { position: absolute; z-index: 2; top: 0; bottom: 0; left: var(--scan); width: 2px; margin-left: -1px; background: var(--laiton-clair); box-shadow: 0 0 22px 5px rgba(217, 185, 127, .5); opacity: 0; pointer-events: none; }
+.imm-loupe { position: absolute; z-index: 2; left: -130px; top: -130px; width: 260px; height: 260px; border-radius: 50%; border: 1.5px solid rgba(244, 241, 234, .92); box-shadow: 0 0 0 1px rgba(8, 38, 43, .35), 0 12px 40px rgba(8, 38, 43, .35); pointer-events: none; opacity: 0; transform: scale(0); }
+.imm-loupe::before, .imm-loupe::after { content: ''; position: absolute; background: var(--calcaire); }
+.imm-loupe::before { left: 50%; top: -12px; bottom: -12px; width: 1px; -webkit-mask: linear-gradient(180deg, #000 0 18px, transparent 18px calc(100% - 18px), #000 calc(100% - 18px)); mask: linear-gradient(180deg, #000 0 18px, transparent 18px calc(100% - 18px), #000 calc(100% - 18px)); }
+.imm-loupe::after { top: 50%; left: -12px; right: -12px; height: 1px; -webkit-mask: linear-gradient(90deg, #000 0 18px, transparent 18px calc(100% - 18px), #000 calc(100% - 18px)); mask: linear-gradient(90deg, #000 0 18px, transparent 18px calc(100% - 18px), #000 calc(100% - 18px)); }
+.imm-tete-texte { position: relative; z-index: 3; display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 22rem); gap: 24px clamp(24px, 4vw, 64px); align-items: end; pointer-events: none; }
+.imm-tete-texte a, .imm-tete-texte button { pointer-events: auto; }
+.imm-tete .surtitre { color: var(--laiton-clair); }
+.imm-titre { font-size: clamp(3rem, min(9.4vw, 15vh), 10.5rem); line-height: 1.06; margin: 0; font-weight: 300; letter-spacing: -.03em; color: var(--calcaire); }
+.imm-titre em { color: var(--laiton-clair); }
+.imm-cartouche { display: grid; border: 1px solid rgba(244, 241, 234, .45); background: rgba(8, 38, 43, .74); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); pointer-events: auto; }
+.imm-cartouche > p { margin: 0; padding: 14px 18px; }
+.imm-cartouche > p + p { border-top: 1px solid rgba(244, 241, 234, .22); }
+.imm-cartouche-texte { font-size: .92rem; color: rgba(244, 241, 234, .9); }
+.imm-actions .bouton { width: 100%; justify-content: center; }
+.imm-info { font-size: .75rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--laiton-clair); }
 @media (max-width: 760px) {
-  .imm-tete-texte { grid-template-columns: 1fr; }
-  .imm-titre, .imm-tete-cote { grid-column: 1; }
-  .imm-titre { font-size: clamp(2.8rem, 15vw, 4.6rem); }
-  .imm-bandeau { height: 42svh; }
+  .imm-tete { align-items: stretch; padding-top: calc(var(--entete-h) + 18px); padding-bottom: calc(var(--barres-h) + 20px); }
+  .imm-tete-texte { grid-template-columns: 1fr; align-content: space-between; gap: 18px; }
+  .imm-tete::after { background: linear-gradient(180deg, rgba(8, 38, 43, .95) 0%, rgba(8, 38, 43, .82) 24%, rgba(8, 38, 43, 0) 44%), linear-gradient(0deg, rgba(8, 38, 43, .7) 0%, rgba(8, 38, 43, 0) 40%); }
+  .plan-cartouche { display: none; }
+  .imm-titre { font-size: clamp(2.6rem, 14vw, 4.4rem); }
+  .imm-cartouche-texte { font-size: .88rem; }
+  .imm-cartouche > p { padding: 12px 14px; }
 }
+@media (max-height: 640px) { .imm-cartouche-texte { display: none; } }
 .couches { padding-block: clamp(64px, 10vw, 130px); }
 .couches-tete { max-width: 40em; }
 .eclatee { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(20px, 4vw, 56px); align-items: center; margin-top: 24px; }
@@ -581,6 +665,7 @@ html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouver
 .carte-repere { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .carte-onde { position: absolute; left: 50%; top: 92%; width: 90%; aspect-ratio: 44 / 16; border: 1.5px solid var(--petrole); border-radius: 50%; transform: translate(-50%, -50%) scale(.5); opacity: 0; }
 .carte-lieu { position: absolute; left: 50%; top: calc(100% + 14px); transform: translateX(-50%); font-weight: 700; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; white-space: nowrap; color: var(--encre); background: rgba(244, 241, 234, .9); padding: 2px 8px; border-radius: 999px; }
+.carte-mention { position: absolute; z-index: 3; left: 0; top: 0; right: auto; bottom: auto; margin: 0; opacity: 0; transition: opacity .3s; pointer-events: none; }
 .carte-coordonnees { position: absolute; right: var(--gouttiere); bottom: calc(var(--barres-h) + 20px); margin: 0; font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--texte-doux); font-variant-numeric: tabular-nums; }
 .ct-tete-texte { position: relative; z-index: 2; max-width: min(100%, 40rem); }
 .ct-titre { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.6rem); margin: 0 0 .1em; }
@@ -590,13 +675,22 @@ html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouver
 .ct-chiffre > span { display: inline-block; }
 .ct-espace { display: inline-block; width: .22em; }
 @media (max-width: 760px) {
-  .ct-tete { min-height: 0; align-items: start; padding: calc(var(--entete-h) + 20px) 0 200px; }
-  .carte-vivante { transform-origin: 70% 90%; }
-  .carte-vivante::after { background: linear-gradient(180deg, rgba(244, 241, 234, .97) 0%, rgba(244, 241, 234, .9) 66%, rgba(244, 241, 234, .2) 86%, rgba(244, 241, 234, 0) 100%); }
-  .carte-pose { --pose-x: 72%; --pose-y: calc(100% - 78px); width: 40px; }
+  /* Téléphone : la carte occupe tout l'écran derrière le texte ; le repère et sa loupe dans le bas, à droite. */
+  .ct-tete { min-height: 100svh; align-items: start; padding: calc(var(--entete-h) + 20px) 0 calc(var(--barres-h) + 28svh + 24px); }
+  .carte-vivante { transform-origin: 70% 80%; }
+  .carte-vivante::after { background: linear-gradient(180deg, rgba(244, 241, 234, .97) 0%, rgba(244, 241, 234, .92) 46%, rgba(244, 241, 234, .55) 60%, rgba(244, 241, 234, 0) 72%); }
+  .carte-pose { --pose-x: 60%; --pose-y: calc(100% - var(--barres-h) - 10svh - 12px); width: 40px; }
   .ct-numero a { font-size: clamp(2.2rem, 11vw, 3.4rem); }
-  .carte-coordonnees { left: var(--gouttiere); right: auto; bottom: 18px; }
+  .carte-coordonnees { display: none; }
 }
+/* Tablette en portrait : texte en haut, repère et loupe dans le bas de la carte. */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: portrait) {
+  .ct-tete { align-items: start; padding-top: calc(var(--entete-h) + 56px); }
+  .carte-vivante::after { background: linear-gradient(180deg, rgba(244, 241, 234, .97) 0%, rgba(244, 241, 234, .9) 44%, rgba(244, 241, 234, 0) 64%); }
+  .carte-pose { --pose-x: 64%; --pose-y: 80%; }
+}
+/* Fenêtre large mais courte (téléphone à l'horizontale, petite fenêtre) : repère plus à droite, hors du texte. */
+@media (min-width: 761px) and (max-width: 1100px) and (orientation: landscape) { .carte-pose { --pose-x: 84%; } }
 .ct-intro { max-width: 40em; color: var(--texte-doux); }
 .ct-coord { list-style: none; margin: 0 0 1em; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 24px; font-weight: 600; }
 .ct-coord a { display: inline-flex; align-items: center; min-height: 44px; color: var(--petrole); }
@@ -677,10 +771,6 @@ html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouver
 .parcours-chiffre span { max-width: 9em; font-weight: 600; }
 .parcours .frise { margin-top: 0; }
 @media (max-width: 760px) { .parcours { grid-template-columns: 1fr; } .parcours-tete { position: static; } }
-/* Plan de masse : un vrai dessin sur calque, quadrillé, avec son cartouche. */
-.imm-plan { background-color: rgba(244, 241, 234, .9); background-image: linear-gradient(rgba(0, 96, 108, .1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 96, 108, .1) 1px, transparent 1px); background-size: 32px 32px; }
-.plan-cartouche { position: absolute; right: clamp(12px, 3vw, 40px); bottom: clamp(12px, 3vw, 32px); display: grid; gap: 2px; padding: 10px 14px; border: 1.5px solid var(--petrole); background: var(--calcaire); color: var(--petrole); font: 700 .75rem/1.3 var(--police-texte); letter-spacing: .14em; text-transform: uppercase; }
-.plan-cartouche span:last-child { font-weight: 500; letter-spacing: .04em; text-transform: none; color: var(--encre); }
 /* Fins de page : une composition par page. */
 .fin-page--nuit { background: var(--nuit); color: var(--calcaire); }
 .fin-page--nuit h2 { color: var(--calcaire); }

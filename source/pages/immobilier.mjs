@@ -1,22 +1,11 @@
-/* Immobilier. Ouverture : fond clair, très grand titre, puis un bandeau photo recouvert d'un plan de masse
-   d'architecte qui se dessine, puis s'efface au défilement. Puis une résidence en vue éclatée,
-   couche par couche, et la mosaïque des résidences Stellium. */
+/* Immobilier. Ouverture « du plan à la pierre » : la façade en plein écran apparaît d'abord en plan d'architecte
+   (bleu nuit pétrole, traits calcaire), puis un balayage révèle la photo ; sous la souris, une loupe montre le plan,
+   et au défilement le plan revient par la droite. Titre géant en bas à gauche, informations dans un cartouche
+   d'architecte. Puis une résidence en vue éclatée, couche par couche, et la mosaïque des résidences Stellium. */
 import { html, brut } from '../../outils/gabarit.mjs';
 import { repere } from '../gabarits/commun.mjs';
 
 export const page = { cle: 'immobilier', fichier: 'immobilier', imagePartage: 'grok/immobilier-facade-1280.webp' };
-
-/* Plan de masse : emprises de bâtiments, cotes et hachures, en traits fins (dessin d'architecte). */
-const plan = `<svg class="plan-masse" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-  <g class="plan-traits" fill="none" stroke="currentColor" stroke-width="1.6" vector-effect="non-scaling-stroke">
-    <path d="M90 300 H430 V150 H300 V90 H90 Z"/><path d="M520 320 H760 V120 H520 Z"/><path d="M850 290 H1110 V170 H980 V110 H850 Z"/>
-    <path d="M110 300 V320 M430 300 V320 M110 314 H430" stroke-dasharray="4 4"/><path d="M520 340 V356 M760 340 V356 M520 350 H760" stroke-dasharray="4 4"/>
-    <path d="M40 370 C 300 350, 520 395, 760 372 S 1100 345, 1170 372"/><path d="M40 392 C 300 372, 520 417, 760 394 S 1100 367, 1170 394"/>
-    <path d="M540 140 L740 300 M560 140 L740 284 M520 160 L700 320 M520 180 L680 320" stroke-width="1"/>
-    <circle cx="470" cy="80" r="16"/><circle cx="800" cy="70" r="22"/><circle cx="1150" cy="120" r="18"/><circle cx="60" cy="110" r="20"/>
-    <path d="M300 90 L350 40 M1110 170 L1150 140"/>
-  </g>
-</svg>`;
 
 /* Vue éclatée : cinq couches d'un immeuble en perspective, de l'emplacement au toit. */
 const couche = (cle, i) => {
@@ -27,18 +16,26 @@ const couche = (cle, i) => {
 };
 
 export default (c) => html`
-<section class="imm-tete" id="debut">
-  <div class="conteneur imm-tete-texte">
-    <p class="surtitre" data-anime="gsap">${c.t('immobilier.tete.surtitre')}</p>
-    <h1 class="imm-titre"><span class="ligne-masque"><span class="imm-ligne" data-anime="gsap">${c.t('immobilier.tete.titre1')}</span></span><span class="ligne-masque"><span class="imm-ligne" data-anime="gsap"><em>${c.t('immobilier.tete.titre2')}</em></span></span></h1>
-    <div class="imm-tete-cote">
-      <p data-anime="gsap">${c.t('immobilier.tete.texte')}</p>
-      <p class="imm-actions" data-anime="gsap">${c.lien('contact', { ancre: 'rendez-vous', params: 'sujet=immobilier', classe: 'bouton', texte: c.t('immobilier.tete.action'), attrs: 'data-action-principale data-survol="magnetique"' })} <span class="imm-info" data-info-cle>${c.t('immobilier.tete.info')}</span></p>
+<section class="imm-tete" id="debut" data-entete-nuit>
+  <div class="imm-scene" data-effet="plan-pierre" data-souris>
+    ${c.media({ nom: 'grok/immobilier-facade', alt: c.s('immobilier.tete.alt'), cadrage: '50% 50%', priorite: true, classe: 'imm-photo', sizes: '100vw' })}
+    <div class="imm-plan" aria-hidden="true">
+      ${c.media({ nom: 'immobilier-plan', alt: '', cadrage: '50% 50%', priorite: true, classe: 'imm-plan-media', sizes: '100vw' })}
+      <p class="plan-cartouche"><span>${c.t('immobilier.tete.cartouche')}</span><span>${c.t('immobilier.tete.cartoucheNote')}</span></p>
     </div>
+    <span class="imm-scan" aria-hidden="true"></span>
+    <span class="imm-loupe" aria-hidden="true"></span>
   </div>
-  <div class="imm-bandeau" data-effet="plan-masse">
-    ${c.media({ nom: 'grok/immobilier-facade', alt: c.s('immobilier.tete.alt'), cadrage: '45% 55%', priorite: true, classe: 'imm-media', sizes: '100vw' })}
-    <div class="imm-plan">${brut(plan)}<p class="plan-cartouche" aria-hidden="true"><span>${c.t('immobilier.tete.cartouche')}</span><span>${c.t('immobilier.tete.cartoucheNote')}</span></p></div>
+  <div class="conteneur imm-tete-texte">
+    <div class="imm-titrage">
+      <p class="surtitre" data-anime="gsap">${c.t('immobilier.tete.surtitre')}</p>
+      <h1 class="imm-titre"><span class="ligne-masque"><span class="imm-ligne" data-anime="gsap">${c.t('immobilier.tete.titre1')}</span></span><span class="ligne-masque"><span class="imm-ligne" data-anime="gsap"><em>${c.t('immobilier.tete.titre2')}</em></span></span></h1>
+    </div>
+    <div class="imm-cartouche" data-anime="gsap">
+      <p class="imm-cartouche-texte">${c.t('immobilier.tete.texte')}</p>
+      <p class="imm-actions">${c.lien('contact', { ancre: 'rendez-vous', params: 'sujet=immobilier', classe: 'bouton bouton--clair', texte: c.t('immobilier.tete.action'), attrs: 'data-action-principale data-survol="magnetique"' })}</p>
+      <p class="imm-info" data-info-cle>${c.t('immobilier.tete.info')}</p>
+    </div>
   </div>
 </section>
 

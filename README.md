@@ -1,4 +1,4 @@
-# Proxiconseil Patrimoine · maquette v5
+# Proxiconseil Patrimoine · maquette v6
 
 Maquette de site pour **Nicolas Rabouan, Proxiconseil Patrimoine** (conseiller en investissements financiers, Le Mans).
 Direction artistique « **Le repère** » : le repère du logo se pose sur le soleil d'un paysage de bocage (accueil)
@@ -11,10 +11,10 @@ Site statique (HTML, CSS, JavaScript), prêt pour Vercel sans étape de construc
 | Page | Ouverture | Effets propres |
 |---|---|---|
 | Accueil `/` | Lever de soleil plein cadre (WebGL) : relief à la souris, courbes de niveau sous le curseur, onde au clic, travelling au défilement ; le repère tombe sur le soleil | horizon-vivant, repere-horizon, anneaux-objectifs (boussole interactive), manifeste, reperes-raisons, itineraire-etapes, avis-epingles (fil à faire glisser sur téléphone), bande-residences, rature-avenir, ondes-appel |
-| Mon accompagnement `/accompagnement` | Nuit pétrole, centrée, six anneaux qui se lèvent comme un horizon | anneaux-horizon, planches, boussole, feuillets, tampon-orias |
-| Qui suis-je `/qui-suis-je` | Scindée sur fond sable, portrait qui naît d'une trame d'impression (WebGL) | portrait-trame, manifeste, frise tracée, sceau |
-| Immobilier `/immobilier` | Très grand titre, bandeau photo sous un plan de masse qui s'efface | plan-masse, vue-eclatee, mosaïque en rideaux |
-| Contact `/contact` | Carte vivante en courbes de niveau (WebGL, relief sous la souris, onde au clic), le repère tombe sur Le Mans, numéro chiffre par chiffre | carte-courbes, repere-chute, numero-pose, formulaire en quatre étapes avec récapitulatif, schéma tracé |
+| Mon accompagnement `/accompagnement` | Six volets photo plein écran, un par objectif : le volet survolé (ou le suivant toutes les 4,5 s) s'élargit ; les volets montent un à un, puis se décalent au défilement | volets-objectifs, planches, boussole, feuillets, tampon-orias |
+| Qui suis-je `/qui-suis-je` | Nuit pétrole, nom en très grand, portrait dans une fenêtre en forme de repère cerclée de laiton ; sur ordinateur la section se fixe et la fenêtre grandit jusqu'au plein écran | portrait-repere, manifeste, frise tracée, sceau |
+| Immobilier `/immobilier` | Du plan à la pierre : la façade plein écran naît d'un plan d'architecte (bleu nuit), un balayage révèle la photo, une loupe montre le plan sous la souris, le plan revient au défilement ; informations dans un cartouche | plan-pierre, vue-eclatee, mosaïque en rideaux |
+| Contact `/contact` | Carte vivante en courbes de niveau (WebGL, relief sous la souris, onde au clic) ; dans la loupe, le paysage du bocage apparaît sous les courbes (sous la souris, ou autour du repère sur téléphone) ; le repère tombe sur Le Mans, numéro chiffre par chiffre | carte-courbes, repere-chute, numero-pose, formulaire en quatre étapes avec récapitulatif, schéma tracé |
 | 404 | « Hors de la carte », le repère tombe à côté | repere-chute |
 
 Pages du site actuel non reprises en v1 (disponibles en v2) : « Mes partenaires » (vide sur le site actuel), une page Avis dédiée.
@@ -23,7 +23,7 @@ Pages du site actuel non reprises en v1 (disponibles en v2) : « Mes partenaires
 
 - Textes : `donnees/textes/fr.json` ; données répétées : `donnees/*.json` (objectifs, avis, étapes, situations, résidences, couches).
 - Pages : `source/pages/*.mjs` ; gabarit commun (en-tête, pied de page, intro, voile) : `source/gabarits/commun.mjs`.
-- Style : `assets/css/site.css` ; effets : `assets/js/site.js` (intro et accueil), `pages.js` (pages intérieures), `horizon.js` (hero WebGL de l'accueil), `carte.js` (carte WebGL du contact), `trame.js` (portrait en trame), `ondes.js` (ondes au clic et teinte du curseur), `bande.js` (bandes à faire glisser).
+- Style : `assets/css/site.css` ; effets : `assets/js/site.js` (intro et accueil), `pages.js` (pages intérieures), `horizon.js` (hero WebGL de l'accueil), `carte.js` (carte WebGL du contact, loupe sur le terrain), `ondes.js` (ondes au clic et teinte du curseur), `bande.js` (bandes à faire glisser).
 - Générer les pages après toute modification : `node outils/generer.mjs` (ne jamais modifier les `.html` à la main).
 - Audit : `node _audit/audit.mjs` (standard), `--complet` pour la version finale.
 - Numéro de version des fichiers (`?v=N`) : champ `version` de `donnees/site.json`, à augmenter à chaque livraison.
@@ -52,7 +52,8 @@ Pages du site actuel non reprises en v1 (disponibles en v2) : « Mes partenaires
 
 ## Crédits
 
-- Illustrations générées (Grok) : `assets/images/grok/` — hero-horizon et hero-horizon-mobile (hero de l'accueil, ordinateur et téléphone), deroule-chemin, appel-riviere, objectif-epargne, objectif-tresorerie, objectif-immobilier, objectif-retraite, objectif-impots, objectif-transmission, pour-particuliers, pour-entreprises, carnet-bureau, immobilier-facade, contact-bocage, hors-carte. Chaque image porte la mention « Illustration générée » : **à garder sur le site final**.
+- Illustrations générées (Grok) : `assets/images/grok/` — hero-horizon et hero-horizon-mobile (hero de l'accueil, ordinateur et téléphone), deroule-chemin, appel-riviere, objectif-epargne, objectif-tresorerie, objectif-immobilier, objectif-retraite, objectif-impots, objectif-transmission, pour-particuliers, pour-entreprises, carnet-bureau, immobilier-facade, contact-bocage (aussi dans la loupe du contact, mention affichée sous la loupe), hors-carte. Chaque image porte la mention « Illustration générée » : **à garder sur le site final**.
+- Plan d'architecte de l'ouverture Immobilier : `assets/images/immobilier-plan-*.webp`, tiré de l'illustration immobilier-facade par traitement d'image (contours) ; il s'affiche toujours sous la mention de la façade.
 - Photos du site actuel : portrait de Nicolas Rabouan, logo, cinq résidences commercialisées et livrées par Stellium Immobilier.
 - Photos des résidences : étalonnage commun léger (un peu moins saturées, un peu plus chaudes) pour s'accorder à la palette.
 - Polices : Fraunces et Manrope (licence SIL Open Font License, fichiers `assets/polices/OFL-*.txt`).

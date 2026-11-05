@@ -261,8 +261,7 @@
       "action": "Parler d’un projet immobilier",
       "info": "Carte T n° CPI 3101 2015 000 001 813 · Stellium Immobilier",
       "alt": "Façade d’une résidence contemporaine générique avec balcons et jardin",
-      "planAlt": "Plan de masse d’architecte qui recouvre la photo",
-      "cartouche": "Plan de masse",
+      "cartouche": "Plan de façade",
       "cartoucheNote": "Schéma illustratif"
     },
     "couches": {

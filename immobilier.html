@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-v="5" data-curseur>
+<html lang="fr" data-v="6" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/manrope.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=5">
-<link rel="stylesheet" href="/assets/css/site.css?v=5">
-<link rel="modulepreload" href="/assets/js/site.js?v=5">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=5">
+<link rel="stylesheet" href="/assets/css/socle.css?v=6">
+<link rel="stylesheet" href="/assets/css/site.css?v=6">
+<link rel="modulepreload" href="/assets/js/site.js?v=6">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=6">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=5"></script>
+<script type="module" src="/assets/js/site.js?v=6"></script>
 <meta name="theme-color" content="#f4f1ea">
 <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
@@ -95,31 +95,34 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
 </div>
 <main id="contenu" tabindex="-1" data-page="immobilier">
-<section class="imm-tete" id="debut">
-  <div class="conteneur imm-tete-texte">
-    <p class="surtitre" data-anime="gsap">Immobilier</p>
-    <h1 class="imm-titre"><span class="ligne-masque"><span class="imm-ligne" data-anime="gsap">Investir</span></span><span class="ligne-masque"><span class="imm-ligne" data-anime="gsap"><em>dans la pierre</em></span></span></h1>
-    <div class="imm-tete-cote">
-      <p data-anime="gsap">Investir dans l’immobilier fait partie des projets que nous étudions ensemble. Nicolas Rabouan est habilité par Stellium Immobilier, titulaire de la carte de transaction immobilière.</p>
-      <p class="imm-actions" data-anime="gsap"><a href="/contact?sujet=immobilier#rendez-vous" class="bouton" data-libelle="Contact" data-action-principale data-survol="magnetique">Parler d’un projet immobilier</a> <span class="imm-info" data-info-cle>Carte T n° CPI 3101 2015 000 001 813 · Stellium Immobilier</span></p>
-    </div>
-  </div>
-  <div class="imm-bandeau" data-effet="plan-masse">
-    <figure class="media imm-media" data-grok style="--cadrage:45% 55%">
+<section class="imm-tete" id="debut" data-entete-nuit>
+  <div class="imm-scene" data-effet="plan-pierre" data-souris>
+    <figure class="media imm-photo" data-grok style="--cadrage:50% 50%">
   <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/grok/immobilier-facade-mobile-480.webp 480w, /assets/images/grok/immobilier-facade-mobile-640.webp 640w, /assets/images/grok/immobilier-facade-mobile-960.webp 960w" sizes="100vw">
     <img src="/assets/images/grok/immobilier-facade-1280.webp" srcset="/assets/images/grok/immobilier-facade-640.webp 640w, /assets/images/grok/immobilier-facade-1280.webp 1280w, /assets/images/grok/immobilier-facade-1752.webp 1752w" sizes="100vw" alt="Façade d’une résidence contemporaine générique avec balcons et jardin" width="1280" height="720" fetchpriority="high" loading="eager" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-    <div class="imm-plan"><svg class="plan-masse" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-  <g class="plan-traits" fill="none" stroke="currentColor" stroke-width="1.6" vector-effect="non-scaling-stroke">
-    <path d="M90 300 H430 V150 H300 V90 H90 Z"/><path d="M520 320 H760 V120 H520 Z"/><path d="M850 290 H1110 V170 H980 V110 H850 Z"/>
-    <path d="M110 300 V320 M430 300 V320 M110 314 H430" stroke-dasharray="4 4"/><path d="M520 340 V356 M760 340 V356 M520 350 H760" stroke-dasharray="4 4"/>
-    <path d="M40 370 C 300 350, 520 395, 760 372 S 1100 345, 1170 372"/><path d="M40 392 C 300 372, 520 417, 760 394 S 1100 367, 1170 394"/>
-    <path d="M540 140 L740 300 M560 140 L740 284 M520 160 L700 320 M520 180 L680 320" stroke-width="1"/>
-    <circle cx="470" cy="80" r="16"/><circle cx="800" cy="70" r="22"/><circle cx="1150" cy="120" r="18"/><circle cx="60" cy="110" r="20"/>
-    <path d="M300 90 L350 40 M1110 170 L1150 140"/>
-  </g>
-</svg><p class="plan-cartouche" aria-hidden="true"><span>Plan de masse</span><span>Schéma illustratif</span></p></div>
+    <div class="imm-plan" aria-hidden="true">
+      <figure class="media imm-plan-media" style="--cadrage:50% 50%">
+  <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/immobilier-plan-mobile-480.webp 480w, /assets/images/immobilier-plan-mobile-640.webp 640w, /assets/images/immobilier-plan-mobile-960.webp 960w" sizes="100vw">
+    <img src="/assets/images/immobilier-plan-1280.webp" srcset="/assets/images/immobilier-plan-640.webp 640w, /assets/images/immobilier-plan-1280.webp 1280w, /assets/images/immobilier-plan-1752.webp 1752w" sizes="100vw" alt="" width="1280" height="720" fetchpriority="high" loading="eager" decoding="async">
+  </picture>
+</figure>
+      <p class="plan-cartouche"><span>Plan de façade</span><span>Schéma illustratif</span></p>
+    </div>
+    <span class="imm-scan" aria-hidden="true"></span>
+    <span class="imm-loupe" aria-hidden="true"></span>
+  </div>
+  <div class="conteneur imm-tete-texte">
+    <div class="imm-titrage">
+      <p class="surtitre" data-anime="gsap">Immobilier</p>
+      <h1 class="imm-titre"><span class="ligne-masque"><span class="imm-ligne" data-anime="gsap">Investir</span></span><span class="ligne-masque"><span class="imm-ligne" data-anime="gsap"><em>dans la pierre</em></span></span></h1>
+    </div>
+    <div class="imm-cartouche" data-anime="gsap">
+      <p class="imm-cartouche-texte">Investir dans l’immobilier fait partie des projets que nous étudions ensemble. Nicolas Rabouan est habilité par Stellium Immobilier, titulaire de la carte de transaction immobilière.</p>
+      <p class="imm-actions"><a href="/contact?sujet=immobilier#rendez-vous" class="bouton bouton--clair" data-libelle="Contact" data-action-principale data-survol="magnetique">Parler d’un projet immobilier</a></p>
+      <p class="imm-info" data-info-cle>Carte T n° CPI 3101 2015 000 001 813 · Stellium Immobilier</p>
+    </div>
   </div>
 </section>
 <section class="couches conteneur" id="couches">

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-v="5" data-curseur>
+<html lang="fr" data-v="6" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/manrope.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=5">
-<link rel="stylesheet" href="/assets/css/site.css?v=5">
-<link rel="modulepreload" href="/assets/js/site.js?v=5">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=5">
+<link rel="stylesheet" href="/assets/css/socle.css?v=6">
+<link rel="stylesheet" href="/assets/css/site.css?v=6">
+<link rel="modulepreload" href="/assets/js/site.js?v=6">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=6">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=5"></script>
+<script type="module" src="/assets/js/site.js?v=6"></script>
 <meta name="theme-color" content="#f4f1ea">
 <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
@@ -98,8 +98,9 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 <section class="ct-tete" id="debut">
   <div class="carte-vivante" aria-hidden="true" data-effet="carte-courbes" data-souris>
     <img class="carte-vivante-image" src="/assets/images/carte-courbes.webp" alt="" width="1600" height="1000" fetchpriority="high" loading="eager" decoding="async" data-audit-ignorer>
-    <canvas class="carte-vivante-gl" data-audit-ignorer></canvas>
+    <canvas class="carte-vivante-gl" data-audit-ignorer data-terrain="/assets/images/grok/contact-bocage-1280.webp"></canvas>
   </div>
+  <p class="mention-ia carte-mention" aria-hidden="true">Illustration générée</p>
   <div class="carte-pose" aria-hidden="true">
     <span class="carte-onde"></span><span class="carte-onde"></span>
     <svg class="repere carte-repere" viewBox="0 0 128 236" aria-hidden="true" focusable="false" data-effet="repere-chute"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg>

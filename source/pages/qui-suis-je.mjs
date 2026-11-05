@@ -1,23 +1,32 @@
-/* Qui suis-je. Ouverture scindée sur fond sable : texte à gauche, portrait à droite qui naît
-   d'une trame d'impression (WebGL). Puis la priorité mot à mot, le parcours en frise tracée,
-   la charte en sceau qui tourne, les informations légales. */
-import { html } from '../../outils/gabarit.mjs';
+/* Qui suis-je. Ouverture nuit pétrole : le nom en très grand à gauche, le vrai portrait dans une fenêtre en forme
+   de repère (le logo) à droite, cerclée de laiton, son ombre dessous. La fenêtre s'ouvre à l'arrivée ; la section
+   se fixe ensuite et, au défilement, la fenêtre grandit jusqu'à montrer le portrait plein écran.
+   Puis la priorité mot à mot, le parcours en frise tracée, la charte en sceau qui tourne, les informations légales. */
+import { html, brut } from '../../outils/gabarit.mjs';
 import { repere } from '../gabarits/commun.mjs';
 
 export const page = { cle: 'qui-suis-je', fichier: 'qui-suis-je', imagePartage: 'portrait-1134.webp' };
 
+const PIN = 'M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5Z';
+const largeurs = [640, 784, 1134, 1600];
+
 export default (c) => html`
-<section class="qsj-tete" id="debut">
-  <div class="qsj-tete-texte">
-    <p class="surtitre" data-anime="gsap">${c.t('quisuisje.tete.surtitre')}</p>
-    <h1 class="qsj-titre"><span class="ligne-masque"><span class="qsj-ligne" data-anime="gsap">${c.t('quisuisje.tete.prenom')}</span></span><span class="ligne-masque"><span class="qsj-ligne" data-anime="gsap"><em>${c.t('quisuisje.tete.nom')}</em></span></span></h1>
-    <p class="qsj-role" data-anime="gsap">${c.t('quisuisje.tete.role')}</p>
-    <p class="qsj-intro" data-anime="gsap">${c.t('quisuisje.tete.texte')}</p>
-    <p class="qsj-actions" data-anime="gsap">${c.lien('contact', { ancre: 'rendez-vous', classe: 'bouton', texte: c.t('quisuisje.tete.action'), attrs: 'data-action-principale data-survol="magnetique"' })} <span class="qsj-info" data-info-cle>${c.t('quisuisje.tete.info')}</span></p>
+<section class="qsj-tete" id="debut" data-entete-nuit>
+  <div class="qsj-fenetre" data-effet="portrait-repere">
+    <img class="qsj-photo" src="/assets/images/portrait-1600.webp" srcset="${largeurs.map((w) => `/assets/images/portrait-${w}.webp ${w}w`).join(', ')}" sizes="(max-width: 760px) 160vw, 100vw" alt="${c.s('quisuisje.tete.alt')}" width="1600" height="1508" fetchpriority="high" loading="eager" decoding="async">
+    <span class="qsj-teinte" aria-hidden="true"></span>
   </div>
-  <div class="qsj-portrait" data-effet="portrait-trame">
-    ${c.media({ nom: 'portrait', alt: c.s('quisuisje.tete.alt'), cadrage: '50% 30%', cadrageMobile: '52% 26%', priorite: true, classe: 'qsj-media', sizes: '(max-width: 760px) 100vw, 46vw' })}
-    <canvas class="qsj-trame" aria-hidden="true"></canvas>
+  ${brut(`<svg class="qsj-contour" viewBox="0 0 128 236" aria-hidden="true"><path pathLength="1" d="${PIN}"/><ellipse cx="64" cy="217.5" rx="44" ry="16"/></svg>`)}
+  <div class="qsj-tete-texte conteneur">
+    <div class="qsj-haut">
+      <p class="surtitre" data-anime="gsap">${c.t('quisuisje.tete.surtitre')}</p>
+      <h1 class="qsj-titre"><span class="ligne-masque"><span class="qsj-ligne" data-anime="gsap">${c.t('quisuisje.tete.prenom')}</span></span><span class="ligne-masque"><span class="qsj-ligne" data-anime="gsap"><em>${c.t('quisuisje.tete.nom')}</em></span></span></h1>
+    </div>
+    <div class="qsj-bas">
+      <p class="qsj-role" data-anime="gsap">${c.t('quisuisje.tete.role')}</p>
+      <p class="qsj-intro" data-anime="gsap">${c.t('quisuisje.tete.texte')}</p>
+      <p class="qsj-actions" data-anime="gsap">${c.lien('contact', { ancre: 'rendez-vous', classe: 'bouton bouton--clair', texte: c.t('quisuisje.tete.action'), attrs: 'data-action-principale data-survol="magnetique"' })} <span class="qsj-info" data-info-cle>${c.t('quisuisje.tete.info')}</span></p>
+    </div>
   </div>
 </section>
 

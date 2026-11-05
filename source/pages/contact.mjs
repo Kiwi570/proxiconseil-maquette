@@ -1,5 +1,6 @@
-/* Contact. Ouverture : la carte vivante en courbes de niveau (WebGL : relief sous la souris, onde au clic),
-   le repère qui tombe sur Le Mans, le numéro de téléphone chiffre par chiffre. Formulaire simulé en quatre étapes avec
+/* Contact. Ouverture : la carte vivante en courbes de niveau (WebGL : relief sous la souris, onde au clic) ; dans la
+   loupe (sous la souris, ou autour du repère sur téléphone), le paysage du bocage apparaît sous les courbes.
+   Le repère tombe sur Le Mans, le numéro de téléphone arrive chiffre par chiffre. Formulaire simulé en quatre étapes avec
    récapitulatif en direct, puis schéma Saint-Pavace / Le Mans et bandeau de bocage. */
 import { html, brut } from '../../outils/gabarit.mjs';
 import { repere } from '../gabarits/commun.mjs';
@@ -14,8 +15,9 @@ export default (c) => {
 <section class="ct-tete" id="debut">
   <div class="carte-vivante" aria-hidden="true" data-effet="carte-courbes" data-souris>
     <img class="carte-vivante-image" src="/assets/images/carte-courbes.webp" alt="" width="1600" height="1000" fetchpriority="high" loading="eager" decoding="async" data-audit-ignorer>
-    <canvas class="carte-vivante-gl" data-audit-ignorer></canvas>
+    <canvas class="carte-vivante-gl" data-audit-ignorer data-terrain="/assets/images/grok/contact-bocage-1280.webp"></canvas>
   </div>
+  <p class="mention-ia carte-mention" aria-hidden="true">${c.t('commun.mentionIa')}</p>
   <div class="carte-pose" aria-hidden="true">
     <span class="carte-onde"></span><span class="carte-onde"></span>
     ${repere('carte-repere', 'data-effet="repere-chute"')}

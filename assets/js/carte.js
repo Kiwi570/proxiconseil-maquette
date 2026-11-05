@@ -1,10 +1,12 @@
 /* Effet « carte-courbes » : carte en courbes de niveau dessinée en WebGL, avec des ondes qui partent du repère.
+   - « Carte et terrain » : dans une loupe (sous la souris, ou autour du repère sur téléphone), le paysage du bocage
+     (illustration générée, mention affichée sous la loupe) apparaît sous les courbes, qui restent tracées en clair.
    - Une image fixe (carte-courbes.webp) est dessous : sans WebGL, en mode calme ou en attendant, rien ne manque.
    - Densité de pixels limitée (1,25 sur ordinateur, 1 sur téléphone), 60 images par seconde au plus,
      résolution qui baisse d'elle-même si les images prennent trop de temps.
    - La boucle du socle ne tourne qu'à l'écran, onglet visible, jamais en mode calme.
    - Mesures au chargement et au redimensionnement seulement (jamais pendant le défilement). */
-import { boucle, etat } from './socle/index.js?v=5';
+import { boucle, etat } from './socle/index.js?v=6';
 
 const VERT = `attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }`;
 const FRAG = `
@@ -14,6 +16,7 @@ const FRAG = `
 precision highp float;
 uniform vec2 uRes; uniform float uT; uniform vec2 uPin; uniform float uOnde; uniform float uDefil;
 uniform vec2 uSouris; uniform float uForce; uniform vec2 uClic; uniform float uClicT;
+uniform sampler2D uPhoto; uniform vec2 uImg; uniform float uPhotoOk; uniform vec2 uLc; uniform float uLf; uniform float uLr;
 vec2 h2(vec2 p){ p = vec2(dot(p, vec2(127.1, 311.7)), dot(p, vec2(269.5, 183.3))); return -1.0 + 2.0 * fract(sin(p) * 43758.5453); }
 float bruit(vec2 p){
   vec2 i = floor(p), f = fract(p); vec2 u = f * f * (3.0 - 2.0 * f);
@@ -53,11 +56,26 @@ void main(){
   vec3 fond = vec3(0.957, 0.945, 0.918);
   vec3 encre = vec3(0.0, 0.376, 0.424);
   vec3 col = mix(fond, encre, clamp(a + halo, 0.0, 1.0));
+  /* Loupe : le terrain sous la carte, les courbes par-dessus en clair, un anneau pétrole au bord. */
+  if (uPhotoOk > 0.5 && uLf > 0.001) {
+    vec2 lc = (uLc - 0.5 * uRes) / uRes.y;
+    float dl = length(p - lc);
+    float r = uLr * uLf;
+    if (dl < r + 0.01) {
+      vec2 uv = gl_FragCoord.xy / uRes; uv.y = 1.0 - uv.y;
+      float ra = uRes.x / uRes.y, ri = uImg.x / uImg.y;
+      vec2 s = ra > ri ? vec2(1.0, ri / ra) : vec2(ra / ri, 1.0);
+      vec3 photo = texture2D(uPhoto, (1.0 - s) * 0.5 + uv * s).rgb;
+      vec3 terrain = mix(photo, fond, clamp(a * 1.5, 0.0, 0.8));
+      col = mix(col, terrain, 1.0 - smoothstep(r - 0.003, r, dl));
+      col = mix(col, encre, (1.0 - smoothstep(0.0012, 0.0032, abs(dl - r))) * 0.9);
+    }
+  }
   gl_FragColor = vec4(col, 1.0);
 }`;
 
-export function carteCourbes(canvas, zone, pose) {
-  const api = { defiler() {}, onde() {} };
+export function carteCourbes(canvas, zone, pose, { mention = null } = {}) {
+  const api = { defiler() {}, onde() {}, terrain() {} };
   if (etat.calme) return api;
   let gl = null;
   try { gl = canvas.getContext('webgl', { antialias: false, alpha: false, powerPreference: 'low-power', preserveDrawingBuffer: false }); } catch {}
@@ -82,6 +100,29 @@ export function carteCourbes(canvas, zone, pose) {
   const U = (n) => gl.getUniformLocation(prog, n);
   const uRes = U('uRes'), uT = U('uT'), uPin = U('uPin'), uOnde = U('uOnde'), uDefil = U('uDefil');
   const uSouris = U('uSouris'), uForce = U('uForce'), uClic = U('uClic'), uClicT = U('uClicT');
+  const uPhoto = U('uPhoto'), uImg = U('uImg'), uPhotoOk = U('uPhotoOk'), uLc = U('uLc'), uLf = U('uLf'), uLr = U('uLr');
+  /* Le terrain : chargé après la carte, sans bloquer l'ouverture. */
+  let photoOk = 0, imgW = 1, imgH = 1;
+  const souris = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (canvas.dataset.terrain) {
+    const im = new Image();
+    im.decoding = 'async';
+    im.onload = () => {
+      const tex = gl.createTexture();
+      gl.activeTexture(gl.TEXTURE0);
+      gl.bindTexture(gl.TEXTURE_2D, tex);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      try { gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, im); } catch { return; }
+      gl.uniform1i(uPhoto, 0);
+      imgW = im.naturalWidth; imgH = im.naturalHeight; photoOk = 1;
+    };
+    im.src = canvas.dataset.terrain;
+  }
+  /* Loupe du téléphone (autour du repère), ouverte à la fin de l'ouverture. */
+  let loupeTel = 0;
 
   let echelle = 1, w = 0, h = 0, pinX = 0, pinY = 0, defil = 0, onde = 0, ondeActive = false, temps = 0, dernier = 0;
   let lentes = 0, dpr = 1;
@@ -101,6 +142,17 @@ export function carteCourbes(canvas, zone, pose) {
     gl.uniform2f(uRes, w, h); gl.uniform1f(uT, temps); gl.uniform2f(uPin, pinX, pinY);
     gl.uniform1f(uOnde, onde); gl.uniform1f(uDefil, defil);
     gl.uniform2f(uSouris, cx, cy); gl.uniform1f(uForce, force); gl.uniform2f(uClic, clicX, clicY); gl.uniform1f(uClicT, clicT);
+    const lf = souris ? force : loupeTel;
+    gl.uniform1f(uPhotoOk, photoOk); gl.uniform2f(uImg, imgW, imgH);
+    gl.uniform2f(uLc, souris ? cx : pinX, souris ? cy : pinY + h * 0.07); gl.uniform1f(uLf, lf); gl.uniform1f(uLr, souris ? 0.2 : 0.13);
+    /* Mention sous la loupe, tant que le terrain se voit. */
+    if (mention) {
+      const vis = photoOk && lf > 0.4;
+      const lx = (souris ? cx : pinX) / dpr, ly = (h - (souris ? cy : pinY + h * 0.07)) / dpr;
+      const ry = (souris ? 0.2 : 0.13) * lf * h / dpr;
+      mention.style.opacity = vis ? '1' : '0';
+      if (vis) mention.style.transform = `translate(${lx.toFixed(0)}px, ${(ly + ry + 10).toFixed(0)}px) translateX(-50%)`;
+    }
     gl.drawArrays(gl.TRIANGLES, 0, 3);
   }
   mesurer();
@@ -137,6 +189,7 @@ export function carteCourbes(canvas, zone, pose) {
     zone.addEventListener('pointerdown', (e) => { [clicX, clicY] = pos(e); clicT = 0.001; });
   }
   api.defiler = (v) => { defil = v; };
+  api.terrain = (v) => { loupeTel = v; };
   api.onde = () => { onde = 0.001; ondeActive = true; };
   return api;
 }

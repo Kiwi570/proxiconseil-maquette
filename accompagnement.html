@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-v="5" data-curseur>
+<html lang="fr" data-v="6" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/manrope.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=5">
-<link rel="stylesheet" href="/assets/css/site.css?v=5">
-<link rel="modulepreload" href="/assets/js/site.js?v=5">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=5">
+<link rel="stylesheet" href="/assets/css/socle.css?v=6">
+<link rel="stylesheet" href="/assets/css/site.css?v=6">
+<link rel="modulepreload" href="/assets/js/site.js?v=6">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=6">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=5"></script>
+<script type="module" src="/assets/js/site.js?v=6"></script>
 <meta name="theme-color" content="#f4f1ea">
 <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
@@ -95,42 +95,64 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   <p><button type="button" class="lien" data-calme-bascule data-libelle-reduire="Réduire les animations" data-libelle-retablir="Rétablir les animations" data-libelle-systeme="Animations réduites par le réglage de votre appareil"><span data-libelle-bouton>Réduire les animations</span></button></p>
 </div>
 <main id="contenu" tabindex="-1" data-page="accompagnement">
-<section class="acc-tete" id="debut">
+<section class="acc-tete" id="debut" data-entete-nuit>
+  <div class="volets" data-effet="volets-objectifs" data-ruban>
+    <a class="volet actif" href="#objectif-epargne" style="--i:0" data-volet="0">
+      <figure class="media volet-media" data-grok style="--cadrage:50% 55%">
+  <picture>
+    <img src="/assets/images/grok/objectif-epargne-784.webp" srcset="/assets/images/grok/objectif-epargne-480.webp 480w, /assets/images/grok/objectif-epargne-640.webp 640w, /assets/images/grok/objectif-epargne-784.webp 784w" sizes="(max-width: 760px) 70vw, 36vw" alt="" width="784" height="980" fetchpriority="high" loading="eager" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <span class="volet-voile" aria-hidden="true"></span>
+      <span class="volet-texte"><span class="volet-nom" data-num="01"><span class="volet-long">Épargne</span><span class="volet-court">Épargne</span></span><span class="volet-detail" aria-hidden="true">Optimiser et dynamiser votre épargne.</span></span>
+    </a><a class="volet" href="#objectif-tresorerie" style="--i:1" data-volet="1">
+      <figure class="media volet-media" data-grok style="--cadrage:50% 50%">
+  <picture>
+    <img src="/assets/images/grok/objectif-tresorerie-784.webp" srcset="/assets/images/grok/objectif-tresorerie-480.webp 480w, /assets/images/grok/objectif-tresorerie-640.webp 640w, /assets/images/grok/objectif-tresorerie-784.webp 784w" sizes="(max-width: 760px) 70vw, 36vw" alt="" width="784" height="980" fetchpriority="high" loading="eager" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <span class="volet-voile" aria-hidden="true"></span>
+      <span class="volet-texte"><span class="volet-nom" data-num="02"><span class="volet-long">Trésorerie d’entreprise</span><span class="volet-court">Trésorerie</span></span><span class="volet-detail" aria-hidden="true">Optimiser la trésorerie de votre entreprise.</span></span>
+    </a><a class="volet" href="#objectif-immobilier" style="--i:2" data-volet="2">
+      <figure class="media volet-media" data-grok style="--cadrage:50% 45%">
+  <picture>
+    <img src="/assets/images/grok/objectif-immobilier-784.webp" srcset="/assets/images/grok/objectif-immobilier-480.webp 480w, /assets/images/grok/objectif-immobilier-640.webp 640w, /assets/images/grok/objectif-immobilier-784.webp 784w" sizes="(max-width: 760px) 70vw, 36vw" alt="" width="784" height="980" fetchpriority="high" loading="eager" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <span class="volet-voile" aria-hidden="true"></span>
+      <span class="volet-texte"><span class="volet-nom" data-num="03"><span class="volet-long">Immobilier</span><span class="volet-court">Immobilier</span></span><span class="volet-detail" aria-hidden="true">Investir dans l’immobilier et valoriser votre patrimoine.</span></span>
+    </a><a class="volet" href="#objectif-retraite" style="--i:3" data-volet="3">
+      <figure class="media volet-media" data-grok style="--cadrage:50% 60%">
+  <picture>
+    <img src="/assets/images/grok/objectif-retraite-784.webp" srcset="/assets/images/grok/objectif-retraite-480.webp 480w, /assets/images/grok/objectif-retraite-640.webp 640w, /assets/images/grok/objectif-retraite-784.webp 784w" sizes="(max-width: 760px) 70vw, 36vw" alt="" width="784" height="980" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <span class="volet-voile" aria-hidden="true"></span>
+      <span class="volet-texte"><span class="volet-nom" data-num="04"><span class="volet-long">Retraite</span><span class="volet-court">Retraite</span></span><span class="volet-detail" aria-hidden="true">Préparer votre retraite.</span></span>
+    </a><a class="volet" href="#objectif-impots" style="--i:4" data-volet="4">
+      <figure class="media volet-media" data-grok style="--cadrage:50% 55%">
+  <picture>
+    <img src="/assets/images/grok/objectif-impots-784.webp" srcset="/assets/images/grok/objectif-impots-480.webp 480w, /assets/images/grok/objectif-impots-640.webp 640w, /assets/images/grok/objectif-impots-784.webp 784w" sizes="(max-width: 760px) 70vw, 36vw" alt="" width="784" height="980" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <span class="volet-voile" aria-hidden="true"></span>
+      <span class="volet-texte"><span class="volet-nom" data-num="05"><span class="volet-long">Impôts</span><span class="volet-court">Impôts</span></span><span class="volet-detail" aria-hidden="true">Réduire votre imposition, à titre privé comme professionnel.</span></span>
+    </a><a class="volet" href="#objectif-transmission" style="--i:5" data-volet="5">
+      <figure class="media volet-media" data-grok style="--cadrage:50% 55%">
+  <picture>
+    <img src="/assets/images/grok/objectif-transmission-784.webp" srcset="/assets/images/grok/objectif-transmission-480.webp 480w, /assets/images/grok/objectif-transmission-640.webp 640w, /assets/images/grok/objectif-transmission-784.webp 784w" sizes="(max-width: 760px) 70vw, 36vw" alt="" width="784" height="980" loading="lazy" decoding="async">
+  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
+</figure>
+      <span class="volet-voile" aria-hidden="true"></span>
+      <span class="volet-texte"><span class="volet-nom" data-num="06"><span class="volet-long">Transmission</span><span class="volet-court">Transmission</span></span><span class="volet-detail" aria-hidden="true">Transmettre efficacement votre patrimoine immobilier et financier.</span></span>
+    </a>
+  </div>
   <div class="acc-tete-texte conteneur">
     <p class="surtitre" data-anime="gsap">Mon accompagnement</p>
     <h1 class="acc-titre"><span class="ligne-masque"><span class="acc-ligne" data-anime="gsap">Votre patrimoine,</span></span><span class="ligne-masque"><span class="acc-ligne" data-anime="gsap"><em>objectif par objectif</em></span></span></h1>
     <p class="acc-intro" data-anime="gsap">Épargne, trésorerie, immobilier, retraite, impôts, transmission : je pars de vos objectifs actuels et futurs.</p>
     <p class="acc-actions" data-anime="gsap"><a href="/contact#rendez-vous" class="bouton bouton--clair" data-libelle="Contact" data-action-principale data-survol="magnetique">Prendre rendez-vous</a> <span class="acc-info" data-info-cle>Particuliers et chefs d’entreprise</span></p>
   </div>
-  <div class="acc-horizon" data-superpose><svg class="anneaux anneaux--horizon" viewBox="-520 -520 1040 560" role="img" aria-label="Six anneaux autour du repère, un objectif sur chacun" data-effet="anneaux-horizon">
-  <g class="anneau" data-i="0" data-cle="epargne">
-      <circle class="anneau-cercle" r="120" fill="none"/>
-      <circle class="anneau-point" cx="-92" cy="-77" r="5" data-repere/>
-      <text class="anneau-nom" x="-106" y="-69" text-anchor="end">Épargne</text>
-    </g><g class="anneau" data-i="1" data-cle="tresorerie">
-      <circle class="anneau-cercle" r="182" fill="none"/>
-      <circle class="anneau-point" cx="148" cy="-106" r="5" data-repere/>
-      <text class="anneau-nom" x="162" y="-98" text-anchor="start">Trésorerie d’entreprise</text>
-    </g><g class="anneau" data-i="2" data-cle="immobilier">
-      <circle class="anneau-cercle" r="244" fill="none"/>
-      <circle class="anneau-point" cx="-90" cy="-227" r="5" data-repere/>
-      <text class="anneau-nom" x="-104" y="-219" text-anchor="end">Immobilier</text>
-    </g><g class="anneau" data-i="3" data-cle="retraite">
-      <circle class="anneau-cercle" r="306" fill="none"/>
-      <circle class="anneau-point" cx="139" cy="-273" r="5" data-repere/>
-      <text class="anneau-nom" x="153" y="-265" text-anchor="start">Retraite</text>
-    </g><g class="anneau" data-i="4" data-cle="impots">
-      <circle class="anneau-cercle" r="368" fill="none"/>
-      <circle class="anneau-point" cx="-340" cy="-140" r="5" data-repere/>
-      <text class="anneau-nom" x="-354" y="-132" text-anchor="end">Impôts</text>
-    </g><g class="anneau" data-i="5" data-cle="transmission">
-      <circle class="anneau-cercle" r="430" fill="none"/>
-      <circle class="anneau-point" cx="408" cy="-135" r="5" data-repere/>
-      <text class="anneau-nom" x="394" y="-127" text-anchor="end">Transmission</text>
-    </g>
-  <circle class="anneaux-deco" r="514" fill="none"/>
-  <g class="anneaux-curseur"><circle class="anneaux-onde" r="14" fill="none"/><g class="anneaux-saut"><g class="anneaux-repere" transform="translate(-16 -46) scale(.25)"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g></g></g>
-</svg></div>
 </section>
 <section class="planches conteneur" id="objectifs">
   <h2 class="planches-titre" data-anime="lignes">Les six objectifs</h2>
