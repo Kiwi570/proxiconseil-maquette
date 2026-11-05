@@ -1,5 +1,9 @@
 # Journal des versions
 
+## v5 — 5 novembre 2026
+
+- **Investir dans la pierre** : la section se fixe à l'écran, contenu centré, le temps que les images défilent jusqu'à la dernière, qui reste un instant à l'écran ; la page reprend ensuite. À l'arrivée, les images glissent déjà un peu. Même comportement sur téléphone, au-dessus de la barre d'appel.
+
 ## v4 — 5 novembre 2026
 
 - **Investir dans la pierre** : les images glissent à l'horizontale avec le défilement de la page, de la première à la dernière, sans bloquer la page ; elles s'inclinent selon la vitesse. En mode calme, la bande se fait glisser à la main.

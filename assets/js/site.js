@@ -2,11 +2,11 @@
    Le socle gère l'ouverture, le voile, l'en-tête, le menu, le mode calme, les boucles, les mesures
    et la bibliothèque d'effets (data-anime, data-fx, data-survol). Ici : l'intro du repère, et les effets
    propres de chaque page, chacun marqué data-effet="nom" (liste dans _audit/config.json). */
-import { demarrer, boucle, etat, quand } from './socle/index.js?v=4';
-import { horizonVivant } from './horizon.js?v=4';
-import { pagesInterieures } from './pages.js?v=4';
-import { ondesAuClic } from './ondes.js?v=4';
-import { bande } from './bande.js?v=4';
+import { demarrer, boucle, etat, quand } from './socle/index.js?v=5';
+import { horizonVivant } from './horizon.js?v=5';
+import { pagesInterieures } from './pages.js?v=5';
+import { ondesAuClic } from './ondes.js?v=5';
+import { bande } from './bande.js?v=5';
 
 const gsap = window.gsap;
 const ST = window.ScrollTrigger;
@@ -152,18 +152,34 @@ const accueil = {
       });
     }
 
-    /* Résidences : les images glissent à l'horizontale avec le défilement, de la première à la dernière, pendant que la
-       section traverse l'écran (sans bloquer la page) ; elles s'inclinent selon la vitesse du défilement. */
+    /* Résidences : à l'arrivée, les images glissent déjà un peu ; puis la section se fixe à l'écran (centrée, au-dessus
+       de la barre du téléphone) le temps que les images défilent jusqu'à la dernière, qui reste un instant avant que la
+       page reprenne. Elles s'inclinent selon la vitesse du défilement. */
     const piste = $('.residences-piste');
     if (piste) {
+      const section = $('.residences');
       const barre = $('.galerie-progres span');
-      const distance = () => Math.max(0, piste.scrollWidth - document.documentElement.clientWidth);
-      gsap.fromTo(piste, { x: () => window.innerWidth * 0.1 }, { x: () => -distance(), ease: 'none',
-        scrollTrigger: { trigger: '.residences', start: 'top 85%', end: 'bottom 15%', scrub: 0.6, invalidateOnRefresh: true,
-          onUpdate: (st) => {
-            if (barre) barre.style.setProperty('--progres', Math.max(0.06, st.progress).toFixed(3));
-            this.inclinaison = Math.max(-6, Math.min(6, -st.getVelocity() * 0.0025));
-          } } });
+      const distance = () => Math.max(0, piste.offsetWidth - document.documentElement.clientWidth);
+      /* Centre le contenu (du titre à la barre de progression, marges de la section exclues) dans la hauteur utile ;
+         s'il est trop haut, la barre se cale en bas et le titre déborde en haut, les images restent entières. */
+      const debut = () => {
+        const dispo = window.innerHeight - (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--barres-h')) || 0);
+        const s = section.getBoundingClientRect();
+        const t = $('.residences-tete').getBoundingClientRect(), b = $('.galerie-progres').getBoundingClientRect();
+        const haut = t.top - s.top, h = b.bottom - t.top;
+        return `top ${Math.round((h <= dispo ? (dispo - h) / 2 : dispo - h - 16) - haut)}px`;
+      };
+      const PAUSE = 0.25;
+      gsap.fromTo(piste, { xPercent: () => (window.innerWidth * 0.14 / Math.max(1, piste.offsetWidth)) * 100 }, { xPercent: 0, ease: 'none',
+        scrollTrigger: { trigger: section, start: 'top bottom', end: debut, scrub: 0.6, invalidateOnRefresh: true } });
+      gsap.timeline({ scrollTrigger: { trigger: section, start: debut, end: () => `+=${Math.round(distance() * (1 + PAUSE))}`,
+        pin: true, anticipatePin: 1, scrub: 0.6, invalidateOnRefresh: true,
+        onUpdate: (st) => {
+          if (barre) barre.style.setProperty('--progres', Math.max(0.06, Math.min(1, st.progress * (1 + PAUSE))).toFixed(3));
+          this.inclinaison = Math.max(-6, Math.min(6, -st.getVelocity() * 0.0025));
+        } } })
+        .fromTo(piste, { x: 0 }, { x: () => -distance(), ease: 'none', duration: 1 })
+        .to({}, { duration: PAUSE });
       let incl = 0, ecrit = 0;
       boucle(piste, (dt) => {
         this.inclinaison *= Math.pow(0.04, dt);

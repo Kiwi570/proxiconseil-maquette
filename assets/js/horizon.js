@@ -6,7 +6,7 @@
    - Souris immobile sur l'image : le temps de l'image s'arrête, plus rien ne dérive.
    - 60 images par seconde au plus, densité limitée, qualité qui baisse d'elle-même si les images tardent ;
      mesures au chargement et au redimensionnement seulement (jamais pendant le défilement). */
-import { boucle, etat } from './socle/index.js?v=4';
+import { boucle, etat } from './socle/index.js?v=5';
 
 const VERT = `attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }`;
 const FRAG = `

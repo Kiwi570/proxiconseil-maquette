@@ -1,4 +1,4 @@
-# Proxiconseil Patrimoine · maquette v4
+# Proxiconseil Patrimoine · maquette v5
 
 Maquette de site pour **Nicolas Rabouan, Proxiconseil Patrimoine** (conseiller en investissements financiers, Le Mans).
 Direction artistique « **Le repère** » : le repère du logo se pose sur le soleil d'un paysage de bocage (accueil)
