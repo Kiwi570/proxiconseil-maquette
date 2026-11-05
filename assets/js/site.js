@@ -2,10 +2,11 @@
    Le socle gère l'ouverture, le voile, l'en-tête, le menu, le mode calme, les boucles, les mesures
    et la bibliothèque d'effets (data-anime, data-fx, data-survol). Ici : l'intro du repère, et les effets
    propres de chaque page, chacun marqué data-effet="nom" (liste dans _audit/config.json). */
-import { demarrer, boucle, etat, quand } from './socle/index.js?v=2';
-import { horizonVivant } from './horizon.js?v=2';
-import { pagesInterieures } from './pages.js?v=2';
-import { ondesAuClic } from './ondes.js?v=2';
+import { demarrer, boucle, etat, quand } from './socle/index.js?v=3';
+import { horizonVivant } from './horizon.js?v=3';
+import { pagesInterieures } from './pages.js?v=3';
+import { ondesAuClic } from './ondes.js?v=3';
+import { bande } from './bande.js?v=3';
 
 const gsap = window.gsap;
 const ST = window.ScrollTrigger;
@@ -66,6 +67,9 @@ const accueil = {
       window.addEventListener('resize', () => { mesurer(); poser(); });
       window.addEventListener('scroll', poser, { passive: true });
     }
+    /* Boussole des objectifs et bande des résidences : utilisables aussi en mode calme (sans animation). */
+    this.boussole();
+    this.residences();
     if (!actif()) { this.horizon.lever(1); return; }
 
     /* Au défilement : travelling vers le soleil dans l'image (le texte reste sur son voile). */
@@ -82,31 +86,27 @@ const accueil = {
         scrollTrigger: { trigger: p, start: 'top 85%', end: 'bottom 50%', scrub: true } });
     });
 
-    /* Six objectifs : section épinglée, un anneau et une image par pas de défilement. */
-    const section = $('[data-objectifs]');
-    const anneaux = $$('.objectifs .anneau');
-    const cartes = $$('.objectifs .objectif');
-    const allumer = (i) => anneaux.forEach((a, k) => { a.classList.toggle('actif', k === i); a.classList.toggle('vu', k < i); });
-    allumer(0);
-    const mm = gsap.matchMedia();
-    mm.add('(min-width: 761px)', () => {
-      const tl = gsap.timeline({ scrollTrigger: { trigger: section, start: 'top top', end: `+=${cartes.length * 70}%`, pin: true, scrub: 0.6, refreshPriority: 10,
-        invalidateOnRefresh: true, snap: { snapTo: 1 / (cartes.length - 1), duration: { min: 0.2, max: 0.5 }, ease: 'power1.inOut' } },
-        onUpdate: () => allumer(Math.min(cartes.length - 1, Math.round(tl.progress() * (cartes.length - 1)))) });
-      tl.fromTo('.objectifs .anneaux-deco', { rotate: 0 }, { rotate: 120, ease: 'none', duration: cartes.length - 1, transformOrigin: '50% 50%' }, 0)
-        .fromTo('.objectifs .anneaux-repere', { y: 0 }, { y: -8, ease: 'sine.inOut', duration: (cartes.length - 1) / 2, yoyo: true, repeat: 1 }, 0);
-      cartes.slice(1).forEach((c, k) => {
-        tl.fromTo(c, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', ease: 'power2.inOut', duration: 1 }, k)
-          .fromTo($('img', c), { scale: 1.18 }, { scale: 1, ease: 'power2.out', duration: 1 }, k);
-      });
-      return () => allumer(0);
-    });
-    mm.add('(max-width: 760px)', () => {
-      ST.create({ trigger: '.objectifs-schema', start: 'top 80%', end: 'bottom 30%', scrub: true,
-        onUpdate: (s) => allumer(Math.min(anneaux.length - 1, Math.floor(s.progress * anneaux.length))) });
-      gsap.fromTo('.objectifs .anneaux-deco', { rotate: -60 }, { rotate: 60, ease: 'none', transformOrigin: '50% 50%',
-        scrollTrigger: { trigger: '.objectifs-schema', start: 'top bottom', end: 'bottom top', scrub: true } });
-    });
+    /* Objectifs : les anneaux décoratifs tournent au défilement. */
+    gsap.fromTo('.objectifs .anneaux-deco', { rotate: -50 }, { rotate: 50, ease: 'none', transformOrigin: '50% 50%',
+      scrollTrigger: { trigger: '.objectifs', start: 'top bottom', end: 'bottom top', scrub: true } });
+
+    /* Raisons : à chaque raison lue, le chemin avance et un repère s'y pose (sur téléphone, les trois à l'arrivée). */
+    const reperes = $$('.raisons-repere'), trace = $('.raisons-trace');
+    if (reperes.length && trace) {
+      const jusqua = [0.22, 0.55, 1];
+      const poser = (k, delai = 0) => {
+        gsap.to(trace, { strokeDashoffset: 1 - jusqua[k], duration: 0.8, ease: 'power2.inOut', delay: delai });
+        gsap.to($('.raisons-pin', reperes[k]), { y: 0, opacity: 1, duration: 0.6, ease: 'bounce.out', delay: delai + 0.3 });
+        gsap.to($('.raisons-ombre', reperes[k]), { scale: 1, opacity: 1, duration: 0.4, ease: 'power2.out', delay: delai + 0.45 });
+        gsap.to($('.raisons-n', reperes[k]), { opacity: 1, duration: 0.4, delay: delai + 0.5 });
+      };
+      gsap.set($$('.raisons-pin'), { y: -70, opacity: 0 });
+      gsap.set($$('.raisons-ombre'), { scale: 0.3, opacity: 0, transformOrigin: '50% 50%' });
+      gsap.set($$('.raisons-n'), { opacity: 0 });
+      const mmR = gsap.matchMedia();
+      mmR.add('(min-width: 761px)', () => { $$('.raisons-liste li').forEach((li, k) => ST.create({ trigger: li, start: 'top 62%', once: true, onEnter: () => poser(k) })); });
+      mmR.add('(max-width: 760px)', () => { ST.create({ trigger: '.raisons-chemin', start: 'top 78%', once: true, onEnter: () => [0, 1, 2].forEach((k) => poser(k, k * 0.55)) }); });
+    }
 
     /* Déroulé : l'itinéraire se trace, chaque repère se pose quand le chemin l'atteint. */
     const chemin = $('.itineraire-chemin');
@@ -137,6 +137,7 @@ const accueil = {
 
     /* Avis : les cartes suspendues à leur repère se balancent selon la vitesse du défilement, puis se posent. */
     const liste = $('.avis-liste');
+    if (liste && window.matchMedia('(max-width: 760px)').matches) bande(liste, { auVitesse: (v) => { vitesse = v; }, calme: () => etat.calme });
     if (liste) {
       const cartesAvis = $$('.avis-carte', liste).map((el, i) => ({ el, a: 0, v: 0, sens: i % 2 ? 1 : -1, poids: 0.7 + (i % 3) * 0.2 }));
       boucle(liste, (dt) => {
@@ -151,15 +152,103 @@ const accueil = {
       });
     }
 
+    /* Résidences : la bande arrive de la droite au défilement ; les cartes s'inclinent selon la vitesse du glissé. */
+    const piste = $('.residences-piste');
+    if (piste) {
+      gsap.fromTo(piste, { x: () => window.innerWidth * 0.16 }, { x: 0, ease: 'none', scrollTrigger: { trigger: '.residences', start: 'top bottom', end: 'top 25%', scrub: true } });
+      let incl = 0, ecrit = 0;
+      boucle(piste, (dt) => {
+        this.inclinaison *= Math.pow(0.04, dt);
+        incl += (this.inclinaison - incl) * (1 - Math.exp(-dt * 10));
+        if (Math.abs(incl) < 0.02 && Math.abs(this.inclinaison) < 0.02) incl = 0;
+        if (incl !== ecrit) { ecrit = incl; piste.style.setProperty('--incl', `${incl.toFixed(2)}deg`); }
+      });
+    }
+
     /* Appel : les ondes du repère s'élargissent au défilement. */
     gsap.timeline({ scrollTrigger: { trigger: '.appel', start: 'top bottom', end: 'bottom top', scrub: true } })
       .fromTo('.appel-ondes span', { scale: 0.1, opacity: 0 }, { scale: 1.6, opacity: 0.85, stagger: 0.12, ease: 'none', duration: 0.5 }, 0)
       .to('.appel-ondes span', { opacity: 0, stagger: 0.12, ease: 'none', duration: 0.4 }, 0.45);
 
-    /* La section épinglée des objectifs est créée après la galerie de la bibliothèque : on remet les déclencheurs
-       dans l'ordre de la page, sinon la galerie s'épinglerait trop tôt. */
     ST.sort();
     ST.refresh();
+  },
+
+  /* Boussole des six objectifs : un bouton ou un anneau choisi, le repère y glisse et la fiche change.
+     Sans geste, ils défilent seuls (5 s chacun) tant que la section est à l'écran ; un choix, la pause,
+     le survol de la fiche ou le focus clavier les arrêtent. Rien ne défile seul en mode calme. */
+  boussole() {
+    const section = $('[data-objectifs]');
+    if (!section) return;
+    const boutons = $$('[data-objectif-choix]', section), cartes = $$('.objectif', section), anneaux = $$('.anneau', section);
+    const curseur = $('.anneaux-curseur', section), saut = $('.anneaux-saut', section), onde = $('.anneaux-onde', section);
+    const liste = $('.objectifs-liste', section), pause = $('[data-objectifs-pause]', section);
+    const points = anneaux.map((a) => { const c = $('.anneau-point', a); return [+c.getAttribute('cx'), +c.getAttribute('cy')]; });
+    const DUREE = 5;
+    let i = 0, minuterie = null, temps = null, arrete = !!etat.calme, enVue = false, retenu = false, premiere = true;
+    const anime = () => actif();
+    cartes.forEach((c, n) => { c.inert = n !== 0; });
+    anneaux.forEach((a, n) => a.classList.toggle('actif', n === 0));
+    const repere = (k) => {
+      const [x, y] = points[k];
+      if (!gsap) { curseur.setAttribute('transform', `translate(${x} ${y})`); return; }
+      if (!anime()) { gsap.set(curseur, { x, y }); return; }
+      gsap.to(curseur, { x, y, duration: 0.7, ease: 'power2.inOut', overwrite: true });
+      gsap.timeline().to(saut, { y: -26, duration: 0.35, ease: 'power2.out' }).to(saut, { y: 0, duration: 0.35, ease: 'power2.in' })
+        .fromTo(onde, { scale: 0.3, opacity: 0.9 }, { scale: 2.8, opacity: 0, duration: 0.8, ease: 'power2.out', transformOrigin: '50% 50%' });
+    };
+    const montrer = (k) => {
+      boutons.forEach((b, n) => b.setAttribute('aria-pressed', String(n === k)));
+      anneaux.forEach((a, n) => { a.classList.toggle('actif', n === k); a.classList.remove('vu'); });
+      if (k !== i) {
+        const avant = cartes[i], apres = cartes[k];
+        cartes.forEach((c, n) => { c.classList.remove('sortante'); c.inert = n !== k; if (n !== k && n !== i) c.classList.remove('actif'); });
+        avant.classList.remove('actif'); avant.classList.add('sortante'); apres.classList.add('actif');
+        if (anime()) {
+          gsap.fromTo(apres, { clipPath: 'inset(100% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.75, ease: 'power3.inOut', overwrite: true, onComplete: () => { avant.classList.remove('sortante'); gsap.set(apres, { clearProps: 'clipPath' }); } });
+          gsap.fromTo($('img', apres), { scale: 1.14 }, { scale: 1, duration: 1.1, ease: 'power2.out' });
+          gsap.fromTo($$('.objectif-texte > *', apres), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, stagger: 0.05, delay: 0.25, ease: 'power2.out' });
+        } else avant.classList.remove('sortante');
+      }
+      repere(k);
+      i = k;
+    };
+    const couper = () => {
+      if (minuterie) minuterie.kill();
+      if (temps) temps.kill();
+      minuterie = temps = null;
+      if (gsap) boutons.forEach((b) => gsap.set($('.objectif-choix-temps', b), { scaleX: 0 }));
+    };
+    const programmer = () => {
+      couper();
+      if (arrete || !enVue || retenu || etat.calme || !gsap) return;
+      temps = gsap.fromTo($('.objectif-choix-temps', boutons[i]), { scaleX: 0 }, { scaleX: 1, duration: DUREE, ease: 'none' });
+      minuterie = gsap.delayedCall(DUREE, () => { montrer((i + 1) % cartes.length); programmer(); });
+    };
+    const majPause = () => { if (!pause) return; pause.setAttribute('aria-pressed', String(arrete)); pause.textContent = arrete ? pause.dataset.lecture : pause.dataset.pause; };
+    const choisir = (k) => { arrete = true; majPause(); couper(); liste.setAttribute('aria-live', 'polite'); montrer(k); };
+    boutons.forEach((b, n) => b.addEventListener('click', () => choisir(n)));
+    anneaux.forEach((a, n) => a.addEventListener('click', () => choisir(n)));
+    if (pause) pause.addEventListener('click', () => { arrete = !arrete; majPause(); if (arrete) couper(); else programmer(); });
+    majPause();
+    liste.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { retenu = true; couper(); } });
+    liste.addEventListener('pointerleave', () => { retenu = false; programmer(); });
+    section.addEventListener('focusin', () => { retenu = true; couper(); });
+    section.addEventListener('focusout', (e) => { if (!section.contains(e.relatedTarget)) { retenu = false; programmer(); } });
+    /* À l'arrivée de la section, le repère quitte le centre et se pose sur le premier objectif. */
+    if (anime() && ST) ST.create({ trigger: section, start: 'top 65%', end: 'bottom 35%', onToggle: (s) => {
+      enVue = s.isActive;
+      if (enVue && premiere) { premiere = false; repere(i); }
+      if (enVue) programmer(); else couper();
+    } });
+    else repere(0);
+  },
+
+  /* Bande des résidences : glisser, flèches, progression ; la vitesse incline les cartes (si animations). */
+  residences() {
+    this.inclinaison = 0;
+    bande($('.residences-piste'), { precedent: $('[data-bande-precedent]'), suivant: $('[data-bande-suivant]'), barre: $('.galerie-progres span'),
+      calme: () => etat.calme, auVitesse: (v) => { if (actif()) this.inclinaison = Math.max(-7, Math.min(7, -v * 0.006)); } });
   },
 
   /* Partie de l'accueil dans l'intro : le paysage se pose, le titre monte, le repère tombe sur le soleil qui se lève. */
@@ -196,6 +285,8 @@ const accueil = {
     gsap.set('.hero-repere .repere-corps, .hero-repere .repere-ombre', { clearProps: 'transform,opacity' });
     this.soleil.v = 1; this.horizon && this.horizon.lever(1);
     gsap.set('.citation-vrai, .citation-auteur', { opacity: 1 });
+    gsap.set('.raisons-pin, .raisons-ombre, .raisons-n', { clearProps: 'transform,opacity' });
+    gsap.set('.raisons-trace', { strokeDashoffset: 0 });
     gsap.set('.citation-rature path', { strokeDashoffset: 0 });
   },
 };

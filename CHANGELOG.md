@@ -1,5 +1,16 @@
 # Journal des versions
 
+## v3 — 5 novembre 2026
+
+Accueil réorganisé : environ 10 écrans au lieu de 17, plus aucune section qui bloque le défilement.
+
+- **Ordre** : hero, six objectifs, pourquoi un conseiller, Nicolas Rabouan, quatre étapes, avis, investir dans la pierre, citation et rendez-vous.
+- **Six objectifs** : une boussole interactive sur un seul écran. Au clic sur un objectif (bouton ou anneau), le repère y saute et la fiche change, avec un lien « Parler de cet objectif » vers le rendez-vous. Sans geste, les objectifs défilent seuls toutes les 5 secondes, avec un bouton Pause.
+- **Pourquoi un conseiller** : la grande image laisse place à un chemin où un repère se pose à chaque raison lue ; les mots s'allument toujours à la lecture.
+- **Avis** : sur téléphone, les cartes pendent à un fil et se font glisser du doigt (environ 1 écran au lieu de 2,5) ; elles se balancent selon la vitesse.
+- **Investir dans la pierre** : bande à faire glisser (souris, doigt, flèches, clavier) au lieu de la galerie épinglée ; les cartes s'inclinent selon la vitesse, le curseur affiche « Glisser ».
+- **Fin de page** : la citation de Bernanos et l'appel au rendez-vous réunis sur la rivière au matin.
+
 ## v2 — 4 novembre 2026
 
 Animations et nouvelle ouverture de l'accueil.

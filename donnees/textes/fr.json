@@ -105,7 +105,11 @@
       "titre": "Six objectifs, un seul repère",
       "texte": "Particuliers comme chefs d’entreprise : chaque accompagnement part de vos objectifs.",
       "lien": "Découvrir l’accompagnement",
-      "consigne": "Faites défiler pour parcourir les six objectifs"
+      "consigne": "Choisissez un objectif, ou laissez-les défiler.",
+      "pause": "Pause",
+      "lecture": "Lecture",
+      "choix": "Les six objectifs",
+      "parler": "Parler de cet objectif"
     },
     "deroule": {
       "surtitre": "Le déroulé",
@@ -130,21 +134,26 @@
       "surtitre": "Avis investisseurs",
       "titre": "Ils recommandent Nicolas",
       "texte": "Six avis publiés sur Google, repris du site actuel.",
-      "source": "Avis Google"
+      "source": "Avis Google",
+      "region": "Avis Google, à faire glisser"
     },
     "immobilier": {
       "surtitre": "Immobilier",
       "titre": "Investir dans la pierre",
       "texte": "Résidences commercialisées et livrées par Stellium Immobilier, qui a délivré son attestation d’habilitation à Nicolas Rabouan.",
-      "region": "Résidences, défilement horizontal",
+      "region": "Résidences, à faire glisser",
       "legende": "Résidence Stellium Immobilier · nom et ville à compléter",
-      "lien": "L’immobilier"
+      "lien": "L’immobilier",
+      "precedent": "Résidence précédente",
+      "suivant": "Résidence suivante",
+      "glisser": "Glisser"
     },
     "appel": {
       "titre": "Échangeons et concrétisons, ensemble, tous vos projets",
       "texte": "Un premier échange pour faire le point sur votre situation et vos objectifs.",
       "rdv": "Prendre rendez-vous",
-      "appeler": "Appeler le 06 63 47 91 22"
+      "appeler": "Appeler le 06 63 47 91 22",
+      "alt": "Rivière calme bordée de peupliers au petit matin"
     }
   },
   "accompagnement": {

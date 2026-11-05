@@ -1,7 +1,7 @@
 /* Ondes au clic, sur tout le site : chaque clic lâche, au point cliqué, deux ondes aplaties comme l'ombre du repère.
    Claires sur les sections sombres, pétrole ailleurs. Le curseur (socle) prend la même teinte et se pose au clic.
    Rien en mode calme ; le calque est fixe, transparent aux clics et ignoré par l'audit. */
-import { etat } from './socle/index.js?v=2';
+import { etat } from './socle/index.js?v=3';
 
 const SOMBRES = '.hero, .deroule, .appel, .acc-tete, .feuillets, .charte, .fin-page--nuit, .rdv-recap, .pied, [data-menu], [data-voile]';
 
@@ -36,7 +36,12 @@ export function ondesAuClic() {
     window.addEventListener('pointermove', (e) => {
       if (e.pointerType !== 'mouse') return;
       const c = document.querySelector('.curseur');
-      if (c) c.classList.toggle('curseur--clair', sombre(e.target));
+      if (!c) return;
+      c.classList.toggle('curseur--clair', sombre(e.target));
+      /* Libellé près du curseur sur les zones qui en demandent un (bande à faire glisser). */
+      const z = e.target.closest && e.target.closest('[data-curseur-libelle]');
+      const libelle = z ? z.dataset.curseurLibelle : '';
+      if ((c.dataset.libelle || '') !== libelle) c.dataset.libelle = libelle;
     }, { passive: true });
   }
 }

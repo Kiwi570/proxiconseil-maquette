@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-v="2" data-curseur>
+<html lang="fr" data-v="3" data-curseur>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -41,14 +41,14 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
 })();</script>
 <link rel="preload" href="/assets/polices/fraunces.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/polices/manrope.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/css/socle.css?v=2">
-<link rel="stylesheet" href="/assets/css/site.css?v=2">
-<link rel="modulepreload" href="/assets/js/site.js?v=2">
-<link rel="modulepreload" href="/assets/js/socle/index.js?v=2">
+<link rel="stylesheet" href="/assets/css/socle.css?v=3">
+<link rel="stylesheet" href="/assets/css/site.css?v=3">
+<link rel="modulepreload" href="/assets/js/site.js?v=3">
+<link rel="modulepreload" href="/assets/js/socle/index.js?v=3">
 <script src="/assets/vendor/gsap.min.js" defer></script>
 <script src="/assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/assets/vendor/SplitText.min.js" defer></script>
-<script type="module" src="/assets/js/site.js?v=2"></script>
+<script type="module" src="/assets/js/site.js?v=3"></script>
 <meta name="theme-color" content="#f4f1ea">
 <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
@@ -123,15 +123,18 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
   </div>
   <a class="hero-defiler" href="#objectifs" data-anime="gsap"><span>Faites défiler</span></a>
 </section>
-<section class="objectifs ecran epingle" id="objectifs" data-objectifs data-entete-cache>
+<section class="objectifs" id="objectifs" data-objectifs>
   <div class="objectifs-grille conteneur">
     <div class="objectifs-tete">
       <p class="surtitre" data-anime>Ce que nous construisons ensemble</p>
       <h2 data-anime="lignes">Six objectifs, un seul repère</h2>
       <p data-anime>Particuliers comme chefs d’entreprise : chaque accompagnement part de vos objectifs.</p>
-      <p class="objectifs-consigne" data-anime>Faites défiler pour parcourir les six objectifs</p>
+      <div class="objectifs-choix" role="group" aria-label="Les six objectifs" data-anime="cascade">
+        <button type="button" class="objectif-choix" data-objectif-choix="0" aria-controls="objectif-epargne" aria-pressed="true"><span>Épargne</span><span class="objectif-choix-temps" aria-hidden="true"></span></button><button type="button" class="objectif-choix" data-objectif-choix="1" aria-controls="objectif-tresorerie" aria-pressed="false"><span>Trésorerie</span><span class="objectif-choix-temps" aria-hidden="true"></span></button><button type="button" class="objectif-choix" data-objectif-choix="2" aria-controls="objectif-immobilier" aria-pressed="false"><span>Immobilier</span><span class="objectif-choix-temps" aria-hidden="true"></span></button><button type="button" class="objectif-choix" data-objectif-choix="3" aria-controls="objectif-retraite" aria-pressed="false"><span>Retraite</span><span class="objectif-choix-temps" aria-hidden="true"></span></button><button type="button" class="objectif-choix" data-objectif-choix="4" aria-controls="objectif-impots" aria-pressed="false"><span>Impôts</span><span class="objectif-choix-temps" aria-hidden="true"></span></button><button type="button" class="objectif-choix" data-objectif-choix="5" aria-controls="objectif-transmission" aria-pressed="false"><span>Transmission</span><span class="objectif-choix-temps" aria-hidden="true"></span></button>
+      </div>
+      <p class="objectifs-consigne"><span>Choisissez un objectif, ou laissez-les défiler.</span> <button type="button" class="objectifs-pause" data-objectifs-pause aria-pressed="false" data-pause="Pause" data-lecture="Lecture">Pause</button></p>
     </div>
-    <div class="objectifs-schema"><svg class="anneaux " viewBox="-330 -330 660 660" role="img" aria-label="Six anneaux autour du repère, un objectif sur chacun" data-effet="anneaux-objectifs">
+    <div class="objectifs-schema" data-visuel><svg class="anneaux " viewBox="-330 -330 660 660" role="img" aria-label="Six anneaux autour du repère, un objectif sur chacun" data-effet="anneaux-objectifs">
   <g class="anneau" data-i="0" data-cle="epargne">
       <circle class="anneau-cercle" r="62" fill="none"/>
       <circle class="anneau-point" cx="-36" cy="-50" r="5" data-repere/>
@@ -158,71 +161,87 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
       <text class="anneau-nom" x="-210" y="100" text-anchor="start">Transmission</text>
     </g>
   <circle class="anneaux-deco" r="300" fill="none"/>
-  <g class="anneaux-repere" transform="translate(-16 -46) scale(.25)"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g>
+  <g class="anneaux-curseur"><circle class="anneaux-onde" r="14" fill="none"/><g class="anneaux-saut"><g class="anneaux-repere" transform="translate(-16 -46) scale(.25)"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g></g></g>
 </svg></div>
-    <ol class="objectifs-liste">
-      <li class="objectif" data-i="0" id="objectif-epargne">
+    <ol class="objectifs-liste" aria-live="off">
+      <li class="objectif actif" data-i="0" id="objectif-epargne">
         <figure class="media objectif-media" data-grok style="--cadrage:50% 55%">
   <picture>
-    <img src="/assets/images/grok/objectif-epargne-784.webp" srcset="/assets/images/grok/objectif-epargne-480.webp 480w, /assets/images/grok/objectif-epargne-640.webp 640w, /assets/images/grok/objectif-epargne-784.webp 784w" sizes="(max-width: 760px) 34vw, 30vw" alt="Graine qui germe dans une terre sombre" width="784" height="980" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/objectif-epargne-784.webp" srcset="/assets/images/grok/objectif-epargne-480.webp 480w, /assets/images/grok/objectif-epargne-640.webp 640w, /assets/images/grok/objectif-epargne-784.webp 784w" sizes="(max-width: 760px) 90vw, 30vw" alt="Graine qui germe dans une terre sombre" width="784" height="980" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-        <div class="objectif-texte"><span class="objectif-num">01</span><h3>Épargne</h3><p>Optimiser et dynamiser votre épargne.</p></div>
+        <div class="objectif-texte"><span class="objectif-num">01 / 06</span><h3>Épargne</h3><p>Optimiser et dynamiser votre épargne.</p><a href="/contact?sujet=epargne#rendez-vous" class="lien-fleche" data-libelle="Contact">Parler de cet objectif</a></div>
       </li><li class="objectif" data-i="1" id="objectif-tresorerie">
         <figure class="media objectif-media" data-grok style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/grok/objectif-tresorerie-784.webp" srcset="/assets/images/grok/objectif-tresorerie-480.webp 480w, /assets/images/grok/objectif-tresorerie-640.webp 640w, /assets/images/grok/objectif-tresorerie-784.webp 784w" sizes="(max-width: 760px) 34vw, 30vw" alt="Atelier d’une petite entreprise, vide, au petit matin" width="784" height="980" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/objectif-tresorerie-784.webp" srcset="/assets/images/grok/objectif-tresorerie-480.webp 480w, /assets/images/grok/objectif-tresorerie-640.webp 640w, /assets/images/grok/objectif-tresorerie-784.webp 784w" sizes="(max-width: 760px) 90vw, 30vw" alt="Atelier d’une petite entreprise, vide, au petit matin" width="784" height="980" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-        <div class="objectif-texte"><span class="objectif-num">02</span><h3>Trésorerie d’entreprise</h3><p>Optimiser la trésorerie de votre entreprise.</p></div>
+        <div class="objectif-texte"><span class="objectif-num">02 / 06</span><h3>Trésorerie d’entreprise</h3><p>Optimiser la trésorerie de votre entreprise.</p><a href="/contact?sujet=tresorerie#rendez-vous" class="lien-fleche" data-libelle="Contact">Parler de cet objectif</a></div>
       </li><li class="objectif" data-i="2" id="objectif-immobilier">
         <figure class="media objectif-media" data-grok style="--cadrage:50% 45%">
   <picture>
-    <img src="/assets/images/grok/objectif-immobilier-784.webp" srcset="/assets/images/grok/objectif-immobilier-480.webp 480w, /assets/images/grok/objectif-immobilier-640.webp 640w, /assets/images/grok/objectif-immobilier-784.webp 784w" sizes="(max-width: 760px) 34vw, 30vw" alt="Façade de maison de ville en tuffeau aux volets gris clair" width="784" height="980" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/objectif-immobilier-784.webp" srcset="/assets/images/grok/objectif-immobilier-480.webp 480w, /assets/images/grok/objectif-immobilier-640.webp 640w, /assets/images/grok/objectif-immobilier-784.webp 784w" sizes="(max-width: 760px) 90vw, 30vw" alt="Façade de maison de ville en tuffeau aux volets gris clair" width="784" height="980" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-        <div class="objectif-texte"><span class="objectif-num">03</span><h3>Immobilier</h3><p>Investir dans l’immobilier et valoriser votre patrimoine.</p></div>
+        <div class="objectif-texte"><span class="objectif-num">03 / 06</span><h3>Immobilier</h3><p>Investir dans l’immobilier et valoriser votre patrimoine.</p><a href="/contact?sujet=immobilier#rendez-vous" class="lien-fleche" data-libelle="Contact">Parler de cet objectif</a></div>
       </li><li class="objectif" data-i="3" id="objectif-retraite">
         <figure class="media objectif-media" data-grok style="--cadrage:50% 60%">
   <picture>
-    <img src="/assets/images/grok/objectif-retraite-784.webp" srcset="/assets/images/grok/objectif-retraite-480.webp 480w, /assets/images/grok/objectif-retraite-640.webp 640w, /assets/images/grok/objectif-retraite-784.webp 784w" sizes="(max-width: 760px) 34vw, 30vw" alt="Chaise de jardin en bois sous un vieux pommier" width="784" height="980" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/objectif-retraite-784.webp" srcset="/assets/images/grok/objectif-retraite-480.webp 480w, /assets/images/grok/objectif-retraite-640.webp 640w, /assets/images/grok/objectif-retraite-784.webp 784w" sizes="(max-width: 760px) 90vw, 30vw" alt="Chaise de jardin en bois sous un vieux pommier" width="784" height="980" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-        <div class="objectif-texte"><span class="objectif-num">04</span><h3>Retraite</h3><p>Préparer votre retraite.</p></div>
+        <div class="objectif-texte"><span class="objectif-num">04 / 06</span><h3>Retraite</h3><p>Préparer votre retraite.</p><a href="/contact?sujet=retraite#rendez-vous" class="lien-fleche" data-libelle="Contact">Parler de cet objectif</a></div>
       </li><li class="objectif" data-i="4" id="objectif-impots">
         <figure class="media objectif-media" data-grok style="--cadrage:50% 55%">
   <picture>
-    <img src="/assets/images/grok/objectif-impots-784.webp" srcset="/assets/images/grok/objectif-impots-480.webp 480w, /assets/images/grok/objectif-impots-640.webp 640w, /assets/images/grok/objectif-impots-784.webp 784w" sizes="(max-width: 760px) 34vw, 30vw" alt="Dossier fermé par une sangle sous une lampe de bureau en laiton" width="784" height="980" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/objectif-impots-784.webp" srcset="/assets/images/grok/objectif-impots-480.webp 480w, /assets/images/grok/objectif-impots-640.webp 640w, /assets/images/grok/objectif-impots-784.webp 784w" sizes="(max-width: 760px) 90vw, 30vw" alt="Dossier fermé par une sangle sous une lampe de bureau en laiton" width="784" height="980" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-        <div class="objectif-texte"><span class="objectif-num">05</span><h3>Impôts</h3><p>Réduire votre imposition, à titre privé comme professionnel.</p></div>
+        <div class="objectif-texte"><span class="objectif-num">05 / 06</span><h3>Impôts</h3><p>Réduire votre imposition, à titre privé comme professionnel.</p><a href="/contact?sujet=impots#rendez-vous" class="lien-fleche" data-libelle="Contact">Parler de cet objectif</a></div>
       </li><li class="objectif" data-i="5" id="objectif-transmission">
         <figure class="media objectif-media" data-grok style="--cadrage:50% 55%">
   <picture>
-    <img src="/assets/images/grok/objectif-transmission-784.webp" srcset="/assets/images/grok/objectif-transmission-480.webp 480w, /assets/images/grok/objectif-transmission-640.webp 640w, /assets/images/grok/objectif-transmission-784.webp 784w" sizes="(max-width: 760px) 34vw, 30vw" alt="Clé ancienne posée sur un buffet en noyer" width="784" height="980" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/objectif-transmission-784.webp" srcset="/assets/images/grok/objectif-transmission-480.webp 480w, /assets/images/grok/objectif-transmission-640.webp 640w, /assets/images/grok/objectif-transmission-784.webp 784w" sizes="(max-width: 760px) 90vw, 30vw" alt="Clé ancienne posée sur un buffet en noyer" width="784" height="980" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
-        <div class="objectif-texte"><span class="objectif-num">06</span><h3>Transmission</h3><p>Transmettre efficacement votre patrimoine immobilier et financier.</p></div>
+        <div class="objectif-texte"><span class="objectif-num">06 / 06</span><h3>Transmission</h3><p>Transmettre efficacement votre patrimoine immobilier et financier.</p><a href="/contact?sujet=transmission#rendez-vous" class="lien-fleche" data-libelle="Contact">Parler de cet objectif</a></div>
       </li>
     </ol>
   </div>
   <p class="objectifs-pied conteneur"><span class="objectifs-risque">Tout placement comporte des risques, dont celui de perte en capital. Les solutions sont proposées après étude de votre situation.</span> <a href="/accompagnement" class="lien-fleche" data-libelle="Accompagnement">Découvrir l’accompagnement</a></p>
 </section>
 <section class="raisons" id="raisons">
-  <figure class="media raisons-media" data-grok data-fx="zoom" data-fx-force="16" style="--cadrage:45% 88%">
-  <picture>
-    <img src="/assets/images/grok/raisons-bureau-1280.webp" srcset="/assets/images/grok/raisons-bureau-640.webp 640w, /assets/images/grok/raisons-bureau-1280.webp 1280w, /assets/images/grok/raisons-bureau-1752.webp 1752w" sizes="(max-width: 760px) 100vw, 50vw" alt="Bureau de conseil vide en fin d’après-midi, deux chaises face à face" width="1280" height="854" loading="lazy" decoding="async">
-  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
-</figure>
-  <div class="raisons-texte conteneur">
-    <p class="surtitre" data-anime>Mon métier</p>
-    <h2 data-anime="lignes">Pourquoi faire appel à un conseiller patrimonial ?</h2>
-    <p class="raisons-note" data-anime><span class="a-valider">formulations du site actuel, à valider</span></p>
+  <div class="raisons-grille conteneur">
+    <div class="raisons-tete">
+      <p class="surtitre" data-anime>Mon métier</p>
+      <h2 data-anime="lignes">Pourquoi faire appel à un conseiller patrimonial ?</h2>
+      <p class="raisons-note" data-anime><span class="a-valider">formulations du site actuel, à valider</span></p>
+      <svg class="raisons-chemin" viewBox="0 0 480 170" aria-hidden="true" data-effet="reperes-raisons" data-visuel>
+        <path class="raisons-trace-fond" d="M10 128 C 60 150, 70 104, 92 118 S 190 96, 240 106 S 340 140, 388 122 S 450 104, 470 116"/>
+        <path class="raisons-trace" pathLength="1" d="M10 128 C 60 150, 70 104, 92 118 S 190 96, 240 106 S 340 140, 388 122 S 450 104, 470 116"/>
+        <g class="raisons-repere" data-i="0" transform="translate(92 118)"><ellipse class="raisons-ombre" rx="15" ry="5.5"/><g class="raisons-pin"><g transform="translate(-14 -40) scale(.22)"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g></g><text class="raisons-n" y="34" text-anchor="middle">01</text></g><g class="raisons-repere" data-i="1" transform="translate(240 106)"><ellipse class="raisons-ombre" rx="15" ry="5.5"/><g class="raisons-pin"><g transform="translate(-14 -40) scale(.22)"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g></g><text class="raisons-n" y="34" text-anchor="middle">02</text></g><g class="raisons-repere" data-i="2" transform="translate(388 122)"><ellipse class="raisons-ombre" rx="15" ry="5.5"/><g class="raisons-pin"><g transform="translate(-14 -40) scale(.22)"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g></g><text class="raisons-n" y="34" text-anchor="middle">03</text></g>
+      </svg>
+    </div>
     <ol class="raisons-liste">
-      <li><span class="raisons-num" aria-hidden="true">01</span><p class="manifeste" data-effet="manifeste">Pour vous apporter une information et le meilleur conseil sur les possibilités de développer votre patrimoine et de sécuriser financièrement votre avenir.</p></li>
-      <li><span class="raisons-num" aria-hidden="true">02</span><p class="manifeste" data-effet="manifeste">Pour vous aider à dynamiser votre épargne, valoriser votre patrimoine, diminuer vos impôts, préparer votre retraite et transmettre dans les meilleures conditions.</p></li>
-      <li><span class="raisons-num" aria-hidden="true">03</span><p class="manifeste" data-effet="manifeste">Pour créer une relation durable et de confiance, en vous accompagnant dans l’atteinte de vos objectifs actuels et futurs.</p></li>
+      <li data-i="0"><span class="raisons-num" aria-hidden="true">01</span><p class="manifeste" data-effet="manifeste">Pour vous apporter une information et le meilleur conseil sur les possibilités de développer votre patrimoine et de sécuriser financièrement votre avenir.</p></li>
+      <li data-i="1"><span class="raisons-num" aria-hidden="true">02</span><p class="manifeste" data-effet="manifeste">Pour vous aider à dynamiser votre épargne, valoriser votre patrimoine, diminuer vos impôts, préparer votre retraite et transmettre dans les meilleures conditions.</p></li>
+      <li data-i="2"><span class="raisons-num" aria-hidden="true">03</span><p class="manifeste" data-effet="manifeste">Pour créer une relation durable et de confiance, en vous accompagnant dans l’atteinte de vos objectifs actuels et futurs.</p></li>
     </ol>
+  </div>
+</section>
+<section class="apercu conteneur" id="qui">
+  <figure class="media apercu-media" data-anime="rideau" style="--cadrage:52% 35%">
+  <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/portrait-mobile-480.webp 480w, /assets/images/portrait-mobile-640.webp 640w, /assets/images/portrait-mobile-960.webp 960w" sizes="(max-width: 760px) 90vw, 38vw">
+    <img src="/assets/images/portrait-1600.webp" srcset="/assets/images/portrait-480.webp 480w, /assets/images/portrait-640.webp 640w, /assets/images/portrait-784.webp 784w, /assets/images/portrait-1134.webp 1134w, /assets/images/portrait-1600.webp 1600w" sizes="(max-width: 760px) 90vw, 38vw" alt="Nicolas Rabouan, portrait en noir et blanc" width="1600" height="1508" loading="lazy" decoding="async">
+  </picture>
+</figure>
+  <div class="apercu-texte">
+    <p class="surtitre" data-anime>Qui suis-je ?</p>
+    <h2 data-anime="lignes">Nicolas Rabouan</h2>
+    <p class="apercu-chiffre" data-anime><strong data-compteur="18">18</strong> <span>années dans le milieu bancaire</span></p>
+    <p data-anime>Fort de 18 années d’expérience dans le milieu bancaire et de succès personnels dans l’investissement patrimonial, je souhaite partager mon savoir et accompagner mes clients sur le long terme.</p>
+    <p data-anime><a href="/qui-suis-je" class="bouton bouton--contour" data-libelle="Qui suis-je ?" data-survol="magnetique">Découvrir mon parcours</a></p>
   </div>
 </section>
 <section class="deroule" id="deroule">
@@ -245,104 +264,88 @@ setTimeout(function () { if (!d.classList.contains('demarre')) d.classList.add('
     </div>
   </div>
 </section>
-<section class="citation" id="citation">
-  <figure class="media citation-fond" data-grok data-fx="zoom" data-fx-force="14" style="--cadrage:50% 50%">
-  <picture>
-    <img src="/assets/images/grok/citation-horizon-1280.webp" srcset="/assets/images/grok/citation-horizon-640.webp 640w, /assets/images/grok/citation-horizon-1280.webp 1280w, /assets/images/grok/citation-horizon-1752.webp 1752w" sizes="100vw" alt="Georges Bernanos" width="1280" height="720" loading="lazy" decoding="async">
-  </picture><figcaption class="mention-ia">Illustration générée</figcaption>
-</figure>
-  <figure class="citation-texte conteneur" data-effet="rature-avenir">
-    <p class="citation-faux" aria-hidden="true"><span class="citation-faux-texte">On subit l’avenir.</span><svg class="citation-rature" viewBox="0 0 400 40" preserveAspectRatio="none"><path pathLength="1" d="M4 26 C 70 14, 130 30, 200 20 S 330 12, 396 22"/></svg></p>
-    <blockquote class="citation-vrai"><p>« On ne subit pas l’avenir, on le fait. »</p></blockquote>
-    <figcaption class="citation-auteur">Georges Bernanos</figcaption>
-  </figure>
-</section>
-<section class="apercu conteneur" id="qui">
-  <figure class="media apercu-media" data-anime="rideau" style="--cadrage:52% 35%">
-  <picture><source media="(max-width: 760px) and (orientation: portrait)" srcset="/assets/images/portrait-mobile-480.webp 480w, /assets/images/portrait-mobile-640.webp 640w, /assets/images/portrait-mobile-960.webp 960w" sizes="(max-width: 760px) 90vw, 38vw">
-    <img src="/assets/images/portrait-1600.webp" srcset="/assets/images/portrait-480.webp 480w, /assets/images/portrait-640.webp 640w, /assets/images/portrait-784.webp 784w, /assets/images/portrait-1134.webp 1134w, /assets/images/portrait-1600.webp 1600w" sizes="(max-width: 760px) 90vw, 38vw" alt="Nicolas Rabouan, portrait en noir et blanc" width="1600" height="1508" loading="lazy" decoding="async">
-  </picture>
-</figure>
-  <div class="apercu-texte">
-    <p class="surtitre" data-anime>Qui suis-je ?</p>
-    <h2 data-anime="lignes">Nicolas Rabouan</h2>
-    <p class="apercu-chiffre" data-anime><strong data-compteur="18">18</strong> <span>années dans le milieu bancaire</span></p>
-    <p data-anime>Fort de 18 années d’expérience dans le milieu bancaire et de succès personnels dans l’investissement patrimonial, je souhaite partager mon savoir et accompagner mes clients sur le long terme.</p>
-    <p data-anime><a href="/qui-suis-je" class="bouton bouton--contour" data-libelle="Qui suis-je ?" data-survol="magnetique">Découvrir mon parcours</a></p>
-  </div>
-</section>
 <section class="avis" id="avis">
   <div class="conteneur avis-tete">
     <p class="surtitre" data-anime>Avis investisseurs</p>
     <h2 data-anime="lignes">Ils recommandent Nicolas</h2>
     <p data-anime>Six avis publiés sur Google, repris du site actuel.</p>
   </div>
-  <ul class="avis-liste conteneur" data-effet="avis-epingles" data-visuel>
+  <ul class="avis-liste conteneur" data-effet="avis-epingles" data-visuel data-bande-mobile tabindex="0" aria-label="Avis Google, à faire glisser">
     <li class="avis-carte" style="--i:0"><svg class="repere avis-pin" viewBox="0 0 128 236" aria-hidden="true" focusable="false"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg><div class="avis-corps"><blockquote><p>Je recommande vivement Nicolas de chez Proxiconseil Patrimoine ! Des conseils de grande qualité, un accompagnement professionnel et une excellente écoute. Nicolas sait se rendre disponible et prend le temps d’expliquer les choses clairement pour proposer des solutions adaptées. Un vrai professionnel de confiance que je recommande +++ ! Merci pour l’accompagnement et le suivi de notre dossier 👍</p></blockquote><p class="avis-auteur">Famille INACIO MATEUS <span>· Avis Google</span></p></div></li><li class="avis-carte" style="--i:1"><svg class="repere avis-pin" viewBox="0 0 128 236" aria-hidden="true" focusable="false"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg><div class="avis-corps"><blockquote><p>très pro, je recommande :)</p></blockquote><p class="avis-auteur">Olivier LOYEN <span>· Avis Google</span></p></div></li><li class="avis-carte" style="--i:2"><svg class="repere avis-pin" viewBox="0 0 128 236" aria-hidden="true" focusable="false"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg><div class="avis-corps"><blockquote><p>Je remercie Nicolas pour son professionalisme, ses conseils judicieux, sa disponibilité et sa patience dans la mise en oeuvre. A recommander absolument</p></blockquote><p class="avis-auteur">Sabine Sander <span>· Avis Google</span></p></div></li><li class="avis-carte" style="--i:3"><svg class="repere avis-pin" viewBox="0 0 128 236" aria-hidden="true" focusable="false"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg><div class="avis-corps"><blockquote><p>Très très bien...le conseil est parfait et explication très détaillée...un grand merci</p></blockquote><p class="avis-auteur">Jean-Jacques Lisse <span>· Avis Google</span></p></div></li><li class="avis-carte" style="--i:4"><svg class="repere avis-pin" viewBox="0 0 128 236" aria-hidden="true" focusable="false"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg><div class="avis-corps"><blockquote><p>Son accompagnement est personnalisé. Il est à l’écoute, disponible et prend le temps d’expliquer les choses avec clarté. J’apprécie particulièrement son approche qui consiste à comprendre les projets avant de proposer des solutions adaptées, tout en laissant le temps de la réflexion, sans jamais mettre de pression. Les échanges sont simples, transparents et réalisés dans une véritable relation de confiance. Je le recommande avec plaisir.</p></blockquote><p class="avis-auteur">favry gabin <span>· Avis Google</span></p></div></li><li class="avis-carte" style="--i:5"><svg class="repere avis-pin" viewBox="0 0 128 236" aria-hidden="true" focusable="false"><g class="repere-corps"><path fill="currentColor" fill-rule="evenodd" d="M11.26 97.53A62.5 62.5 0 1 1 116.74 97.53L64 180.5ZM88 64A24 24 0 1 0 40 64A24 24 0 1 0 88 64Z"/></g><ellipse class="repere-ombre" cx="64" cy="217.5" rx="44" ry="16" fill="none" stroke="currentColor" stroke-width="5"/></svg><div class="avis-corps"><blockquote><p>Expérience très enrichissante avec Nicolas qui m’a très bien accompagné ! Je pense que nous allons bien travailler ensemble 🤩 Je recommande sans hésitation !</p></blockquote><p class="avis-auteur">Lucas Mouss <span>· Avis Google</span></p></div></li>
   </ul>
 </section>
-<section class="residences ecran epingle" id="immobilier" data-entete-cache data-fx="galerie">
+<section class="residences" id="immobilier">
   <div class="conteneur residences-tete">
     <div>
       <p class="surtitre" data-anime>Immobilier</p>
       <h2 data-anime="lignes">Investir dans la pierre</h2>
     </div>
-    <p data-anime>Résidences commercialisées et livrées par Stellium Immobilier, qui a délivré son attestation d’habilitation à Nicolas Rabouan. <a href="/immobilier" class="lien-fleche" data-libelle="Immobilier">L’immobilier</a></p>
+    <div class="residences-cote">
+      <p data-anime>Résidences commercialisées et livrées par Stellium Immobilier, qui a délivré son attestation d’habilitation à Nicolas Rabouan. <a href="/immobilier" class="lien-fleche" data-libelle="Immobilier">L’immobilier</a></p>
+      <p class="residences-nav" data-anime><button type="button" class="residences-fleche" data-bande-precedent aria-label="Résidence précédente">←</button><button type="button" class="residences-fleche" data-bande-suivant aria-label="Résidence suivante">→</button></p>
+    </div>
   </div>
-  <div class="piste residences-piste" data-galerie tabindex="0" role="region" aria-label="Résidences, défilement horizontal" data-anime="cascade">
+  <div class="residences-piste" data-bande data-effet="bande-residences" data-curseur-libelle="Glisser" tabindex="0" role="region" aria-label="Résidences, à faire glisser">
     <article class="residence" id="residence-1">
       <figure class="media residence-media" style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/residence-1-640.webp" srcset="/assets/images/residence-1-480.webp 480w, /assets/images/residence-1-640.webp 640w" sizes="(max-width: 760px) 78vw, 28vw" alt="Résidence contemporaine aux façades blanches autour d’un jardin intérieur" width="640" height="800" loading="lazy" decoding="async">
+    <img src="/assets/images/residence-1-640.webp" srcset="/assets/images/residence-1-480.webp 480w, /assets/images/residence-1-640.webp 640w" sizes="(max-width: 760px) 78vw, 26vw" alt="Résidence contemporaine aux façades blanches autour d’un jardin intérieur" width="640" height="800" loading="lazy" decoding="async">
   </picture>
 </figure>
       <p class="residence-legende">Résidence Stellium Immobilier · nom et ville à compléter</p>
     </article><article class="residence" id="residence-2">
       <figure class="media residence-media" style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/residence-2-640.webp" srcset="/assets/images/residence-2-480.webp 480w, /assets/images/residence-2-640.webp 640w" sizes="(max-width: 760px) 78vw, 28vw" alt="Résidence moderne à balcons vitrés au bord d’une ligne de tramway" width="640" height="800" loading="lazy" decoding="async">
+    <img src="/assets/images/residence-2-640.webp" srcset="/assets/images/residence-2-480.webp 480w, /assets/images/residence-2-640.webp 640w" sizes="(max-width: 760px) 78vw, 26vw" alt="Résidence moderne à balcons vitrés au bord d’une ligne de tramway" width="640" height="800" loading="lazy" decoding="async">
   </picture>
 </figure>
       <p class="residence-legende">Résidence Stellium Immobilier · nom et ville à compléter</p>
     </article><article class="residence" id="residence-3">
       <figure class="media residence-media" style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/residence-3-640.webp" srcset="/assets/images/residence-3-480.webp 480w, /assets/images/residence-3-640.webp 640w" sizes="(max-width: 760px) 78vw, 28vw" alt="Immeuble de style classique aux façades crème et balcons en fer forgé" width="640" height="800" loading="lazy" decoding="async">
+    <img src="/assets/images/residence-3-640.webp" srcset="/assets/images/residence-3-480.webp 480w, /assets/images/residence-3-640.webp 640w" sizes="(max-width: 760px) 78vw, 26vw" alt="Immeuble de style classique aux façades crème et balcons en fer forgé" width="640" height="800" loading="lazy" decoding="async">
   </picture>
 </figure>
       <p class="residence-legende">Résidence Stellium Immobilier · nom et ville à compléter</p>
     </article><article class="residence" id="residence-4">
       <figure class="media residence-media" style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/residence-4-640.webp" srcset="/assets/images/residence-4-480.webp 480w, /assets/images/residence-4-640.webp 640w" sizes="(max-width: 760px) 78vw, 28vw" alt="Petite résidence crème aux balcons et volets bleus" width="640" height="800" loading="lazy" decoding="async">
+    <img src="/assets/images/residence-4-640.webp" srcset="/assets/images/residence-4-480.webp 480w, /assets/images/residence-4-640.webp 640w" sizes="(max-width: 760px) 78vw, 26vw" alt="Petite résidence crème aux balcons et volets bleus" width="640" height="800" loading="lazy" decoding="async">
   </picture>
 </figure>
       <p class="residence-legende">Résidence Stellium Immobilier · nom et ville à compléter</p>
     </article><article class="residence" id="residence-5">
       <figure class="media residence-media" style="--cadrage:50% 50%">
   <picture>
-    <img src="/assets/images/residence-5-640.webp" srcset="/assets/images/residence-5-480.webp 480w, /assets/images/residence-5-640.webp 640w" sizes="(max-width: 760px) 78vw, 28vw" alt="Résidence basse derrière un jardin planté d’oliviers" width="640" height="800" loading="lazy" decoding="async">
+    <img src="/assets/images/residence-5-640.webp" srcset="/assets/images/residence-5-480.webp 480w, /assets/images/residence-5-640.webp 640w" sizes="(max-width: 760px) 78vw, 26vw" alt="Résidence basse derrière un jardin planté d’oliviers" width="640" height="800" loading="lazy" decoding="async">
   </picture>
 </figure>
       <p class="residence-legende">Résidence Stellium Immobilier · nom et ville à compléter</p>
     </article>
   </div>
-  <div class="galerie-progres" aria-hidden="true"><span></span></div>
+  <div class="galerie-progres conteneur" aria-hidden="true"><span></span></div>
 </section>
 <section class="appel" id="appel">
   <figure class="media appel-fond" data-grok data-fx="parallaxe" style="--cadrage:40% 50%">
   <picture>
-    <img src="/assets/images/grok/appel-riviere-1280.webp" srcset="/assets/images/grok/appel-riviere-640.webp 640w, /assets/images/grok/appel-riviere-1280.webp 1280w, /assets/images/grok/appel-riviere-1752.webp 1752w" sizes="100vw" alt="Échangeons et concrétisons, ensemble, tous vos projets" width="1280" height="720" loading="lazy" decoding="async">
+    <img src="/assets/images/grok/appel-riviere-1280.webp" srcset="/assets/images/grok/appel-riviere-640.webp 640w, /assets/images/grok/appel-riviere-1280.webp 1280w, /assets/images/grok/appel-riviere-1752.webp 1752w" sizes="100vw" alt="Rivière calme bordée de peupliers au petit matin" width="1280" height="720" loading="lazy" decoding="async">
   </picture><figcaption class="mention-ia">Illustration générée</figcaption>
 </figure>
   <div class="appel-ondes" aria-hidden="true" data-effet="ondes-appel"><span></span><span></span><span></span><span></span></div>
   <div class="appel-texte conteneur">
-    <h2 data-anime="lignes">Échangeons et concrétisons, ensemble, tous vos projets</h2>
-    <p data-anime>Un premier échange pour faire le point sur votre situation et vos objectifs.</p>
-    <p class="appel-actions" data-anime>
-      <a href="/contact#rendez-vous" class="bouton bouton--clair" data-libelle="Contact" data-survol="magnetique">Prendre rendez-vous</a>
-      <a class="bouton bouton--contour-clair" href="tel:+33663479122" data-survol="magnetique">Appeler le 06 63 47 91 22</a>
-    </p>
+    <figure class="citation-texte" data-effet="rature-avenir">
+      <p class="citation-faux" aria-hidden="true"><span class="citation-faux-texte">On subit l’avenir.</span><svg class="citation-rature" viewBox="0 0 400 40" preserveAspectRatio="none"><path pathLength="1" d="M4 26 C 70 14, 130 30, 200 20 S 330 12, 396 22"/></svg></p>
+      <blockquote class="citation-vrai"><p>« On ne subit pas l’avenir, on le fait. »</p></blockquote>
+      <figcaption class="citation-auteur">Georges Bernanos</figcaption>
+    </figure>
+    <div class="appel-bloc">
+      <h2 data-anime="lignes">Échangeons et concrétisons, ensemble, tous vos projets</h2>
+      <p data-anime>Un premier échange pour faire le point sur votre situation et vos objectifs.</p>
+      <p class="appel-actions" data-anime>
+        <a href="/contact#rendez-vous" class="bouton bouton--clair" data-libelle="Contact" data-survol="magnetique">Prendre rendez-vous</a>
+        <a class="bouton bouton--contour-clair" href="tel:+33663479122" data-survol="magnetique">Appeler le 06 63 47 91 22</a>
+      </p>
+    </div>
   </div>
 </section>
 </main>

@@ -6,7 +6,7 @@
    - Souris immobile sur l'image : le temps de l'image s'arrête, plus rien ne dérive.
    - 60 images par seconde au plus, densité limitée, qualité qui baisse d'elle-même si les images tardent ;
      mesures au chargement et au redimensionnement seulement (jamais pendant le défilement). */
-import { boucle, etat } from './socle/index.js?v=2';
+import { boucle, etat } from './socle/index.js?v=3';
 
 const VERT = `attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }`;
 const FRAG = `
@@ -165,12 +165,14 @@ export function horizonVivant(scene, zone) {
       pret = true;
       mesurer();
       dessiner();
-      canvas.classList.add('gl-pret');
+      if (!enAttente) canvas.classList.add('gl-pret');
     } catch (err) { console.warn('[horizon] texture', err); }
   }
 
-  /* Pendant l'intro, demi-résolution (l'image se pose sous le panneau) ; pleine résolution à la fin (api.qualite). */
-  let echelle = etat.arrivee === 'intro' ? 0.5 : 1, w = 2, h = 2, dpr = 1, temps = 0, dernier = 0, lentes = 0, grain = 0;
+  /* Pendant l'intro, l'image seule (le WebGL attend, invisible) : l'intro reste fluide ; à la fin (api.qualite),
+     le WebGL prend le relais en fondu, au même cadrage. */
+  let enAttente = etat.arrivee === 'intro';
+  let echelle = 1, w = 2, h = 2, dpr = 1, temps = 0, dernier = 0, lentes = 0, grain = 0;
   let defil = 0, lever = 0, decalage = 0;
   /* Souris : cible et position suivie (pixels CSS de la scène), parallaxe, présence. */
   let mx = 0, my = 0, sx = 0, sy = 0, cpx = 0, cpy = 0, tpx = 0, tpy = 0, force = 0, dedans = false, clicX = -9999, clicY = -9999, clicT = 0;
@@ -202,7 +204,7 @@ export function horizonVivant(scene, zone) {
   window.addEventListener('resize', () => { clearTimeout(attente); attente = setTimeout(() => { mesurer(); dessiner(); }, 140); });
 
   boucle(canvas, (dt, t) => {
-    if (!pret) return;
+    if (!pret || enAttente) return;
     if (t - dernier < 0.0155) return;
     const ecart = dernier ? t - dernier : 1 / 60;
     dernier = t;
@@ -237,7 +239,7 @@ export function horizonVivant(scene, zone) {
   zone.addEventListener('pointerdown', (e) => { [clicX, clicY] = pos(e); clicT = 0.001; });
   api.defiler = (v, px = 0) => { defil = v; decalage = px; };
   api.lever = (v) => { lever = v; };
-  api.qualite = (v) => { if (v === echelle) return; echelle = v; lentes = 0; mesurer(); dessiner(); };
+  api.qualite = () => { if (!enAttente) return; enAttente = false; lentes = 0; mesurer(); dessiner(); if (pret) canvas.classList.add('gl-pret'); };
   /* Onde partie du soleil, quand le repère s'y pose. */
   api.onde = () => {
     if (!cadre) return;

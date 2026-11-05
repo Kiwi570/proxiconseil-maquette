@@ -147,7 +147,7 @@ html.calme .hero-defiler::after { animation: none; }
 
 /* En-tête nuit pétrole (toujours opaque) tant qu'il est posé sur le hero, fondu vers l'image par un dégradé
    (classe posée par le script ; sans script, il reste calcaire). */
-[data-entete] { transition: transform .35s var(--courbe), background-color .35s, border-color .35s; }
+/* Bascule instantanée (couleurs du texte et du fond toujours accordées, jamais un texte clair sur un fond encore clair). */
 [data-entete]::after { content: ''; position: absolute; left: 0; right: 0; top: 100%; height: 56px; pointer-events: none; background: linear-gradient(rgba(8, 38, 43, .9), rgba(8, 38, 43, 0)); opacity: 0; transition: opacity .35s; }
 html.entete-sur-hero:not(.menu-ouvert) [data-entete] { background: var(--nuit); border-bottom-color: var(--nuit); }
 html.entete-sur-hero:not(.menu-ouvert) [data-entete]::after { opacity: 1; }
@@ -157,30 +157,21 @@ html.entete-sur-hero:not(.menu-ouvert) [data-nav] a[aria-current] { color: var(-
 html.entete-sur-hero:not(.menu-ouvert) .entete-actions > .bouton, html.entete-sur-hero:not(.menu-ouvert) [data-menu-bouton] { background: var(--calcaire); color: var(--nuit); }
 html.entete-sur-hero:not(.menu-ouvert) .entete-actions > .bouton:hover { background: #fff; }
 
-/* Raisons : photo qui ondule, trois phrases qui s'allument mot à mot. */
-.raisons { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); align-items: stretch; gap: 0; background: var(--sable); }
-.raisons-media { border-radius: 0; aspect-ratio: auto; position: sticky; top: 0; height: 100vh; height: 100svh; align-self: start; }
-.raisons-texte { width: auto; margin: 0; padding: clamp(64px, 10vw, 140px) clamp(24px, 6vw, 96px); }
-.raisons-texte h2 { max-width: 12em; }
-.raisons-liste { list-style: none; margin: clamp(28px, 5vw, 56px) 0 0; padding: 0; display: grid; gap: clamp(28px, 5vw, 56px); }
-.raisons-liste li { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; }
-.raisons-num { font-family: var(--police-titres); font-style: italic; font-size: 1.1rem; color: var(--laiton-texte); padding-top: .35em; font-variant-numeric: tabular-nums; }
-.manifeste { margin: 0; font-family: var(--police-titres); font-size: clamp(1.35rem, 1rem + 1.25vw, 2.1rem); line-height: 1.28; font-weight: 350; color: var(--encre); }
-.manifeste .mm { color: #4f6569; background: linear-gradient(transparent 64%, rgba(176, 138, 78, .32) 64%, rgba(176, 138, 78, .32) 92%, transparent 92%) no-repeat 0 0 / 0% 100%; }
-html.calme .manifeste .mm, html:not(.js) .manifeste .mm, html[data-arrivee="retour"] .manifeste .mm { color: inherit; background-size: 100% 100%; }
-@media (max-width: 760px) {
-  .raisons { grid-template-columns: 1fr; }
-  .raisons-media { position: relative; height: 46svh; min-height: 0; order: 2; }
-}
-
-/* Six objectifs : section épinglée, anneaux qui s'allument un à un. */
-.objectifs { background: var(--calcaire); position: relative; overflow: hidden; justify-content: center; }
-.objectifs-grille { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.2fr) minmax(0, .9fr); grid-template-rows: auto 1fr; gap: 12px clamp(20px, 3vw, 48px); align-items: center; flex: 1 1 auto; min-height: 0; }
-.objectifs-tete { grid-column: 1; grid-row: 1 / span 2; align-self: center; }
+/* Six objectifs : boussole interactive, sur un écran. Choisir un objectif (bouton ou anneau) : le repère y glisse
+   et la fiche change ; sans geste, ils défilent seuls, avec une pause. */
+.objectifs { background: var(--calcaire); position: relative; overflow: hidden; padding-block: clamp(64px, 10vh, 120px) clamp(28px, 5vh, 56px); }
+.objectifs-grille { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.1fr) minmax(0, .85fr); gap: clamp(20px, 3vw, 48px); align-items: center; }
 .objectifs-tete h2 { font-size: clamp(2rem, min(4vw, 7.5vh), 3.6rem); }
-.objectifs-consigne { font-size: .85rem; color: var(--texte-doux); }
-.objectifs-schema { grid-column: 2; grid-row: 1 / span 2; min-height: 0; height: 100%; display: grid; place-items: center; }
-.anneaux { width: 100%; height: 100%; max-height: min(78svh, 680px); overflow: visible; color: var(--petrole); }
+.objectifs-choix { display: flex; flex-wrap: wrap; gap: 8px; margin: 1.4em 0 .6em; max-width: 27rem; }
+.objectif-choix { position: relative; overflow: hidden; display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1.5px solid var(--ligne); border-radius: 999px; background: transparent; color: var(--encre); font: 600 .95rem/1 var(--police-texte); cursor: pointer; transition: background-color .3s, color .3s, border-color .3s; }
+.objectif-choix:hover { border-color: var(--petrole); }
+.objectif-choix[aria-pressed="true"] { background: var(--petrole); border-color: var(--petrole); color: #fff; }
+.objectif-choix-temps { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: var(--laiton-clair); transform: scaleX(0); transform-origin: 0 50%; pointer-events: none; }
+.objectifs-consigne { display: flex; flex-wrap: wrap; align-items: center; gap: 0 10px; margin: 0; font-size: .85rem; color: var(--texte-doux); }
+.objectifs-pause { min-height: 44px; padding: 0 4px; border: 0; background: none; color: var(--petrole); font: 700 .85rem var(--police-texte); text-decoration: underline; text-underline-offset: .3em; cursor: pointer; }
+html.calme .objectifs-consigne { display: none; }
+.objectifs-schema { display: grid; place-items: center; min-height: 0; }
+.anneaux { width: 100%; height: auto; max-height: min(72svh, 640px); overflow: visible; color: var(--petrole); }
 .anneau-cercle { stroke: rgba(0, 96, 108, .2); stroke-width: 1.5; transition: stroke .5s var(--courbe), stroke-width .5s var(--courbe); }
 .anneau-point { fill: var(--calcaire); stroke: var(--petrole); stroke-width: 2; transition: fill .4s; }
 .anneau-nom { fill: #4f6569; paint-order: stroke; stroke: var(--calcaire); stroke-width: 7px; stroke-linejoin: round; font-family: var(--police-texte); font-weight: 700; font-size: 23px; letter-spacing: .02em; transition: fill .4s; }
@@ -189,44 +180,72 @@ html.calme .manifeste .mm, html:not(.js) .manifeste .mm, html[data-arrivee="reto
 .anneau.actif .anneau-nom { fill: var(--encre); }
 .anneau.vu .anneau-cercle { stroke: rgba(0, 96, 108, .55); }
 .anneau.vu .anneau-nom { fill: var(--texte-doux); }
+.objectifs .anneau { cursor: pointer; }
+.objectifs .anneau:hover .anneau-cercle { stroke: rgba(0, 96, 108, .6); }
 .anneaux-repere { color: var(--petrole); }
+.anneaux-onde { stroke: var(--laiton); stroke-width: 2.5; opacity: 0; }
 .anneaux-deco { stroke: var(--laiton); stroke-width: 1.5; stroke-dasharray: 2 14; opacity: .7; }
-.anneaux { overflow: visible; }
-.objectifs-liste { grid-column: 3; grid-row: 1 / span 2; list-style: none; margin: 0; padding: 0; position: relative; height: min(70svh, 600px); align-self: center; }
-.objectif { position: absolute; inset: 0; display: flex; flex-direction: column; gap: 14px; background: var(--calcaire); }
-html.js:not(.calme):not(.secours):not([data-arrivee="retour"]) .objectif + .objectif { clip-path: inset(0% 0% 100% 0%); }
-@media (max-width: 760px) { html.js .objectif + .objectif { clip-path: none !important; } }
+.objectifs-liste { list-style: none; margin: 0; padding: 0; display: grid; height: min(66svh, 580px); }
+.objectif { grid-area: 1 / 1; min-height: 0; display: flex; flex-direction: column; gap: 14px; background: var(--calcaire); visibility: hidden; }
+.objectif.actif, .objectif.sortante { visibility: visible; }
+.objectif.actif { z-index: 2; }
+.objectif.sortante { z-index: 1; }
 .objectif-media { flex: 1 1 auto; min-height: 0; aspect-ratio: auto; }
 .objectif-texte h3 { margin: .1em 0 .2em; }
-.objectif-texte p { margin: 0; color: var(--texte-doux); }
+.objectif-texte p { margin: 0 0 .2em; color: var(--texte-doux); }
 .objectif-num { font-family: var(--police-titres); font-style: italic; color: var(--laiton-texte); }
-.objectifs-pied { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; margin-top: 8px; font-size: 1rem; color: var(--encre); flex: none; }
+.objectifs-pied { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px 24px; margin-top: clamp(20px, 4vh, 40px); font-size: 1rem; color: var(--encre); }
 .objectifs-risque { max-width: 60em; }
-/* Avant l'épinglage (calme, sans JavaScript, téléphone) : liste complète. */
-html.calme .objectifs.ecran.epingle, html:not(.js) .objectifs.ecran.epingle { height: auto; min-height: 0; }
-html.calme .objectifs-liste, html:not(.js) .objectifs-liste { height: auto; display: grid; gap: 28px; }
-html.calme .objectif, html:not(.js) .objectif { position: static; }
-html.calme .objectif-media, html:not(.js) .objectif-media { aspect-ratio: 4 / 5; flex: none; }
-html.calme .objectifs-grille, html:not(.js) .objectifs-grille { align-items: start; }
+/* Sans script : les six fiches en grille, sans les boutons. */
+html:not(.js) .objectifs-choix, html:not(.js) .objectifs-consigne { display: none; }
+html:not(.js) .objectifs-liste { grid-column: 1 / -1; height: auto; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 24px; }
+html:not(.js) .objectif { grid-area: auto; visibility: visible; }
+html:not(.js) .objectif-media { aspect-ratio: 4 / 5; flex: none; }
 @media (max-width: 1000px) and (min-width: 761px) {
-  .objectifs-grille { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto 1fr; }
-  .objectifs-tete { grid-column: 1 / span 2; grid-row: 1; }
-  .objectifs-tete h2 { font-size: clamp(1.8rem, 5vh, 2.6rem); }
-  .objectifs-tete > p:not(.surtitre) { display: none; }
-  .objectifs-schema { grid-column: 1; grid-row: 2; }
-  .objectifs-liste { grid-column: 2; grid-row: 2; height: 100%; max-height: 560px; }
+  .objectifs-grille { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .objectifs-tete { grid-column: 1 / span 2; }
+  .objectifs-choix { max-width: none; }
+  .objectifs-liste { height: min(60svh, 520px); }
 }
+/* Téléphone : titre, anneaux, fiche, puis les boutons juste dessous : anneaux et fiche restent visibles pendant qu'on choisit. */
 @media (max-width: 760px) {
-  .objectifs.ecran.epingle { height: auto; min-height: 0; }
-  .objectifs-grille { grid-template-columns: 1fr; grid-template-rows: none; }
-  .objectifs-tete, .objectifs-schema, .objectifs-liste { grid-column: 1; grid-row: auto; }
-  .objectifs-consigne { display: none; }
-  .objectifs-schema { height: auto; }
-  .anneaux { max-height: 82vw; }
-  .objectifs-liste { height: auto; display: grid; gap: 16px; }
-  .objectif { position: static; flex-direction: row; align-items: center; gap: 16px; }
-  .objectif-media { width: 42%; aspect-ratio: 4 / 5; flex: none; }
+  .objectifs { padding-block: 56px 32px; }
+  .objectifs-grille { grid-template-columns: 1fr; gap: 0; }
+  .objectifs-tete { display: contents; }
+  .objectifs-tete > .surtitre { order: 1; } .objectifs-tete > h2 { order: 2; } .objectifs-tete > p:not(.surtitre):not(.objectifs-consigne) { order: 3; }
+  .objectifs-schema { order: 4; margin: 0; }
+  .objectifs-liste { order: 5; height: auto; margin-top: 10px; }
+  .objectifs-choix { order: 6; margin: 16px 0 4px; }
+  .objectifs-consigne { order: 7; }
+  .anneaux { max-height: 62vw; }
+  .objectifs .anneau-nom { display: none; }
+  .objectif { flex-direction: row; align-items: center; gap: 16px; }
+  .objectif-media { width: 40%; aspect-ratio: 4 / 5; flex: none; }
   .objectif-texte h3 { font-size: 1.25rem; }
+  .objectif-texte .lien-fleche { min-height: 44px; }
+}
+
+/* Raisons : trois phrases qui s'allument mot à mot ; à chaque raison lue, un repère se pose sur le chemin. */
+.raisons { background: var(--sable); padding-block: clamp(72px, 11vw, 140px); }
+.raisons-grille { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+.raisons-tete { position: sticky; top: calc(var(--entete-h) + 40px); }
+.raisons-tete h2 { max-width: 12em; }
+.raisons-chemin { display: block; width: 100%; max-width: 480px; height: auto; margin-top: clamp(16px, 4vh, 40px); overflow: visible; color: var(--petrole); }
+.raisons-trace-fond { fill: none; stroke: rgba(14, 42, 48, .24); stroke-width: 2; stroke-dasharray: 2 8; stroke-linecap: round; }
+.raisons-trace { fill: none; stroke: var(--laiton); stroke-width: 2.5; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+html.calme .raisons-trace, html:not(.js) .raisons-trace, html[data-arrivee="retour"] .raisons-trace { stroke-dashoffset: 0; }
+.raisons-ombre { fill: none; stroke: var(--petrole); stroke-width: 2; }
+.raisons-n { font-family: var(--police-titres); font-style: italic; font-size: 17px; fill: var(--laiton-texte); }
+.raisons-liste { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(36px, 7vh, 72px); }
+.raisons-liste li { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: start; }
+.raisons-num { font-family: var(--police-titres); font-style: italic; font-size: 1.1rem; color: var(--laiton-texte); padding-top: .35em; font-variant-numeric: tabular-nums; }
+.manifeste { margin: 0; font-family: var(--police-titres); font-size: clamp(1.35rem, 1rem + 1.25vw, 2.1rem); line-height: 1.28; font-weight: 350; color: var(--encre); }
+.manifeste .mm { color: #4f6569; background: linear-gradient(transparent 64%, rgba(176, 138, 78, .32) 64%, rgba(176, 138, 78, .32) 92%, transparent 92%) no-repeat 0 0 / 0% 100%; }
+html.calme .manifeste .mm, html:not(.js) .manifeste .mm, html[data-arrivee="retour"] .manifeste .mm { color: inherit; background-size: 100% 100%; }
+@media (max-width: 760px) {
+  .raisons-grille { grid-template-columns: 1fr; gap: 28px; }
+  .raisons-tete { position: static; }
+  .raisons-chemin { max-width: 360px; }
 }
 
 /* Déroulé : itinéraire tracé entre quatre repères, sur un chemin de bocage. */
@@ -260,18 +279,6 @@ html.calme .objectifs-grille, html:not(.js) .objectifs-grille { align-items: sta
   .etape-repere { left: -48px; width: 40px; }
 }
 
-/* Citation : la phrase « On subit l'avenir » se fait barrer, la vraie citation s'écrit. */
-.citation { position: relative; min-height: min(100svh, 820px); display: grid; place-items: center; overflow: hidden; isolation: isolate; color: var(--encre); }
-.citation-fond { position: absolute; inset: 0; border-radius: 0; z-index: -2; }
-.citation::before { content: ''; position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 50% 50%, rgba(244, 241, 234, .9) 0%, rgba(244, 241, 234, .74) 45%, rgba(244, 241, 234, .3) 100%); }
-.citation-texte { margin: 0 auto; text-align: center; padding-block: clamp(80px, 12vw, 140px); }
-.citation-faux { position: relative; display: inline-block; margin: 0 0 .4em; font-family: var(--police-titres); font-size: clamp(1.4rem, 1rem + 1.6vw, 2.4rem); color: var(--texte-doux); }
-.citation-rature { position: absolute; left: -4%; top: 0; width: 108%; height: 100%; overflow: visible; }
-.citation-rature path { fill: none; stroke: var(--laiton); stroke-width: 5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
-.citation-vrai { margin: 0; }
-.citation-vrai p { margin: 0 auto; max-width: 16em; font-family: var(--police-titres); font-style: italic; font-weight: 300; font-size: clamp(2.2rem, min(6vw, 10vh), 5.6rem); line-height: 1.04; color: var(--petrole); }
-.citation-auteur { margin-top: 1em; font-weight: 700; font-size: .82rem; letter-spacing: .18em; text-transform: uppercase; }
-
 /* Aperçu du portrait. */
 .apercu { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; padding-block: clamp(72px, 11vw, 150px); }
 .apercu-media { aspect-ratio: 4 / 5; filter: grayscale(1); }
@@ -293,39 +300,58 @@ html.calme .objectifs-grille, html:not(.js) .objectifs-grille { align-items: sta
 .avis-auteur { margin: 0; font-weight: 700; font-size: .9rem; }
 .avis-auteur span { font-weight: 500; color: var(--texte-doux); }
 
-/* Résidences : galerie horizontale épinglée. */
-.residences { background: var(--calcaire); overflow: hidden; }
-.residences-tete { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 8px 40px; flex: none; }
-.residences-tete h2 { margin: 0; font-size: clamp(2rem, min(4.6vw, 7vh), 4rem); }
-.residences-tete > p { max-width: 30em; margin: 0 0 6px; font-size: .95rem; color: var(--texte-doux); }
-.residences-piste { display: flex; gap: clamp(14px, 2vw, 28px); padding-inline: var(--gouttiere); width: max-content; margin-top: clamp(16px, 3vh, 32px); }
-.residence { height: 100%; display: flex; flex-direction: column; aspect-ratio: 4 / 5.6; }
-.residence-media { flex: 1 1 auto; min-height: 0; }
-.residence-legende { margin: 10px 0 0; font-size: .85rem; color: var(--texte-doux); flex: none; }
-.galerie-progres { height: 2px; margin: 14px var(--gouttiere) 0; background: var(--ligne); flex: none; }
-.galerie-progres span { display: block; height: 100%; background: var(--petrole); transform-origin: 0 50%; transform: scaleX(0); }
-html.calme .residences.ecran.epingle, html:not(.js) .residences.ecran.epingle { height: auto; min-height: 0; }
-html.calme .residences-piste, html:not(.js) .residences-piste { width: auto; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
-html.calme .residence, html:not(.js) .residence { flex: 0 0 min(360px, 76vw); height: auto; scroll-snap-align: start; }
-html.calme .residence-media, html:not(.js) .residence-media { aspect-ratio: 4 / 5; flex: none; }
+/* Téléphone : les avis sur un fil, à faire glisser du doigt ; ils se balancent selon la vitesse. */
 @media (max-width: 760px) {
-  .residences.ecran.epingle { height: auto; min-height: 0; }
-  .residences-piste { width: auto; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; }
-  .residence { flex: 0 0 76vw; height: auto; aspect-ratio: auto; scroll-snap-align: start; }
-  .residence-media { aspect-ratio: 4 / 5; flex: none; }
-  .galerie-progres { display: none; }
+  .avis-liste { columns: auto; display: flex; align-items: flex-start; gap: 16px; width: auto; margin: 0; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gouttiere); padding: 0 var(--gouttiere) 14px; scrollbar-width: none; overscroll-behavior-x: contain; background: linear-gradient(rgba(14, 42, 48, .38), rgba(14, 42, 48, .38)) 0 7px / 100% 1.5px no-repeat; }
+  .avis-liste::-webkit-scrollbar { display: none; }
+  .avis-carte { flex: 0 0 84%; margin: 0; scroll-snap-align: start; }
 }
 
-/* Appel final : rivière au matin, ondes du repère. */
-.appel { position: relative; min-height: min(92svh, 820px); display: grid; align-items: center; overflow: hidden; isolation: isolate; color: var(--calcaire); background: var(--nuit); }
+/* Résidences : bande à faire glisser (souris, doigt, flèches, clavier) ; les cartes s'inclinent selon la vitesse. */
+.residences { background: var(--calcaire); padding-block: clamp(64px, 10vw, 120px); overflow: hidden; }
+.residences-tete { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 16px 40px; }
+.residences-tete h2 { margin: 0; font-size: clamp(2rem, min(4.6vw, 7vh), 4rem); }
+.residences-cote { display: grid; gap: 10px; max-width: 30em; }
+.residences-cote > p { margin: 0; font-size: .95rem; color: var(--texte-doux); }
+.residences-nav { display: flex; gap: 8px; }
+.residences-fleche { width: 48px; height: 48px; display: inline-grid; place-items: center; border-radius: 50%; border: 1.5px solid var(--petrole); background: transparent; color: var(--petrole); font: 600 1.15rem/1 var(--police-texte); cursor: pointer; transition: background-color .25s, color .25s, opacity .25s; }
+.residences-fleche:hover:not([disabled]) { background: var(--petrole); color: #fff; }
+.residences-fleche[disabled] { opacity: .35; cursor: default; }
+.residences-piste { --bord: max(var(--gouttiere), calc((100% - var(--largeur)) / 2)); display: flex; gap: clamp(14px, 2vw, 28px); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--bord); padding: clamp(20px, 3vh, 32px) var(--bord) 10px; scrollbar-width: none; overscroll-behavior-x: contain; perspective: 1400px; }
+.residences-piste::-webkit-scrollbar { display: none; }
+@media (hover: hover) and (pointer: fine) { .residences-piste { cursor: grab; } }
+.residences-piste.glisse { scroll-snap-type: none; cursor: grabbing; user-select: none; }
+.residence { flex: 0 0 clamp(260px, 26vw, 380px); scroll-snap-align: start; display: flex; flex-direction: column; transform: rotateY(var(--incl, 0deg)); transform-origin: 50% 50%; }
+.residence-media { aspect-ratio: 4 / 5.2; }
+.residence-media img { -webkit-user-drag: none; user-select: none; }
+.residence-legende { margin: 10px 0 0; font-size: .85rem; color: var(--texte-doux); }
+.galerie-progres { height: 2px; margin-top: 16px; background: var(--ligne); }
+.galerie-progres span { display: block; height: 100%; background: var(--petrole); transform-origin: 0 50%; transform: scaleX(var(--progres, .2)); }
+@media (max-width: 760px) {
+  .residence { flex-basis: 76vw; }
+  .residences-nav { display: none; }
+}
+
+/* Fin de page : la phrase « On subit l'avenir » se fait barrer, la citation s'écrit, puis l'appel ;
+   sur la rivière au matin, les ondes du repère s'élargissent. */
+.appel { position: relative; min-height: min(100svh, 920px); display: grid; align-items: center; overflow: hidden; isolation: isolate; color: var(--calcaire); background: var(--nuit); padding-block: clamp(72px, 12vh, 140px); }
 .appel-fond { position: absolute; inset: 0; border-radius: 0; z-index: -2; }
-.appel::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(8, 38, 43, .92) 0%, rgba(8, 38, 43, .72) 45%, rgba(8, 38, 43, .2) 100%); }
-.appel-ondes { position: absolute; left: 74%; top: 56%; width: 1px; height: 1px; z-index: -1; pointer-events: none; }
+.appel::before { content: ''; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(8, 38, 43, .94) 0%, rgba(8, 38, 43, .78) 45%, rgba(8, 38, 43, .25) 100%); }
+.appel-ondes { position: absolute; left: 76%; top: 58%; width: 1px; height: 1px; z-index: -1; pointer-events: none; }
 .appel-ondes span { position: absolute; left: 0; top: 0; width: 70vmin; aspect-ratio: 44 / 16; border: 1.5px solid rgba(217, 185, 127, .55); border-radius: 50%; transform: translate(-50%, -50%) scale(.1); opacity: 0; }
-.appel-texte h2 { max-width: 13em; color: var(--calcaire); }
-.appel-texte > p { max-width: 32em; color: rgba(244, 241, 234, .86); }
+.appel-texte { display: grid; gap: clamp(28px, 6vh, 64px); }
+.citation-texte { margin: 0; max-width: 40rem; }
+.citation-faux { position: relative; display: inline-block; margin: 0 0 .35em; font-family: var(--police-titres); font-size: clamp(1.3rem, 1rem + 1.2vw, 2rem); color: rgba(244, 241, 234, .78); }
+.citation-rature { position: absolute; left: -4%; top: 0; width: 108%; height: 100%; overflow: visible; }
+.citation-rature path { fill: none; stroke: var(--laiton-clair); stroke-width: 5; stroke-linecap: round; vector-effect: non-scaling-stroke; }
+.citation-vrai { margin: 0; }
+.citation-vrai p { margin: 0; max-width: 13em; font-family: var(--police-titres); font-style: italic; font-weight: 300; font-size: clamp(2.2rem, min(5.4vw, 9vh), 5rem); line-height: 1.04; color: var(--laiton-clair); }
+.citation-auteur { margin-top: .9em; font-weight: 700; font-size: .82rem; letter-spacing: .18em; text-transform: uppercase; color: var(--calcaire); }
+.appel-bloc { max-width: 36rem; padding-top: clamp(22px, 4vh, 40px); border-top: 1px solid rgba(244, 241, 234, .22); }
+.appel-bloc h2 { margin: 0 0 .3em; max-width: 15em; font-size: clamp(1.8rem, min(3.4vw, 6vh), 3rem); color: var(--calcaire); }
+.appel-bloc > p { max-width: 32em; color: rgba(244, 241, 234, .86); }
 .appel-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 1.4em; }
-@media (max-width: 760px) { .appel::before { background: linear-gradient(180deg, rgba(8, 38, 43, .9) 0%, rgba(8, 38, 43, .7) 60%, rgba(8, 38, 43, .5) 100%); } .appel-ondes { left: 70%; top: 86%; } }
+@media (max-width: 760px) { .appel::before { background: linear-gradient(180deg, rgba(8, 38, 43, .92) 0%, rgba(8, 38, 43, .78) 60%, rgba(8, 38, 43, .6) 100%); } .appel-ondes { left: 70%; top: 90%; } }
 
 /* Pied de page : nuit pétrole, statuts complets. */
 .pied { background: var(--nuit); color: rgba(244, 241, 234, .88); border-top: 0; padding-top: clamp(56px, 8vw, 96px); }
@@ -683,3 +709,6 @@ html.js[data-arrivee="intro"]:not(.calme):not(.secours):not(.intro-finie) .ouver
 .curseur.curseur--clair::before { background: var(--laiton-clair); }
 .curseur.curseur-pose::before { animation: curseur-pose .45s var(--courbe); }
 @keyframes curseur-pose { 0% { transform: translateY(-7px); } 45% { transform: translateY(0) scaleY(.8) scaleX(1.14); } 100% { transform: none; } }
+.curseur::after { content: attr(data-libelle); position: absolute; left: 22px; top: -30px; padding: 5px 11px; border-radius: 999px; background: var(--petrole); color: #fff; font: 700 .75rem/1 var(--police-texte); letter-spacing: .04em; white-space: nowrap; opacity: 0; transform: scale(.8); transform-origin: 0 100%; transition: opacity .2s, transform .25s var(--courbe); }
+.curseur[data-libelle]:not([data-libelle=""])::after { opacity: 1; transform: none; }
+
