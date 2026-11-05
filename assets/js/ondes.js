@@ -1,7 +1,7 @@
 /* Ondes au clic, sur tout le site : chaque clic lâche, au point cliqué, deux ondes aplaties comme l'ombre du repère.
    Claires sur les sections sombres, pétrole ailleurs. Le curseur (socle) prend la même teinte et se pose au clic.
    Rien en mode calme ; le calque est fixe, transparent aux clics et ignoré par l'audit. */
-import { etat } from './socle/index.js?v=3';
+import { etat } from './socle/index.js?v=4';
 
 const SOMBRES = '.hero, .deroule, .appel, .acc-tete, .feuillets, .charte, .fin-page--nuit, .rdv-recap, .pied, [data-menu], [data-voile]';
 

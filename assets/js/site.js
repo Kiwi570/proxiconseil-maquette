@@ -2,11 +2,11 @@
    Le socle gère l'ouverture, le voile, l'en-tête, le menu, le mode calme, les boucles, les mesures
    et la bibliothèque d'effets (data-anime, data-fx, data-survol). Ici : l'intro du repère, et les effets
    propres de chaque page, chacun marqué data-effet="nom" (liste dans _audit/config.json). */
-import { demarrer, boucle, etat, quand } from './socle/index.js?v=3';
-import { horizonVivant } from './horizon.js?v=3';
-import { pagesInterieures } from './pages.js?v=3';
-import { ondesAuClic } from './ondes.js?v=3';
-import { bande } from './bande.js?v=3';
+import { demarrer, boucle, etat, quand } from './socle/index.js?v=4';
+import { horizonVivant } from './horizon.js?v=4';
+import { pagesInterieures } from './pages.js?v=4';
+import { ondesAuClic } from './ondes.js?v=4';
+import { bande } from './bande.js?v=4';
 
 const gsap = window.gsap;
 const ST = window.ScrollTrigger;
@@ -152,10 +152,18 @@ const accueil = {
       });
     }
 
-    /* Résidences : la bande arrive de la droite au défilement ; les cartes s'inclinent selon la vitesse du glissé. */
+    /* Résidences : les images glissent à l'horizontale avec le défilement, de la première à la dernière, pendant que la
+       section traverse l'écran (sans bloquer la page) ; elles s'inclinent selon la vitesse du défilement. */
     const piste = $('.residences-piste');
     if (piste) {
-      gsap.fromTo(piste, { x: () => window.innerWidth * 0.16 }, { x: 0, ease: 'none', scrollTrigger: { trigger: '.residences', start: 'top bottom', end: 'top 25%', scrub: true } });
+      const barre = $('.galerie-progres span');
+      const distance = () => Math.max(0, piste.scrollWidth - document.documentElement.clientWidth);
+      gsap.fromTo(piste, { x: () => window.innerWidth * 0.1 }, { x: () => -distance(), ease: 'none',
+        scrollTrigger: { trigger: '.residences', start: 'top 85%', end: 'bottom 15%', scrub: 0.6, invalidateOnRefresh: true,
+          onUpdate: (st) => {
+            if (barre) barre.style.setProperty('--progres', Math.max(0.06, st.progress).toFixed(3));
+            this.inclinaison = Math.max(-6, Math.min(6, -st.getVelocity() * 0.0025));
+          } } });
       let incl = 0, ecrit = 0;
       boucle(piste, (dt) => {
         this.inclinaison *= Math.pow(0.04, dt);
@@ -244,11 +252,18 @@ const accueil = {
     else repere(0);
   },
 
-  /* Bande des résidences : glisser, flèches, progression ; la vitesse incline les cartes (si animations). */
+  /* Résidences. Avec les animations, la bande suit le défilement de la page (voir preparer) : elle n'est plus une zone
+     à faire défiler, donc elle sort de la tabulation. En mode calme ou sans script : bande à faire glisser (doigt,
+     souris, flèches, clavier). */
   residences() {
     this.inclinaison = 0;
-    bande($('.residences-piste'), { precedent: $('[data-bande-precedent]'), suivant: $('[data-bande-suivant]'), barre: $('.galerie-progres span'),
-      calme: () => etat.calme, auVitesse: (v) => { if (actif()) this.inclinaison = Math.max(-7, Math.min(7, -v * 0.006)); } });
+    const piste = $('.residences-piste');
+    if (!piste) return;
+    if (actif()) {
+      ['tabindex', 'role', 'aria-label', 'data-curseur-libelle'].forEach((a) => piste.removeAttribute(a));
+      return;
+    }
+    bande(piste, { precedent: $('[data-bande-precedent]'), suivant: $('[data-bande-suivant]'), barre: $('.galerie-progres span'), calme: () => true });
   },
 
   /* Partie de l'accueil dans l'intro : le paysage se pose, le titre monte, le repère tombe sur le soleil qui se lève. */

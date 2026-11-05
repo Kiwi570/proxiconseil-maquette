@@ -1,5 +1,10 @@
 # Journal des versions
 
+## v4 — 5 novembre 2026
+
+- **Investir dans la pierre** : les images glissent à l'horizontale avec le défilement de la page, de la première à la dernière, sans bloquer la page ; elles s'inclinent selon la vitesse. En mode calme, la bande se fait glisser à la main.
+- **Affichage dans Wix** : la maquette peut s'afficher dans un module d'un autre site (en-tête X-Frame-Options retiré de `vercel.json`).
+
 ## v3 — 5 novembre 2026
 
 Accueil réorganisé : environ 10 écrans au lieu de 17, plus aucune section qui bloque le défilement.

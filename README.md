@@ -1,4 +1,4 @@
-# Proxiconseil Patrimoine · maquette v3
+# Proxiconseil Patrimoine · maquette v4
 
 Maquette de site pour **Nicolas Rabouan, Proxiconseil Patrimoine** (conseiller en investissements financiers, Le Mans).
 Direction artistique « **Le repère** » : le repère du logo se pose sur le soleil d'un paysage de bocage (accueil)
@@ -61,6 +61,7 @@ Pages du site actuel non reprises en v1 (disponibles en v2) : « Mes partenaires
 ## À la mise en ligne définitive
 
 - **Retirer** : `noindex` (balise robots dans `source/gabarits/commun.mjs` et en-tête X-Robots-Tag dans `vercel.json`), formulaire simulé (le brancher sur un vrai envoi), mentions « à compléter » une fois remplies, mentions « à valider » une fois validées.
+- **Affichage dans un autre site** : l'en-tête X-Frame-Options a été retiré de `vercel.json` pour que la maquette s'affiche dans un module Wix ; le remettre (`SAMEORIGIN`) si ce n'est plus utile.
 - **Garder** : la mention « Illustration générée » sur les images créées par IA, les statuts et l'ORIAS, la mention de risque de perte en capital.
 - Mettre l'adresse définitive du site dans `donnees/site.json` (`adresse`) et `donnees/structure.json`.
 

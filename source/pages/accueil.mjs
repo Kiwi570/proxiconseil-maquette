@@ -151,7 +151,7 @@ export default (c) => html`
       <p class="residences-nav" data-anime><button type="button" class="residences-fleche" data-bande-precedent aria-label="${c.s('accueil.immobilier.precedent')}">←</button><button type="button" class="residences-fleche" data-bande-suivant aria-label="${c.s('accueil.immobilier.suivant')}">→</button></p>
     </div>
   </div>
-  <div class="residences-piste" data-bande data-effet="bande-residences" data-curseur-libelle="${c.s('accueil.immobilier.glisser')}" tabindex="0" role="region" aria-label="${c.s('accueil.immobilier.region')}">
+  <div class="residences-piste" data-bande data-ruban data-effet="bande-residences" data-curseur-libelle="${c.s('accueil.immobilier.glisser')}" tabindex="0" role="region" aria-label="${c.s('accueil.immobilier.region')}">
     ${c.donnees.residences.map((r, i) => html`<article class="residence" id="residence-${i + 1}">
       ${c.media({ nom: r.image, alt: r.alt, classe: 'residence-media', sizes: '(max-width: 760px) 78vw, 26vw' })}
       <p class="residence-legende">${c.t('accueil.immobilier.legende')}</p>

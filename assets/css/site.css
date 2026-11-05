@@ -325,6 +325,9 @@ html.calme .manifeste .mm, html:not(.js) .manifeste .mm, html[data-arrivee="reto
 .residence-media { aspect-ratio: 4 / 5.2; }
 .residence-media img { -webkit-user-drag: none; user-select: none; }
 .residence-legende { margin: 10px 0 0; font-size: .85rem; color: var(--texte-doux); }
+/* Avec les animations : la bande suit le défilement de la page (déplacée en entier), plus de flèches ni de glissé. */
+html.js:not(.calme) .residences-piste { width: max-content; overflow: visible; scroll-snap-type: none; cursor: auto; }
+html.js:not(.calme) .residences-nav { display: none; }
 .galerie-progres { height: 2px; margin-top: 16px; background: var(--ligne); }
 .galerie-progres span { display: block; height: 100%; background: var(--petrole); transform-origin: 0 50%; transform: scaleX(var(--progres, .2)); }
 @media (max-width: 760px) {

@@ -4,7 +4,7 @@
      résolution qui baisse d'elle-même si les images prennent trop de temps.
    - La boucle du socle ne tourne qu'à l'écran, onglet visible, jamais en mode calme.
    - Mesures au chargement et au redimensionnement seulement (jamais pendant le défilement). */
-import { boucle, etat } from './socle/index.js?v=3';
+import { boucle, etat } from './socle/index.js?v=4';
 
 const VERT = `attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }`;
 const FRAG = `

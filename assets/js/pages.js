@@ -1,8 +1,8 @@
 /* Effets propres des pages intérieures (accompagnement, qui suis-je, immobilier, contact, 404).
    Chaque page : preparer() (déclencheurs au défilement, états de départ), entree(tl, t0) (sa part de l'intro),
    arrivee() (après le voile), etatFinal() (retour, calme, secours). Chaque effet porte data-effet="nom". */
-import { trameApi } from './trame.js?v=3';
-import { carteCourbes } from './carte.js?v=3';
+import { trameApi } from './trame.js?v=4';
+import { carteCourbes } from './carte.js?v=4';
 
 export function pagesInterieures({ gsap, ST, $, $$, etat, actif }) {
   /* Ondes du repère en fin de page, au défilement. */
